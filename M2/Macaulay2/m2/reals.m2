@@ -446,6 +446,7 @@ expression RealField := R -> new Subscript from {symbol RR, R.precision}
 expression RealIntervalField := R -> new Subscript from {symbol RRi, R.precision}
 expression RealBallField := R -> new Subscript from {symbol RRb, R.precision}
 expression ComplexField := R -> new Subscript from {symbol CC, R.precision}
+expression ComplexIntervalField := R -> new Subscript from {symbol CCi, R.precision}
 expression RR := x -> (
      if x < 0 
      then (
