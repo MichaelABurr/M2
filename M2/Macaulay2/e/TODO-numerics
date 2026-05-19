@@ -69,7 +69,7 @@ Adding RRR and CCC linear algebra support
   I imagine:
     aring-CC.hpp
     aring-CCC.hpp
-    aring-RR.hpp
+    ARings/aring-RR.hpp
     aring-RRR.hpp
     aring-ZZp.hpp
     aring-ZZ.hpp

@@ -11,7 +11,7 @@
 #include "ringelem.hpp"
 #include "ringmap.hpp"
 
-#include "aring-RR.hpp"
+#include "ARings/aring-RR.hpp"
 
 class RingMap;
 

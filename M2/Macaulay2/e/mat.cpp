@@ -12,7 +12,7 @@
 #include "matrix.hpp"
 
 #include "aring-RRR.hpp"
-#include "aring-RR.hpp"
+#include "ARings/aring-RR.hpp"
 #include "aring-CCC.hpp"
 #include "aring-zz-gmp.hpp"
 #include "aring-zz-flint.hpp"

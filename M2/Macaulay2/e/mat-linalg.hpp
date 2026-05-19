@@ -12,7 +12,7 @@
 #include "exceptions.hpp"
 #include "dmat.hpp"
 
-#include "aring-RR.hpp"
+#include "ARings/aring-RR.hpp"
 #include "aring-CC.hpp"
 #include "aring-RRR.hpp"
 #include "aring-CCC.hpp"

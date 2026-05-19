@@ -8,7 +8,7 @@
 #include <gtest/gtest.h>
 #include <mpfr.h>
 
-#include "aring-RR.hpp"
+#include "ARings/aring-RR.hpp"
 #include "aring-CC.hpp"
 #include "ARingTest.hpp"
 

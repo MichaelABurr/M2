@@ -13,7 +13,7 @@
 
 #include "aring-CC.hpp"
 #include "aring-CCC.hpp"
-#include "aring-RR.hpp"
+#include "ARings/aring-RR.hpp"
 #include "aring-RRR.hpp"
 #include "aring-RRi.hpp"
 #include "aring-CCi.hpp"
