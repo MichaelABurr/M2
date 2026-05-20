@@ -1,8 +1,8 @@
 // Copyright 2003 Michael E. Stillman
 
-#include "skewpoly.hpp"
+#include "Rings/skewpoly.hpp"
 #include "gbring.hpp"
-#include "skew.hpp"
+#include "Rings/skew.hpp"
 
 SkewPolynomialRing::~SkewPolynomialRing() {}
 bool SkewPolynomialRing::initialize_skew(M2_arrayint skewvars)

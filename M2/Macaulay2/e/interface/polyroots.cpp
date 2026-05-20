@@ -12,10 +12,10 @@
 #include "basic-rings/aring.hpp"
 #include "error.h"
 #include "monoid.hpp"
-#include "polyring.hpp"
+#include "Rings/polyring.hpp"
 #include "relem.hpp"
-#include "ring.hpp"
-#include "ringelem.hpp"
+#include "Rings/ring.hpp"
+#include "Rings/ringelem.hpp"
 
 #define abs(x) (((x) < 0) ? -(x) : (x))
 #define max(a, b) (((a) > (b)) ? (a) : (b))

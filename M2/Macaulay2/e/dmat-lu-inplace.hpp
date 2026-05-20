@@ -3,9 +3,9 @@
 #ifndef _dmat_lu_inplace_hpp_
 #define _dmat_lu_inplace_hpp_
 
-#include "matrices/dmat.hpp"
-#include "matrices/mat-elem-ops.hpp"
-#include "matrices/mat-util.hpp"
+#include "dmat.hpp"
+#include "mat-elem-ops.hpp"
+#include "mat-util.hpp"
 
 // The following needs to be included before any flint files are included.
 #include <M2/gc-include.h>

@@ -9,7 +9,7 @@
 #include "NCAlgebras/FreeAlgebraQuotient.hpp"
 #include "NCAlgebras/FreeMonoid.hpp"
 #include "Polynomial.hpp"
-#include "ringelem.hpp"
+#include "Rings/ringelem.hpp"
 
 class FreeAlgebra;
 class Matrix;

@@ -8,7 +8,7 @@
  *****************************************************************************/
 
 #include "launcher.hpp"
-#include "matrices/matrix.hpp"
+#include "matrix.hpp"
 
 extern "C" const Matrix* rawBIBasis(const Matrix* matrix, int toGroebner)
 {

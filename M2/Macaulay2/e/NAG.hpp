@@ -20,7 +20,7 @@
 #include <vector>
 
 #include "interface/NAG.h"
-#include "matrices/matrix.hpp"
+#include "matrix.hpp"
 #include "SLP.hpp"
 #include "basic-rings/aring-CC.hpp"
 #include "basic-rings/aring-glue.hpp"
@@ -29,8 +29,8 @@
 #include "error.h"
 #include "hash.hpp"
 #include "newdelete.hpp"
-#include "ring.hpp"
-#include "ringelem.hpp"
+#include "Rings/ring.hpp"
+#include "Rings/ringelem.hpp"
 
 class Matrix;
 class PointArray;

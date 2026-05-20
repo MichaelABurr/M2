@@ -3,7 +3,7 @@
 #ifndef _solvable_hh_
 #define _solvable_hh_
 
-#include "poly.hpp"
+#include "Rings/poly.hpp"
 
 ///// Ring Hierarchy ///////////////////////////////////
 

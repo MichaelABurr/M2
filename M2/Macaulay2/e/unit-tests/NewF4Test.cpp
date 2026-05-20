@@ -6,7 +6,7 @@
 #include <bitset>
 #include <gtest/gtest.h>
 
-#include "polyring.hpp"
+#include "Rings/polyring.hpp"
 #include "util-polyring-creation.hpp"
 #include "gb-f4/MonomialHashTable.hpp"
 #include "gb-f4/MonomialLookupTable.hpp"

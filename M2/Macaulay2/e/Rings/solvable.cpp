@@ -1,6 +1,6 @@
 // Copyright 2003 Michael E. Stillman
 
-#include "solvable.hpp"
+#include "Rings/solvable.hpp"
 #include "gbring.hpp"
 
 SolvableAlgebra::~SolvableAlgebra()

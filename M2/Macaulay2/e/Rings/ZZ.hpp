@@ -4,7 +4,7 @@
 #define _ZZ_hh_
 
 #include "error.h"
-#include "ring.hpp"
+#include "Rings/ring.hpp"
 #include <cstddef>
 
 namespace M2 {

@@ -3,16 +3,16 @@
 #include <iostream>
 
 #include "ExponentVector.hpp"
-#include "poly.hpp"
+#include "Rings/poly.hpp"
 #include "text-io.hpp"
 #include "monoid.hpp"
 #include "ringmap.hpp"
-#include "matrices/matrix.hpp"
-#include "ZZ.hpp"
+#include "matrix.hpp"
+#include "Rings/ZZ.hpp"
 #include "gbring.hpp"
-#include "frac.hpp"
+#include "Rings/frac.hpp"
 #include "geopoly.hpp"
-#include "ZZ.hpp"
+#include "Rings/ZZ.hpp"
 #include "monomial.hpp"
 #include "relem.hpp"
 

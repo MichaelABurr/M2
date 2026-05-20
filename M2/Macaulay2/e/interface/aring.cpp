@@ -13,7 +13,7 @@
 #include "basic-rings/aring-ZZp-ffpack.hpp"
 #include "basic-rings/aring-ZZp.hpp"
 #include "exceptions.hpp"
-#include "polyring.hpp"
+#include "Rings/polyring.hpp"
 #include "relem.hpp"
 
 // include flint headers last to avoid #1674

@@ -4,10 +4,10 @@
 #ifndef _mutablecomplex_hpp_
 #define _mutablecomplex_hpp_
 
-#include "localring.hpp"
+#include "Rings/localring.hpp"
 #include "style.hpp"
 #include "hash.hpp"
-#include "matrices/mat.hpp"
+#include "mat.hpp"
 #include "debug.hpp"
 #include <iostream>
 

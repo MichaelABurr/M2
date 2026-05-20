@@ -2,10 +2,10 @@
 
 #include "points.hpp"
 #include "error.h"
-#include "matrices/mat.hpp"
+#include "mat.hpp"
 #include "matrices/matrix-con.hpp"
-#include "matrices/dmat.hpp"
-#include "polyring.hpp"
+#include "dmat.hpp"
+#include "Rings/polyring.hpp"
 #include "monideal.hpp"
 
 #include "basic-rings/aring-ZZp.hpp"

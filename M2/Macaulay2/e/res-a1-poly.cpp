@@ -2,7 +2,7 @@
 
 #include "res-a1-poly.hpp"
 #include "text-io.hpp"
-#include "polyring.hpp"
+#include "Rings/polyring.hpp"
 #include "freemod.hpp"
 #include "geovec.hpp"
 

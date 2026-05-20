@@ -3,7 +3,7 @@
 #ifndef _skewpoly_hh_
 #define _skewpoly_hh_
 
-#include "poly.hpp"
+#include "Rings/poly.hpp"
 
 ///// Ring Hierarchy ///////////////////////////////////
 

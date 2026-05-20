@@ -4,7 +4,7 @@
 #ifndef _weylalg_hh_
 #define _weylalg_hh_
 
-#include "poly.hpp"
+#include "Rings/poly.hpp"
 #include "gbring.hpp"
 
 ///// Ring Hierarchy ///////////////////////////////////

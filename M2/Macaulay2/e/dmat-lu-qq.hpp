@@ -4,7 +4,7 @@
 // ZZpFlint //////////
 //////////////////////
 
-#include "matrices/dmat-qq-interface-flint.hpp"
+#include "dmat-qq-interface-flint.hpp"
 
 template <>
 class DMatLinAlg<M2::ARingQQ>

@@ -2,7 +2,7 @@
 
 #include "m2tbb.hpp" // Needs to occur earlier than ffpack.
 #include "schreyer-resolution/res-f4-m2-interface.hpp"
-#include "ZZ.hpp"                                         // for RingZZ
+#include "Rings/ZZ.hpp"                                         // for RingZZ
 #include "basic-rings/aring-RRR.hpp"                                  // for ARingRRR
 #include "basic-rings/aring-ZZ-gmp.hpp"                               // for ARingZZGMP
 #include "basic-rings/aring-ZZp-ffpack.hpp"                           // for ARingZZpFFPACK
@@ -10,8 +10,8 @@
 #include "basic-rings/aring.hpp"                                      // for ring_RR
 #include "coeffrings.hpp"                                 // for Coefficient...
 #include "comp.hpp"                                       // for Computation
-#include "matrices/mat-linalg.hpp"                                 // for DMatLinAlg
-#include "matrices/dmat.hpp"                                       // for DMat
+#include "mat-linalg.hpp"                                 // for DMatLinAlg
+#include "dmat.hpp"                                       // for DMat
 #include "interface/m2-types.h"                           // for M2_arrayint
 #include "error.h"                                        // for ERROR
 #include "exceptions.hpp"                                 // for engine_error
@@ -19,13 +19,13 @@
 #include "gauss.hpp"                                      // for GaussElimCo...
 #include "gbring.hpp"                                     // for gbvector
 #include "interface/groebner.h"                           // for rawMinimalB...
-#include "matrices/mat.hpp"                                        // for MutableMatrix
+#include "mat.hpp"                                        // for MutableMatrix
 #include "matrices/matrix-con.hpp"                                 // for MatrixConst...
-#include "matrices/matrix.hpp"                                     // for Matrix
+#include "matrix.hpp"                                     // for Matrix
 #include "monoid.hpp"                                     // for Monoid
 #include "newdelete.hpp"                                  // for newarray
-#include "polyring.hpp"                                   // for PolynomialRing
-#include "ring.hpp"                                       // for Ring, globalZZ
+#include "Rings/polyring.hpp"                                   // for PolynomialRing
+#include "Rings/ring.hpp"                                       // for Ring, globalZZ
 #include "schreyer-resolution/res-f4-computation.hpp"     // for F4ResComput...
 #include "schreyer-resolution/res-moninfo.hpp"            // for ResMonoid
 #include "schreyer-resolution/res-monomial-types.hpp"     // for res_monomia...

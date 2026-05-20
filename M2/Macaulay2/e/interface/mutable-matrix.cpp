@@ -15,11 +15,11 @@
 #include "fractionfreeLU.hpp"
 #include "interface/gmp-util.h"
 #include "interface/random.h"
-#include "matrices/mat.hpp"
-#include "matrices/matrix.hpp"
+#include "mat.hpp"
+#include "matrix.hpp"
 #include "relem.hpp"
-#include "ring.hpp"
-#include "ringelem.hpp"
+#include "Rings/ring.hpp"
+#include "Rings/ringelem.hpp"
 #include "util.hpp"
 
 MutableMatrix *IM2_MutableMatrix_identity(const Ring *R,

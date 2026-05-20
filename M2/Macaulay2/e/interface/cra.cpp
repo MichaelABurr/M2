@@ -4,12 +4,12 @@
 #include "error.h"
 #include "freemod.hpp"
 #include "matrices/matrix-con.hpp"
-#include "matrices/matrix.hpp"
+#include "matrix.hpp"
 #include "monoid.hpp"
-#include "poly.hpp"
+#include "Rings/poly.hpp"
 #include "relem.hpp"
-#include "ring.hpp"
-#include "ringelem.hpp"
+#include "Rings/ring.hpp"
+#include "Rings/ringelem.hpp"
 
 const RingElement *rawRingElementCRA(const RingElement *f,
                                      const RingElement *g,

@@ -8,9 +8,9 @@
 
 #include "basic-rings/aring.hpp"
 #include "buffer.hpp"
-#include "ringelem.hpp"
+#include "Rings/ringelem.hpp"
 #include "exceptions.hpp"
-#include "ZZ.hpp"
+#include "Rings/ZZ.hpp"
 
 namespace M2 {
 /**

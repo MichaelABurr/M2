@@ -3,7 +3,7 @@
 #ifndef _det_hh_
 #  define _det_hh_
 
-#  include "matrices/matrix.hpp"
+#  include "matrix.hpp"
 #  include "matrices/matrix-con.hpp"
 #  include <utility>
 #  include <vector>

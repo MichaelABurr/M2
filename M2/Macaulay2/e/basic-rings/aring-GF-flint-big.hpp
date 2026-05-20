@@ -21,7 +21,7 @@
 
 #include "basic-rings/aring.hpp"
 #include "buffer.hpp"
-#include "ringelem.hpp"
+#include "Rings/ringelem.hpp"
 #include "exceptions.hpp" // for exc::division_by_zero_error
 
 class PolynomialRing;

@@ -6,7 +6,7 @@
 #include "NCAlgebras/NCGroebner.hpp"   // for tryOutMathicCode
 #include "NCAlgebras/Word.hpp"         // for Word
 #include "myalloc.hpp"                 // for StatsAllocator
-#include "ring.hpp"                    // for Ring
+#include "Rings/ring.hpp"                    // for Ring
 #include "style.hpp"                   // for EQ, LT, GT
 
 #include <cassert>                     // for assert

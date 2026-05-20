@@ -3,8 +3,8 @@
 #define _gb2_hh_
 
 #include "relem.hpp"
-#include "matrices/matrix.hpp"
-#include "polyring.hpp"
+#include "matrix.hpp"
+#include "Rings/polyring.hpp"
 #include "comp-res.hpp"
 #include "hilb.hpp"
 #include "spair.hpp"

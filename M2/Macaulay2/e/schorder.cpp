@@ -2,9 +2,9 @@
 #include <iostream>
 
 #include "schorder.hpp"
-#include "matrices/matrix.hpp"
+#include "matrix.hpp"
 #include "comb.hpp"
-#include "polyring.hpp"
+#include "Rings/polyring.hpp"
 #include "Eschreyer.hpp"
 #include "finalize.hpp"
 

@@ -3,12 +3,12 @@
 #ifndef _polyring_hpp_
 #define _polyring_hpp_
 
-#include "ringelem.hpp"
+#include "Rings/ringelem.hpp"
 
 #include <vector>
 
 #include "interface/computation.h"
-#include "skew.hpp"
+#include "Rings/skew.hpp"
 
 class buffer;
 class Monoid;
@@ -29,8 +29,8 @@ class GBRing;
 class GBRingSkew;
 class GBComputation;
 
-#include "ring.hpp"
-#include "qring.hpp"
+#include "Rings/ring.hpp"
+#include "Rings/qring.hpp"
 
 /**
  * \ingroup polynomialrings

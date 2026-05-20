@@ -4,7 +4,7 @@
 #define _hilb_fcn_h_
 
 #include "newdelete.hpp"  // for VECTOR
-#include "ringelem.hpp"   // for vec
+#include "Rings/ringelem.hpp"   // for vec
 
 class FreeModule;
 class Matrix;

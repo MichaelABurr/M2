@@ -5,7 +5,7 @@
 
 #include "RingTest.hpp"
 #include "basic-rings/aring-ZZp.hpp"
-#include "ZZp.hpp"
+#include "Rings/ZZp.hpp"
 
 template <typename T>
 std::istream &fromStream(std::istream &i,

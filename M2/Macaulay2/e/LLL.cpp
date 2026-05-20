@@ -3,7 +3,7 @@
 #include "LLL.hpp"
 
 #include "relem.hpp"
-#include "matrices/matrix.hpp"
+#include "matrix.hpp"
 #include "text-io.hpp"
 #include "interrupted.hpp"
 

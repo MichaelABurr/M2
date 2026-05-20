@@ -4,8 +4,8 @@
 #include "error.h"
 #include "exceptions.hpp"
 #include "freemod.hpp"
-#include "matrices/mat.hpp"
-#include "matrices/matrix.hpp"
+#include "mat.hpp"
+#include "matrix.hpp"
 #include "ringmap.hpp"
 
 class Ring;

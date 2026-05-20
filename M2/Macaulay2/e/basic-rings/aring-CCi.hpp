@@ -10,7 +10,7 @@
 #include "interface/gmp-util.h"
 #include "basic-rings/aring.hpp"
 #include "buffer.hpp"
-#include "ringelem.hpp"
+#include "Rings/ringelem.hpp"
 #include "ringmap.hpp"
 #include "basic-rings/aring-RRR.hpp"
 #include "basic-rings/aring-RRi.hpp"

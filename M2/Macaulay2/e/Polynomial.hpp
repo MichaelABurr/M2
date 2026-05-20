@@ -2,7 +2,7 @@
 #define _polynomial_hpp_
 
 #include "newdelete.hpp"  // for our_new_delete
-#include "ringelem.hpp"   // for ring_elem
+#include "Rings/ringelem.hpp"   // for ring_elem
 #include "style.hpp"      // for GT, LT, EQ
 
 #include <cassert>        // for assert

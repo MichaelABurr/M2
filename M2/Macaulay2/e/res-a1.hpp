@@ -4,9 +4,9 @@
 #define _res_hh_
 
 #include "style.hpp"
-#include "matrices/matrix.hpp"
+#include "matrix.hpp"
 #include "monideal.hpp"
-#include "polyring.hpp"
+#include "Rings/polyring.hpp"
 #include "comp-res.hpp"
 
 #include "res-a1-poly.hpp"

@@ -3,8 +3,8 @@
 #define _frac_hh_
 
 #include "monoid.hpp"
-#include "ring.hpp"
-#include "polyring.hpp"
+#include "Rings/ring.hpp"
+#include "Rings/polyring.hpp"
 
 struct frac_elem
 {

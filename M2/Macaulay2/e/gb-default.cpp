@@ -3,9 +3,9 @@
 #include "gb-default.hpp"
 #include "text-io.hpp"
 
-#include "matrices/matrix.hpp"
+#include "matrix.hpp"
 #include "matrices/matrix-con.hpp"
-#include "polyring.hpp"
+#include "Rings/polyring.hpp"
 #include "newdelete.hpp"
 #include "relem.hpp"
 #include "hilb.hpp"

@@ -1,9 +1,9 @@
 // Copyright 1996 Michael E. Stillman
 
-#include "schur.hpp"
+#include "Schur/schur.hpp"
 #include <stdio.h>
 #include "text-io.hpp"
-#include "ZZ.hpp"
+#include "Rings/ZZ.hpp"
 #include "monoid.hpp"
 
 void tableau::initialize(int nvars)

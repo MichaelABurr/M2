@@ -7,7 +7,7 @@
 #include "interface/m2-types.h"     // for M2_bool, M2_arrayint
 #include "f4/f4.hpp"                // for F4GB
 #include "interface/computation.h"  // for ComputationStatusCode
-#include "polyring.hpp"             // for PolynomialRing
+#include "Rings/polyring.hpp"             // for PolynomialRing
 class Computation;
 class FreeModule;
 class Matrix;

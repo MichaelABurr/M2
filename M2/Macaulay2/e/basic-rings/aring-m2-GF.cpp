@@ -5,7 +5,7 @@
 
 #include "interface/random.h"
 #include "relem.hpp"
-#include "polyring.hpp"
+#include "Rings/polyring.hpp"
 #include "basic-rings/aring-m2-GF.hpp"
 #include "ringmap.hpp"
 #include "monoid.hpp"

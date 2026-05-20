@@ -3,7 +3,7 @@
 #ifndef _schurSn_hh_
 #define _schurSn_hh_
 
-#include "schur2.hpp"
+#include "Schur/schur2.hpp"
 
 class SchurSnRing : public SchurRing2
 {

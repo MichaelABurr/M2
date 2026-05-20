@@ -3,7 +3,7 @@
 #ifndef _ring_elem_hh_
 #define _ring_elem_hh_
 
-#include "ring.hpp"
+#include "Rings/ring.hpp"
 
 class EngineMonomial;
 

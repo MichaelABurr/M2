@@ -1,5 +1,5 @@
 #include "fplll-interface.hpp"
-#include "matrices/mutablemat.hpp"
+#include "mutablemat.hpp"
 
 #ifdef HAVE_FPLLL
 #include <stddef.h>

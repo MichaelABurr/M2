@@ -8,7 +8,7 @@
 #include "interface/gmp-util.h"
 #include "interface/matrix.h"
 #include "matrices/matrix-con.hpp"
-#include "matrices/matrix.hpp"
+#include "matrix.hpp"
 #include "relem.hpp"
 
 #include <libnormaliz/cone.h>

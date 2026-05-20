@@ -4,7 +4,7 @@
 #define _Schurring2_hh_
 
 #include <vector>
-#include "poly.hpp"
+#include "Rings/poly.hpp"
 
 using schur_word = int;
 // typedef int schur_word;
@@ -217,7 +217,7 @@ class SchurRing2 : public Ring
   ring_elem mult_terms(const_schur_partition a, const_schur_partition b);
 };
 
-#include "schur-poly-heap.hpp"
+#include "Schur/schur-poly-heap.hpp"
 
 #endif
 

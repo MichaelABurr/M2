@@ -7,7 +7,7 @@
 #include "res-f4-computation.hpp"
 #include "res-schreyer-frame.hpp"
 
-#include "matrices/matrix.hpp"
+#include "matrix.hpp"
 #include "exceptions.hpp"
 
 #include <iostream>

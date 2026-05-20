@@ -1,6 +1,6 @@
 // Copyright 1997  Michael E. Stillman
 
-#include "poly.hpp"
+#include "Rings/poly.hpp"
 #include "sagbi.hpp"
 #include "matrices/matrix-con.hpp"
 

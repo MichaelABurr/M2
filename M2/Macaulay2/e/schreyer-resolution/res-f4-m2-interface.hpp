@@ -1,7 +1,7 @@
 #ifndef __res_f4_to_m2_interface_hpp_
 #define __res_f4_to_m2_interface_hpp_
 
-#include "ringelem.hpp"  // for vec
+#include "Rings/ringelem.hpp"  // for vec
 #include <utility>       // for pair
 class FreeModule;
 class Matrix;

@@ -11,8 +11,8 @@
 #include "NCAlgebras/FreeAlgebra.hpp"
 #include "NCAlgebras/FreeMonoid.hpp"
 #include "Polynomial.hpp"
-#include "ring.hpp"
-#include "ringelem.hpp"
+#include "Rings/ring.hpp"
+#include "Rings/ringelem.hpp"
 
 class PolynomialRing;
 class RingMap;

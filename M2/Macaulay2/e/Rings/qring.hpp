@@ -4,7 +4,7 @@
 #define _qring_hpp_
 
 #include "style.hpp"
-#include "ringelem.hpp"
+#include "Rings/ringelem.hpp"
 #include <vector>
 
 class PolyRing;

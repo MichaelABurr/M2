@@ -1,6 +1,6 @@
 // Copyright 1995 Michael E. Stillman
 
-#include "ZZ.hpp"
+#include "Rings/ZZ.hpp"
 #include "text-io.hpp"
 #include "monoid.hpp"
 #include "relem.hpp"

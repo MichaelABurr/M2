@@ -2,7 +2,7 @@
 #ifndef _ringmap_hh_
 #define _ringmap_hh_
 
-#include "ring.hpp"
+#include "Rings/ring.hpp"
 
 class RingElement;
 class Matrix;

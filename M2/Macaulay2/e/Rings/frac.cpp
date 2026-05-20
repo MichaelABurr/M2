@@ -1,6 +1,6 @@
 // Copyright 1995 Michael E. Stillman
 
-#include "frac.hpp"
+#include "Rings/frac.hpp"
 
 #include "interface/factory.h"
 #include "text-io.hpp"
@@ -8,7 +8,7 @@
 #include "ringmap.hpp"
 #include "gbring.hpp"
 #include "relem.hpp"
-#include "polyring.hpp"
+#include "Rings/polyring.hpp"
 #include "exceptions.hpp"
 
 #define FRAC_VAL(f) (reinterpret_cast<frac_elem *>((f).poly_val))

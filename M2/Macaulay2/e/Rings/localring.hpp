@@ -4,9 +4,9 @@
 #ifndef _localring_hh_
 #define _localring_hh_
 
-#include "ring.hpp"
-#include "poly.hpp"
-#include "polyring.hpp"
+#include "Rings/ring.hpp"
+#include "Rings/poly.hpp"
+#include "Rings/polyring.hpp"
 #include "comp-gb.hpp"
 
 struct local_elem

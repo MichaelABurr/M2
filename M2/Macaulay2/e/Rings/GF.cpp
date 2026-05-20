@@ -26,12 +26,12 @@ private:
 };
  */
 
-#include "ZZ.hpp"
-#include "GF.hpp"
+#include "Rings/ZZ.hpp"
+#include "Rings/GF.hpp"
 #include "text-io.hpp"
 #include "monoid.hpp"
 #include "ringmap.hpp"
-#include "poly.hpp"
+#include "Rings/poly.hpp"
 #include "interrupted.hpp"
 
 #include "basic-rings/aring-m2-GF.hpp"

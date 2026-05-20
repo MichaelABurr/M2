@@ -3,7 +3,7 @@
 #ifndef _pfaff_hh_
 #define _pfaff_hh_
 
-#include "matrices/matrix.hpp"
+#include "matrix.hpp"
 #include "matrices/matrix-con.hpp"
 
 class MatrixConstructor;

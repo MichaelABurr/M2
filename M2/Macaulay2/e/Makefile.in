@@ -28,6 +28,10 @@ all: tags
 endif
 TAGS tags: @srcdir@/TAGS
 @srcdir@/TAGS: Makefile.in @srcdir@/*.hpp @srcdir@/*.h @srcdir@/*.cpp @srcdir@/*.c \
+	@srcdir@/basic-rings/*.hpp @srcdir@/basic-rings/*.cpp \
+	@srcdir@/matrices/*.hpp @srcdir@/matrices/*.cpp \
+	@srcdir@/Rings/*.hpp @srcdir@/Rings/*.cpp \
+	@srcdir@/Schur/*.hpp @srcdir@/Schur/*.cpp \
 	@srcdir@/NCAlgebras/*.hpp @srcdir@/NCAlgebras/*.cpp \
 	@srcdir@/interface/*.h @srcdir@/interface/*.cpp \
 	@srcdir@/schreyer-resolution/*.hpp @srcdir@/schreyer-resolution/*.cpp \
@@ -177,4 +181,3 @@ help:
 # Local Variables:
 # compile-command: "make -C $M2BUILDDIR/Macaulay2/e DEPENDS=no initialize && make -C $M2BUILDDIR/Macaulay2/e "
 # End:
-

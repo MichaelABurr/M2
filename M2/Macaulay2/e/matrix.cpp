@@ -1,6 +1,6 @@
 // Copyright 1995-2004 Michael E. Stillman
 
-#include "matrices/matrix.hpp"
+#include "matrix.hpp"
 
 #include <algorithm>
 #include <iostream>
@@ -12,9 +12,9 @@
 #include "ExponentVector.hpp"
 #include "style.hpp"
 #include "text-io.hpp"
-#include "ring.hpp"
+#include "Rings/ring.hpp"
 #include "comb.hpp"
-#include "polyring.hpp"
+#include "Rings/polyring.hpp"
 #include "assprime.hpp"
 #include "monideal.hpp"
 #include "relem.hpp"

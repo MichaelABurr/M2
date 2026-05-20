@@ -6,13 +6,13 @@
 #include "freemod.hpp"                 // for FreeModule
 #include "gbring.hpp"                  // for gbvector, GBRing
 #include "interface/mutable-matrix.h"  // for IM2_MutableMatrix_make
-#include "matrices/mat.hpp"                     // for MutableMatrix
+#include "mat.hpp"                     // for MutableMatrix
 #include "matrices/matrix-con.hpp"              // for MatrixConstructor
-#include "matrices/matrix.hpp"                  // for Matrix
+#include "matrix.hpp"                  // for Matrix
 #include "monoid.hpp"                  // for Monoid
 #include "newdelete.hpp"               // for newarray, newarray_atomic, del...
-#include "polyring.hpp"                // for PolynomialRing
-#include "ring.hpp"                    // for Ring
+#include "Rings/polyring.hpp"                // for PolynomialRing
+#include "Rings/ring.hpp"                    // for Ring
 #include "style.hpp"                   // for INTSIZE
 #include "VectorArithmetic.hpp"
 

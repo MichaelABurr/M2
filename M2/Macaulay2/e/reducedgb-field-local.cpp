@@ -4,7 +4,7 @@
 #include "monideal.hpp"
 #include "montable.hpp"
 #include "gbweight.hpp"
-#include "polyring.hpp"
+#include "Rings/polyring.hpp"
 #include <functional>
 #include <algorithm>
 #include "text-io.hpp"

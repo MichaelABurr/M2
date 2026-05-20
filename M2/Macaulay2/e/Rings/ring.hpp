@@ -11,7 +11,7 @@
 #  include "hash.hpp"        // for MutableEngineObject
 #  include "monoid.hpp"
 #  include "newdelete.hpp"   // for our_new_delete
-#  include "ringelem.hpp"    // for ring_elem, vec, vecterm (ptr only), Nter...
+#  include "Rings/ringelem.hpp"    // for ring_elem, vec, vecterm (ptr only), Nter...
 
 class ARing;
 class CCC;
@@ -625,7 +625,7 @@ class SumCollector : public our_new_delete
 
 #  define ZERO_RINGELEM (ring_elem(static_cast<Nterm *>(0)))
 
-#  include "ZZ.hpp"
+#  include "Rings/ZZ.hpp"
 extern RingZZ *globalZZ;
 extern RingZZ *makeIntegerRing();
 

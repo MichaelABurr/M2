@@ -9,12 +9,12 @@
 #include "f4/f4.hpp"               // for F4GB
 #include "f4/moninfo.hpp"          // for MonomialInfo
 #include "matrices/matrix-con.hpp"          // for MatrixConstructor
-#include "matrices/matrix.hpp"              // for Matrix
+#include "matrix.hpp"              // for Matrix
 #include "mem.hpp"                 // for stash
 #include "monoid.hpp"              // for Monoid
-#include "polyring.hpp"            // for PolynomialRing
-#include "ring.hpp"                // for Ring
-#include "ringelem.hpp"            // for vec
+#include "Rings/polyring.hpp"            // for PolynomialRing
+#include "Rings/ring.hpp"                // for Ring
+#include "Rings/ringelem.hpp"            // for vec
 #include "text-io.hpp"             // for emit
 #include "util.hpp"                // for M2_arrayint_to_stdvector
 #include "VectorArithmetic.hpp"    // for VectorArithmetic, ElementArray

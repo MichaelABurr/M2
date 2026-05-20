@@ -3,7 +3,7 @@
 #include <M2/config.h>
 #include <iostream>
 
-#include "matrices/mat-arith.hpp"
+#include "mat-arith.hpp"
 
 // lapack arrays are all arrays of doubles, and are
 // placed in column-major order, as that is what lapack uses.

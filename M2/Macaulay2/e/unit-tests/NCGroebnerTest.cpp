@@ -5,7 +5,7 @@
 #include "MemoryBlock.hpp"
 #include "interface/ring.h"
 
-#include "poly.hpp"
+#include "Rings/poly.hpp"
 #include "basic-rings/aring-glue.hpp"
 #include "NCAlgebras/FreeAlgebra.hpp"
 #include "NCAlgebras/FreeAlgebraQuotient.hpp"

@@ -1,17 +1,17 @@
 // Copyright 2004 Michael E. Stillman
 
-#include "polyquotient.hpp"
+#include "Rings/polyquotient.hpp"
 
 #include "buffer.hpp"
 #include "comp-gb.hpp"
 #include "error.h"
 #include "interface/factory.h"
 #include "matrices/matrix-con.hpp"
-#include "matrices/matrix.hpp"
+#include "matrix.hpp"
 #include "monoid.hpp"
-#include "polyring.hpp"
+#include "Rings/polyring.hpp"
 #include "relem.hpp"
-#include "ring.hpp"
+#include "Rings/ring.hpp"
 
 // For debugging:
 // #include "text-io.hpp"

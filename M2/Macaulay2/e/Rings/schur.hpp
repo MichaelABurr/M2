@@ -4,7 +4,7 @@
 #define _Schurring_hh_
 
 #include <vector>
-#include "poly.hpp"
+#include "Rings/poly.hpp"
 
 const int SCHUR_MAX_WT = 100;
 const int LARGE_NUMBER = 32000;

@@ -1,7 +1,7 @@
 /* Copyright 2017 Mahrud Sayrafi and Michael E. Stillman
    Mahrud Sayrafi's code in this file is in the public domain. */
 
-#include "localring.hpp"
+#include "Rings/localring.hpp"
 
 #include "interface/factory.h"
 #include "text-io.hpp"
@@ -10,7 +10,7 @@
 #include "gbring.hpp"
 #include "relem.hpp"
 #include "debug.hpp"
-#include "matrices/matrix.hpp"
+#include "matrix.hpp"
 #include "matrices/matrix-con.hpp"
 #include "mutablecomplex.hpp"
 #include "exceptions.hpp"

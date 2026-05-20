@@ -3,7 +3,7 @@
 
 #include "interface/m2-types.h"  // for M2_arrayint
 #include "f4/f4-types.hpp"   // for gb_array, GBF4Polynomial (ptr only), coefficient_m...
-#include "ringelem.hpp"      // for vec
+#include "Rings/ringelem.hpp"      // for vec
 
 class FreeModule;
 class VectorArithmetic;

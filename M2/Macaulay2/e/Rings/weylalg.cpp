@@ -1,6 +1,6 @@
 // Copyright 1997 Michael E. Stillman
 
-#include "weylalg.hpp"
+#include "Rings/weylalg.hpp"
 #include "gbring.hpp"
 
 #include "ExponentVector.hpp"

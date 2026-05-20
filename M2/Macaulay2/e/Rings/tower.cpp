@@ -1,12 +1,12 @@
 // Copyright 2010 Michael E. Stillman
 
-#include "tower.hpp"
+#include "Rings/tower.hpp"
 
 #include "ExponentList.hpp"
 #include "dpoly.hpp"
-#include "ring.hpp"
+#include "Rings/ring.hpp"
 #include "ringmap.hpp"
-#include "polyring.hpp"
+#include "Rings/polyring.hpp"
 #include "monoid.hpp"
 
 #define TOWER_POLYNOMIAL_VAL(f) reinterpret_cast<TowerPolynomial>((f).poly_val)
@@ -453,7 +453,7 @@ const RingElement *towerExtendedGCD(const RingElement *F,
 // top level translation to polynomials in other rings //
 /////////////////////////////////////////////////////////
 
-#include "polyring.hpp"
+#include "Rings/polyring.hpp"
 
 ring_elem Tower::translate(const PolynomialRing *R, ring_elem fR) const
 {

@@ -11,7 +11,7 @@
 #define BIBASIS_LAUNCHER_HPP
 
 #include "involutive.hpp"
-#include "matrices/matrix.hpp"
+#include "matrix.hpp"
 
 namespace BIBasis
 {

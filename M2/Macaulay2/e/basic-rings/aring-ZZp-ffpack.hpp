@@ -5,7 +5,7 @@
 
 #include "basic-rings/aring.hpp"
 #include "buffer.hpp"
-#include "ringelem.hpp"
+#include "Rings/ringelem.hpp"
 
 #include <type_traits> // define bool_constant to fix issue #2347
 #include <utility>

@@ -9,13 +9,13 @@
 #include "int-bag.hpp"          // for Bag
 #include "interrupted.hpp"      // for system_interrupted
 #include "matrices/matrix-con.hpp"       // for MatrixConstructor
-#include "matrices/matrix.hpp"           // for Matrix
+#include "matrix.hpp"           // for Matrix
 #include "monideal.hpp"         // for MonomialIdeal
 #include "monoid.hpp"           // for Monoid, ALLOCATE_EXPONENTS, EXPONENT_...
 #include "newdelete.hpp"        // for newarray_atomic, newarray_atomic_clear
-#include "polyring.hpp"         // for PolynomialRing
-#include "ring.hpp"             // for Ring
-#include "ringelem.hpp"         // for ring_elem, vec
+#include "Rings/polyring.hpp"         // for PolynomialRing
+#include "Rings/ring.hpp"             // for Ring
+#include "Rings/ringelem.hpp"         // for ring_elem, vec
 #include "style.hpp"            // for EQ
 #include "util.hpp"             // for M2_arrayint_to_stdvector
 

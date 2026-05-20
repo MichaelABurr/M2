@@ -1,12 +1,12 @@
 // Copyright 2003  Michael E. Stillman
 
-#include "ring.hpp"
+#include "Rings/ring.hpp"
 #include "text-io.hpp"
 #include <vector>
-#include "matrices/matrix.hpp"
+#include "matrix.hpp"
 #include "geovec.hpp"
 #include "ringmap.hpp"
-#include "poly.hpp"
+#include "Rings/poly.hpp"
 //  Notes: ring_elem's are treated as immutable objects: they are not changed,
 //  and
 // the fact that one cannot change is used throughout.

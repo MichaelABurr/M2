@@ -3,8 +3,8 @@
 #ifndef __matrix_stream_hhp__
 #define __matrix_stream_hhp__
 
-#include "poly.hpp"
-#include "matrices/matrix.hpp"
+#include "Rings/poly.hpp"
+#include "matrix.hpp"
 #include "matrices/matrix-con.hpp"
 #include <gmpxx.h>
 

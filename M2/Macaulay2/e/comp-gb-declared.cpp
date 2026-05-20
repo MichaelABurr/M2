@@ -1,8 +1,8 @@
 #include "comp-gb-declared.hpp"
 #include "reducedgb-marked.hpp"
-#include "matrices/matrix.hpp"
+#include "matrix.hpp"
 #include "reducedgb.hpp"
-#include "polyring.hpp"
+#include "Rings/polyring.hpp"
 
 GBDeclared::GBDeclared(const Matrix *m0,
                        const Matrix *gb,

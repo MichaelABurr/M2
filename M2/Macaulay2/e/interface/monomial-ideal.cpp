@@ -12,7 +12,7 @@
 #include "finalize.hpp"
 #include "hilb.hpp"
 #include "int-bag.hpp"
-#include "matrices/matrix.hpp"
+#include "matrix.hpp"
 #include "monideal-minprimes.hpp"
 #include "monideal.hpp"
 #include "monomial.hpp"

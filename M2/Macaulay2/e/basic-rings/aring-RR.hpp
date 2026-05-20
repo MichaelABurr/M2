@@ -7,7 +7,7 @@
 #include "exceptions.hpp"
 #include "basic-rings/aring.hpp"
 #include "buffer.hpp"
-#include "ringelem.hpp"
+#include "Rings/ringelem.hpp"
 #include "ringmap.hpp"
 
 class RingMap;

@@ -23,11 +23,11 @@ endif()
 
 # TODO: determine the fate of these files
 set(UNDETERMINED
-  unused/dmat-ffpack.cpp
+  dmat-ffpack.cpp
   franzi-brp-test.cpp
   overflow-test.cpp
   test.dd
-  unused/points # both cpp and hpp
+  points # both cpp and hpp
   )
 
 # c files
@@ -58,35 +58,35 @@ set(HPPONLYFILES
   timing.hpp
   SLP-defs.hpp
   SLP-imp.hpp
-  matrices/dmat-gf-flint-big.hpp
-  matrices/dmat-gf-flint.hpp
-  matrices/dmat-lu-inplace.hpp
-  matrices/dmat-lu-qq.hpp
-  matrices/dmat-lu-zzp-ffpack.hpp
-  matrices/dmat-lu-zzp-flint.hpp
-  matrices/dmat-lu.hpp
-  matrices/dmat-qq-flint.hpp
-  matrices/dmat-qq-interface-flint.hpp
-  matrices/dmat-zz-flint.hpp
-  matrices/dmat-zzp-flint.hpp
+  dmat-gf-flint-big.hpp
+  dmat-gf-flint.hpp
+  dmat-lu-inplace.hpp
+  dmat-lu-qq.hpp
+  dmat-lu-zzp-ffpack.hpp
+  dmat-lu-zzp-flint.hpp
+  dmat-lu.hpp
+  dmat-qq-flint.hpp
+  dmat-qq-interface-flint.hpp
+  dmat-zz-flint.hpp
+  dmat-zzp-flint.hpp
   engine-includes.hpp
   exceptions.hpp
   geobucket.hpp
   geopoly.hpp
   geovec.hpp
   hash.hpp
-  matrices/mat-arith.hpp
-  matrices/mat-elem-ops.hpp
-  matrices/mat-linalg.hpp
-  matrices/mat-util.hpp
-  matrices/mutablemat-defs.hpp
-  matrices/mutablemat-imp.hpp
-  matrices/mutablemat.hpp
+  mat-arith.hpp
+  mat-elem-ops.hpp
+  mat-linalg.hpp
+  mat-util.hpp
+  mutablemat-defs.hpp
+  mutablemat-imp.hpp
+  mutablemat.hpp
   newdelete.hpp
   ExponentVector.hpp
   res-a0-pair.hpp
   Schur/schur-poly-heap.hpp
-  matrices/smat.hpp
+  smat.hpp
   util.hpp
   style.hpp
   f4/f4-types.hpp
@@ -191,7 +191,7 @@ set(SRCLIST
   cra
   debug
   det
-  matrices/dmat
+  dmat
   dpoly
   eigen
   finalize
@@ -214,10 +214,10 @@ set(SRCLIST
   interreduce
   interrupted
   lapack
-  matrices/mat
+  mat
   matrices/matrix-con
   matrices/matrix-stream
-  matrices/matrix
+  matrix
   mem
   memory-status
   monideal-minprimes
@@ -295,59 +295,53 @@ set(SRCLIST
   )
 
 set(BASICRING_SRCLIST
-  aring-CC
-  aring-CCC
-  aring-RR
-  aring-RRR
-  aring-RRi
-  aring-CCi
-  aring-gf-flint-big
-  aring-gf-flint
-  aring-m2-gf
-  aring-qq-flint
-  aring-qq-gmp
-  aring-tower
-  aring-zz-flint
-  aring-zz-gmp
-  aring-zzp-ffpack
-  aring-zzp-flint
-  aring-zzp
-  aring
+  basic-rings/aring-CC
+  basic-rings/aring-CCC
+  basic-rings/aring-RR
+  basic-rings/aring-RRR
+  basic-rings/aring-RRi
+  basic-rings/aring-CCi
+  basic-rings/aring-GF-flint-big
+  basic-rings/aring-GF-flint
+  basic-rings/aring-m2-GF
+  basic-rings/aring-QQ-flint
+  basic-rings/aring-QQ-gmp
+  basic-rings/aring-tower
+  basic-rings/aring-ZZ-flint
+  basic-rings/aring-ZZ-gmp
+  basic-rings/aring-ZZp-ffpack
+  basic-rings/aring-ZZp-flint
+  basic-rings/aring-ZZp
+  basic-rings/aring
 )
 set(BASICRING_HPPONLY
-  aring-glue.hpp
-  aring-qq.hpp
-  aring-translate.hpp
+  basic-rings/aring-glue.hpp
+  basic-rings/aring-QQ.hpp
+  basic-rings/aring-translate.hpp
 )
 set(RING_SRCLIST
-  frac
-  GF
-  localring
-  poly
-  polyquotient
-  polyring
-  qring
-  ring
-  ringelem
-  skew
-  skewpoly
-  solvable
-  tower
-  weylalg
-  ZZ
-  ZZp
+  Rings/frac
+  Rings/GF
+  Rings/localring
+  Rings/poly
+  Rings/polyquotient
+  Rings/polyring
+  Rings/qring
+  Rings/ring
+  Rings/ringelem
+  Rings/skew
+  Rings/skewpoly
+  Rings/solvable
+  Rings/tower
+  Rings/weylalg
+  Rings/ZZ
+  Rings/ZZp
 )
 set(RING_CPPONLY
-  ring-vecs.cpp
+  Rings/ring-vecs.cpp
 )
 
-# prepend subdirectory names
-list(TRANSFORM BASICRING_SRCLIST PREPEND basic-rings/)
-list(TRANSFORM BASICRING_HPPONLY PREPEND basic-rings/)
-list(TRANSFORM RING_SRCLIST      PREPEND Rings/)
-list(TRANSFORM RING_CPPONLY      PREPEND Rings/)
-
-# merge the bare-name sub-lists into SRCLIST BEFORE the .cpp/.hpp transform
+# merge the path-stem sub-lists into SRCLIST BEFORE the .cpp/.hpp transform
 list(APPEND SRCLIST ${BASICRING_SRCLIST})
 list(APPEND SRCLIST ${RING_SRCLIST})
 

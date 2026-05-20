@@ -1,6 +1,6 @@
 // Copyright 2011 Michael E. Stillman
 
-#include "schurSn.hpp"
+#include "Schur/schurSn.hpp"
 
 SchurSnRing::SchurSnRing(const Ring *A, int n) : SchurRing2(A, n) {}
 SchurSnRing *SchurSnRing::create(const Ring *A, int n)

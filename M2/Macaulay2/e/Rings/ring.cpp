@@ -1,14 +1,14 @@
 // Copyright 1995-2020 Michael E. Stillman
 
-#include "ring.hpp"
+#include "Rings/ring.hpp"
 
-#include "ZZ.hpp"          // for RingZZ
+#include "Rings/ZZ.hpp"          // for RingZZ
 #include "coeffrings.hpp"  // for CoefficientRingR
 #include "exceptions.hpp"  // for exc::engine_error
 #include "freemod.hpp"     // for FreeModule
 #include "monoid.hpp"      // for Monoid
-#include "poly.hpp"        // for PolyRing
-#include "polyring.hpp"    // for PolynomialRing
+#include "Rings/poly.hpp"        // for PolyRing
+#include "Rings/polyring.hpp"    // for PolynomialRing
 
 const Monoid *Ring::degree_monoid() const { return degree_ring->getMonoid(); }
 #if 1

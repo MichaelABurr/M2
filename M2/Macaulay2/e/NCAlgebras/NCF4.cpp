@@ -7,8 +7,8 @@
 #include "NCAlgebras/WordTable.hpp"         // for Overlap, WordTable
 #include "buffer.hpp"                       // for buffer
 #include "interface/m2-types.h"                 // for M2_gbTrace
-#include "ring.hpp"                         // for Ring
-#include "ringelem.hpp"                     // for ring_elem
+#include "Rings/ring.hpp"                         // for Ring
+#include "Rings/ringelem.hpp"                     // for ring_elem
 #include "../system/supervisorinterface.h"  // for getAllowableThreads
 
 #include <cassert>                          // for assert

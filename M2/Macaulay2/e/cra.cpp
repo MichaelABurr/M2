@@ -6,10 +6,10 @@
 #include "error.h"
 #include "freemod.hpp"
 #include "matrices/matrix-con.hpp"
-#include "matrices/matrix.hpp"
+#include "matrix.hpp"
 #include "monoid.hpp"
-#include "poly.hpp"
-#include "ring.hpp"
+#include "Rings/poly.hpp"
+#include "Rings/ring.hpp"
 #include "style.hpp"
 
 void ChineseRemainder::CRA0(mpz_srcptr a,

@@ -28,8 +28,8 @@
 #include "buffer.hpp"
 #include "monoid.hpp"
 #include "newdelete.hpp"
-#include "ringelem.hpp"
-#include "skew.hpp"
+#include "Rings/ringelem.hpp"
+#include "Rings/skew.hpp"
 #include "style.hpp"
 
 class CoefficientRingZZp;

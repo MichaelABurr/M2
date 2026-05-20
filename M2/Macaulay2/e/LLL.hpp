@@ -3,7 +3,7 @@
 #ifndef _LLL_hpp_
 #define _LLL_hpp_
 
-#include "matrices/mat.hpp"
+#include "mat.hpp"
 #include "relem.hpp"
 
 class LLLoperations

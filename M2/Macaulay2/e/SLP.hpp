@@ -5,13 +5,13 @@
 #ifndef _slp_hpp_
 #define _slp_hpp_
 
-#include "matrices/mutablemat-defs.hpp"
+#include "mutablemat-defs.hpp"
 #include "SLP-defs.hpp"
 #include "SLP-imp.hpp"
-#include "matrices/mutablemat-imp.hpp"
+#include "mutablemat-imp.hpp"
 
 #include "buffer.hpp"
-#include "matrices/matrix.hpp"
+#include "matrix.hpp"
 #include "basic-rings/aring-glue.hpp"
 
 #endif

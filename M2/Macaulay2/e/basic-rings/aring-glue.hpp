@@ -5,9 +5,9 @@
 
 #include "basic-rings/aring.hpp"
 #include "basic-rings/aring-translate.hpp"
-#include "ring.hpp"
+#include "Rings/ring.hpp"
 
-#include "matrices/mutablemat.hpp"
+#include "mutablemat.hpp"
 
 static const bool displayArithmeticCalls = false;
 

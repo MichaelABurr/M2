@@ -1,5 +1,5 @@
 #include "PolynomialList.hpp"
-#include "matrices/matrix.hpp"
+#include "matrix.hpp"
 #include "matrices/matrix-stream.hpp"
 
 namespace newf4 {

@@ -3,7 +3,7 @@
 
 #include "Polynomial.hpp"      // for Monom
 #include "newdelete.hpp"       // for our_new_delete
-#include "polyring.hpp"        // for PolynomialRing
+#include "Rings/polyring.hpp"        // for PolynomialRing
 #include "style.hpp"           // for GT
 #include "NCAlgebras/Word.hpp" // for Word
 #include "MemoryBlock.hpp"     // for MemoryBlock

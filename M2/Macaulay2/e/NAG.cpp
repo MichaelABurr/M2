@@ -19,8 +19,8 @@
 #include "interface/NAG.h"
 #include "lapack.hpp"
 #include "matrices/matrix-con.hpp"
-#include "matrices/matrix.hpp"
-#include "poly.hpp"
+#include "matrix.hpp"
+#include "Rings/poly.hpp"
 #include "relem.hpp"
 
 class FreeModule;

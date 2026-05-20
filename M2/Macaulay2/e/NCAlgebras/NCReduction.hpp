@@ -2,7 +2,7 @@
 #define __ncreduction_hpp__
 
 #include "Polynomial.hpp"  // for Poly, Monom (ptr only)
-#include "ringelem.hpp"    // for ring_elem
+#include "Rings/ringelem.hpp"    // for ring_elem
 
 #include <iosfwd>          // for string
 #include <memory>          // for unique_ptr

@@ -4,9 +4,9 @@
 #define _res2_hh_
 
 #include "style.hpp"
-#include "matrices/matrix.hpp"
+#include "matrix.hpp"
 #include "monideal.hpp"
-#include "poly.hpp"
+#include "Rings/poly.hpp"
 #include "comp-res.hpp"
 
 struct res2_pair;

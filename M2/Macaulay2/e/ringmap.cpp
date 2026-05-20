@@ -1,9 +1,9 @@
 // Copyright 1996  Michael E. Stillman
 
 #include "ringmap.hpp"
-#include "matrices/matrix.hpp"
+#include "matrix.hpp"
 #include "matrices/matrix-con.hpp"
-#include "polyring.hpp"
+#include "Rings/polyring.hpp"
 #include "relem.hpp"
 
 #include <iostream>

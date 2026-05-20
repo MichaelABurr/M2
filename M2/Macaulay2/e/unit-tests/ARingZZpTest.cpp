@@ -9,7 +9,7 @@
 #include <mpfr.h>
 
 #include "reader.hpp"
-#include "ZZp.hpp"
+#include "Rings/ZZp.hpp"
 #include "basic-rings/aring-ZZp-ffpack.hpp"
 #include "basic-rings/aring-ZZp.hpp"
 #include "ARingTest.hpp"

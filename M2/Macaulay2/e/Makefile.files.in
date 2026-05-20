@@ -113,8 +113,8 @@ INTERFACE = \
 	fractionfreeLU \
 	ntl-interface \
 	fplll-interface \
-	matrices/mat \
-	matrices/dmat \
+	mat \
+	dmat \
 	coeffrings \
 	Eschreyer \
 	gbweight \
@@ -157,7 +157,7 @@ INTERFACE = \
 	hermite \
 	hilb \
 	int-bag \
-	matrices/matrix \
+	matrix \
 	matrices/matrix-con \
 	mem \
 	monideal \

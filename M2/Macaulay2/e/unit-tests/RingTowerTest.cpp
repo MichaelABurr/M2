@@ -9,7 +9,7 @@
 #include <mpfr.h>
 
 #include "RingTest.hpp"
-#include "tower.hpp"
+#include "Rings/tower.hpp"
 #include "../util.hpp"
 
 // First: we need a routine to read a polynomial from a string.

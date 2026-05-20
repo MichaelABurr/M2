@@ -11,7 +11,7 @@
 #include "error.h"
 #include "exceptions.hpp"
 #include "overflow.hpp"
-#include "polyring.hpp"
+#include "Rings/polyring.hpp"
 #include "util.hpp"
 
 // TODO: remove this

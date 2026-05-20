@@ -7,7 +7,7 @@
 #include "error.h"           // for error_message
 #include "hash.hpp"          // for MutableEngineObject
 #include "mem.hpp"           // for doubles, doubling_stash
-#include "poly.hpp"          // for PolyRing
+#include "Rings/poly.hpp"          // for PolyRing
 #include "style.hpp"         // for GEOHEAP_SIZE
 
 unsigned int MutableEngineObject::mNextMutableHashValue = 13;

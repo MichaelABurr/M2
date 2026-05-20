@@ -15,7 +15,7 @@
 #include "pcomparator.hpp"
 #include "qset.hpp"
 #include "tset.hpp"
-#include "matrices/matrix.hpp"
+#include "matrix.hpp"
 #include "matrices/matrix-con.hpp"
 
 namespace BIBasis

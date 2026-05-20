@@ -3,9 +3,9 @@
 #ifndef _poly_hpp_
 #define _poly_hpp_
 
-#include "ring.hpp"
-#include "ringelem.hpp"
-#include "skew.hpp"
+#include "Rings/ring.hpp"
+#include "Rings/ringelem.hpp"
+#include "Rings/skew.hpp"
 
 ///// Ring Hierarchy ///////////////////////////////////
 
@@ -15,7 +15,7 @@ class GBRing;
 class GBRingSkew;
 class GBComputation;
 class ChineseRemainder;
-#include "polyring.hpp"
+#include "Rings/polyring.hpp"
 
 class PolyRing : public PolyRingFlat
 {

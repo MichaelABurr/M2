@@ -1,7 +1,7 @@
 // Copyright 1999  Michael E. Stillman
 
 #include "Eschreyer.hpp"
-#include "matrices/matrix.hpp"
+#include "matrix.hpp"
 #include "monoid.hpp"
 #include "text-io.hpp"
 #include "gbring.hpp"

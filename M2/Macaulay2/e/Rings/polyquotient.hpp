@@ -5,10 +5,10 @@
 
 #include "engine-includes.hpp"
 
-#include "poly.hpp"
-#include "polyring.hpp"
-#include "qring.hpp"
-#include "ringelem.hpp"
+#include "Rings/poly.hpp"
+#include "Rings/polyring.hpp"
+#include "Rings/qring.hpp"
+#include "Rings/ringelem.hpp"
 
 class FreeModule;
 class GBComputation;

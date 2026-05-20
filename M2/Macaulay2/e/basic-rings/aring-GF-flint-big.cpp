@@ -2,7 +2,7 @@
 
 #include "basic-rings/aring-GF-flint-big.hpp"
 #include "relem.hpp"
-#include "poly.hpp"
+#include "Rings/poly.hpp"
 #include "ringmap.hpp"
 
 namespace M2 {

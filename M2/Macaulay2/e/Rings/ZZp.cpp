@@ -1,10 +1,10 @@
 // Copyright 1995 Michael E. Stillman
 
-#include "ZZp.hpp"
+#include "Rings/ZZp.hpp"
 #include "text-io.hpp"
 #include "monoid.hpp"
 #include "ringmap.hpp"
-#include "ZZ.hpp"
+#include "Rings/ZZ.hpp"
 #include "gbring.hpp"
 
 #include "basic-rings/aring-ZZp.hpp"

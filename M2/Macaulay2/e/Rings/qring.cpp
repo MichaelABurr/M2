@@ -1,11 +1,11 @@
 // Copyright 2005, Michael E. Stillman
 
-#include "qring.hpp"
+#include "Rings/qring.hpp"
 #include "monideal.hpp"
 #include "montable.hpp"
 #include "montableZZ.hpp"
 #include "gbring.hpp"
-#include "poly.hpp"
+#include "Rings/poly.hpp"
 
 #include "basic-rings/aring-glue.hpp"  // for globalQQ??
 

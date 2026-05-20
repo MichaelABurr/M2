@@ -5,7 +5,7 @@
 
 #include <M2/math-include.h>
 
-#include "ringelem.hpp"  // for ring_elem, vec
+#include "Rings/ringelem.hpp"  // for ring_elem, vec
 
 class Matrix;
 class PolyRing;

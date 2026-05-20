@@ -1,10 +1,10 @@
 // Copyright 1996-2017 Michael E. Stillman
 
-#include "schur2.hpp"
+#include "Schur/schur2.hpp"
 #include <stdio.h>
 #include <iostream>
 #include "text-io.hpp"
-#include "ZZ.hpp"
+#include "Rings/ZZ.hpp"
 #include "relem.hpp"
 #include "monomial.hpp"
 #include "ringmap.hpp"

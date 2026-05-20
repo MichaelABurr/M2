@@ -6,7 +6,7 @@
 #include "NCAlgebras/NCGroebner.hpp"  // for NCGroebner
 #include "Polynomial.hpp"             // for Poly, ConstPolyList
 #include "newdelete.hpp"              // for our_new_delete
-#include "ringelem.hpp"               // for ring_elem
+#include "Rings/ringelem.hpp"               // for ring_elem
 
 #include <vector>                     // for vector
 

@@ -1,12 +1,12 @@
 #include "debug.hpp"
 #include "text-io.hpp"
-#include "matrices/matrix.hpp"
+#include "matrix.hpp"
 #include "relem.hpp"
 #include "gbring.hpp"
 #include "res-a1-poly.hpp"
 #include "res-a0-poly.hpp"
 #include "hermite.hpp"
-#include "matrices/mat.hpp"
+#include "mat.hpp"
 #include "monideal.hpp"
 
 void showint(mpz_srcptr a)

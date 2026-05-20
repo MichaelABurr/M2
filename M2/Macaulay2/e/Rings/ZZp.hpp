@@ -2,7 +2,7 @@
 #ifndef _z_mod_p_hh_
 #define _z_mod_p_hh_
 
-#include "ring.hpp"
+#include "Rings/ring.hpp"
 #include "coeffrings.hpp"
 namespace M2 {
 class ARingZZp;

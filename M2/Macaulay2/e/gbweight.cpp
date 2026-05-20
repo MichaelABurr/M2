@@ -1,7 +1,7 @@
 #include "gbweight.hpp"
 #include "freemod.hpp"
 #include "gbring.hpp"
-#include "polyring.hpp"
+#include "Rings/polyring.hpp"
 
 
 GBWeight::GBWeight(const FreeModule *F, M2_arrayint wts0) : F_(F)

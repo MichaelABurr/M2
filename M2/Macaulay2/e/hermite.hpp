@@ -3,10 +3,10 @@
 #define _hermite_hh_
 
 #include "relem.hpp"
-#include "matrices/matrix.hpp"
-#include "polyring.hpp"
+#include "matrix.hpp"
+#include "Rings/polyring.hpp"
 #include "comp-gb.hpp"
-#include "ZZ.hpp"
+#include "Rings/ZZ.hpp"
 #include <vector>
 
 struct hm_elem : public our_new_delete

@@ -24,7 +24,7 @@
 #include "NCAlgebras/NCGroebner.hpp"
 #include "NCAlgebras/NCF4.hpp"
 
-#include "poly.hpp"
+#include "Rings/poly.hpp"
 #include "interrupted.hpp"
 #include "schreyer-resolution/res-f4-computation.hpp"
 

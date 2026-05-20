@@ -12,7 +12,7 @@
 //#include <mpfr.h>
 
 #include "interface/random.h"
-#include "ZZ.hpp"
+#include "Rings/ZZ.hpp"
 #include "exceptions.hpp"
 
 const int ntrials = 100;  // 5000

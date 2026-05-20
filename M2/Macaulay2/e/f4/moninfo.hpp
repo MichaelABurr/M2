@@ -8,7 +8,7 @@
 #include "f4/varpower-monomial.hpp"       // for varpower_word, index_varpow...
 #include "interface/monomial-ordering.h"  // for MonomialOrdering
 #include "newdelete.hpp"                  // for our_new_delete
-#include "skew.hpp"                       // for SkewMultiplication
+#include "Rings/skew.hpp"                       // for SkewMultiplication
 
 #include <iostream>
 
