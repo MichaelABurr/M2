@@ -1,7 +1,7 @@
 // Copyright 1997  Michael E. Stillman
 
 #include "style.hpp"
-#include "res-a2.hpp"
+#include "resolutions/res-a2.hpp"
 #include "hilb.hpp"
 #include "text-io.hpp"
 #include "comp-gb.hpp"

@@ -1,6 +1,6 @@
 // Copyright 1997  Michael E. Stillman
 
-#include "res-a2.hpp"
+#include "resolutions/res-a2.hpp"
 #include "hilb.hpp"
 #include "text-io.hpp"
 #include "matrix-con.hpp"

@@ -1,9 +1,9 @@
 // Copyright 1996.  Michael E. Stillman
 
-#include "res-a0.hpp"
+#include "resolutions/res-a0.hpp"
 
 #include "ExponentVector.hpp"
-#include "res-a0-poly.hpp"
+#include "resolutions/res-a0-poly.hpp"
 #include "geobucket.hpp"
 #include "buffer.hpp"
 #include "text-io.hpp"

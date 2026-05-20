@@ -81,8 +81,7 @@ set(HPPONLYFILES
   mutable-matrices/mutablemat.hpp
   newdelete.hpp
   ExponentVector.hpp
-  res-a0-pair.hpp
-  schur/schur-poly-heap.hpp
+  resolutions/res-a0-pair.hpp
   basic-mutable-matrices/smat.hpp
   util.hpp
   style.hpp
@@ -112,7 +111,7 @@ set(CPPONLYFILES
   matrices/matrix-symm.cpp
   ntl-debugio.cpp
   ntl-internal.cpp
-  res-a2-gb.cpp
+  resolutions/res-a2-gb.cpp
   interface/aring.cpp
   interface/aring.h
   interface/computation.h # no .cpp yet
@@ -241,11 +240,11 @@ set(SRCLIST
   reducedgb-marked
   reducedgb
   relem
-  res-a0-poly
-  res-a0
-  res-a1-poly
-  res-a1
-  res-a2
+  resolutions/res-a0-poly
+  resolutions/res-a0
+  resolutions/res-a1-poly
+  resolutions/res-a1
+  resolutions/res-a2
   ringmap
   sagbi
   schorder

@@ -2,9 +2,9 @@
 
 #include "text-io.hpp"
 #include "comp-res.hpp"
-#include "res-a1.hpp"
-#include "res-a0.hpp"
-#include "res-a2.hpp"
+#include "resolutions/res-a1.hpp"
+#include "resolutions/res-a0.hpp"
+#include "resolutions/res-a2.hpp"
 #include "finalize.hpp"
 #include "schreyer-resolution/res-f4-computation.hpp"
 #include "NCResolutions/nc-res-computation.hpp"
