@@ -4,7 +4,7 @@
 #define _mutable_mat_defs_hpp_
 
 #include <iostream>
-#include "mat.hpp"
+#include "basic-mutable-matrices/mat.hpp"
 
 namespace M2 {
 class ARingZZp;
@@ -81,11 +81,11 @@ struct EigenTypes<M2::ARingCCC>
 // The following include file is for creating a Matrix, in "toMatrix"
 #include "matrix-con.hpp"
 
-#include "dmat.hpp"
-#include "smat.hpp"
-#include "mat-elem-ops.hpp"
-#include "mat-arith.hpp"
-#include "mat-linalg.hpp"
+#include "basic-mutable-matrices/dmat.hpp"
+#include "basic-mutable-matrices/smat.hpp"
+#include "basic-mutable-matrices/mat-elem-ops.hpp"
+#include "basic-mutable-matrices/mat-arith.hpp"
+#include "basic-mutable-matrices/mat-linalg.hpp"
 
 template <typename CoeffRing>
 Matrix* toMatrix(const Ring* R, const DMat<CoeffRing>& A)

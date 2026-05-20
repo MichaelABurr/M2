@@ -6,7 +6,7 @@
 #include "freemod.hpp"                 // for FreeModule
 #include "gbring.hpp"                  // for gbvector, GBRing
 #include "interface/mutable-matrix.h"  // for IM2_MutableMatrix_make
-#include "mat.hpp"                     // for MutableMatrix
+#include "basic-mutable-matrices/mat.hpp"                     // for MutableMatrix
 #include "matrix-con.hpp"              // for MatrixConstructor
 #include "matrix.hpp"                  // for Matrix
 #include "monoid.hpp"                  // for Monoid

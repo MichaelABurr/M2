@@ -98,7 +98,7 @@ header "
     #include <monomial.hpp>
     #include <relem.hpp>
     #include <matrix.hpp>
-    #include <mat.hpp>
+    #include <basic-mutable-matrices/mat.hpp>
 ";
 
 export EngineError(d:string):string := (

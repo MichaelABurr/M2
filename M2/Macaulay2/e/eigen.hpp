@@ -1,7 +1,7 @@
 #ifndef __eigen_hpp_
 #define __eigen_hpp_
 
-#include "dmat.hpp"
+#include "basic-mutable-matrices/dmat.hpp"
 #include "basic-rings/aring-RR.hpp"
 #include "basic-rings/aring-CC.hpp"
 #include "basic-rings/aring-RRR.hpp"

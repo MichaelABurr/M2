@@ -138,12 +138,12 @@ interface.o :						\
 	@srcdir@/../system/supervisorinterface.h	\
 	@srcdir@/../e/engine.h				\
 	@srcdir@/../e/engine-includes.hpp		\
-	@srcdir@/../e/ZZp.hpp				\
-	@srcdir@/../e/ring.hpp				\
+	@srcdir@/../e/rings/ZZp.hpp				\
+	@srcdir@/../e/rings/ring.hpp				\
 	@srcdir@/../e/hash.hpp				\
 	@srcdir@/../e/newdelete.hpp			\
 	@srcdir@/../e/error.h				\
-	@srcdir@/../e/ringelem.hpp			\
+	@srcdir@/../e/rings/ringelem.hpp			\
 	@srcdir@/../e/monoid.hpp			\
 	@srcdir@/../e/style.hpp				\
 	@srcdir@/../e/buffer.hpp			\
@@ -152,7 +152,7 @@ interface.o :						\
 	@srcdir@/../e/imonorder.hpp			\
 	@srcdir@/../e/basic-rings/aring.hpp				\
 	@srcdir@/../e/exceptions.hpp			\
-	@srcdir@/../e/ZZ.hpp				\
+	@srcdir@/../e/rings/ZZ.hpp				\
 	@srcdir@/../e/coeffrings.hpp			\
 	@srcdir@/../e/monomial.hpp			\
 	@srcdir@/../e/exceptions.hpp			\
@@ -174,9 +174,9 @@ interface.o :						\
 	@srcdir@/../e/basic-rings/aring-QQ-flint.hpp		\
 	@srcdir@/../e/basic-rings/aring-QQ-gmp.hpp			\
 	@srcdir@/../e/basic-rings/aring-m2-GF.hpp			\
-	@srcdir@/../e/polyring.hpp			\
-	@srcdir@/../e/skew.hpp				\
-	@srcdir@/../e/qring.hpp				\
+	@srcdir@/../e/rings/polyring.hpp			\
+	@srcdir@/../e/rings/skew.hpp				\
+	@srcdir@/../e/rings/qring.hpp				\
 	@srcdir@/../e/basic-rings/aring-GF-flint-big.hpp		\
 	@srcdir@/../e/basic-rings/aring-GF-flint.hpp		\
 	@srcdir@/../e/basic-rings/aring-tower.hpp			\
@@ -184,7 +184,7 @@ interface.o :						\
 	@srcdir@/../e/mutablemat-defs.hpp		\
 	@srcdir@/../e/mat.hpp				\
 	@srcdir@/../e/relem.hpp				\
-	@srcdir@/../e/matrix-con.hpp			\
+	@srcdir@/../e/matrices/matrix-con.hpp			\
 	@srcdir@/../e/dmat.hpp				\
 	@srcdir@/../e/mat-util.hpp			\
 	@srcdir@/../e/text-io.hpp			\
@@ -194,7 +194,7 @@ interface.o :						\
 	@srcdir@/../e/dmat-gf-flint-big.hpp		\
 	@srcdir@/../e/dmat-gf-flint.hpp			\
 	@srcdir@/../e/smat.hpp				\
-	@srcdir@/../e/ZZp.hpp				\
+	@srcdir@/../e/rings/ZZp.hpp				\
 	@srcdir@/../e/mat-elem-ops.hpp			\
 	@srcdir@/../e/mat-arith.hpp			\
 	@srcdir@/../e/mat-linalg.hpp			\
@@ -234,11 +234,11 @@ engine.o :						\
 	@srcdir@/../e/mem.hpp				\
 	@srcdir@/../system/mutex.h			\
 	@srcdir@/../e/relem.hpp				\
-	@srcdir@/../e/ring.hpp				\
+	@srcdir@/../e/rings/ring.hpp				\
 	@srcdir@/../e/basic-rings/aring.hpp				\
-	@srcdir@/../e/ringelem.hpp			\
+	@srcdir@/../e/rings/ringelem.hpp			\
 	@srcdir@/../e/interface/gmp-util.h		\
-	@srcdir@/../e/ZZ.hpp				\
+	@srcdir@/../e/rings/ZZ.hpp				\
 	@srcdir@/../e/matrix.hpp			\
 	@srcdir@/../e/monoid.hpp			\
 	@srcdir@/../e/imonorder.hpp			\
@@ -247,10 +247,10 @@ engine.o :						\
 	@srcdir@/../e/schorder.hpp			\
 	@srcdir@/../e/monideal.hpp			\
 	@srcdir@/../e/int-bag.hpp			\
-	@srcdir@/../e/polyring.hpp			\
+	@srcdir@/../e/rings/polyring.hpp			\
 	@srcdir@/../e/interface/computation.h		\
-	@srcdir@/../e/skew.hpp				\
-	@srcdir@/../e/qring.hpp				\
+	@srcdir@/../e/rings/skew.hpp				\
+	@srcdir@/../e/rings/qring.hpp				\
 	@srcdir@/../e/mat.hpp				
 
 # now assemble the files into various categories:

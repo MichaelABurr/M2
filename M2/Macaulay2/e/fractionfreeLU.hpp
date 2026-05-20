@@ -3,7 +3,7 @@
 #ifndef _fractionfreeLU_hpp_
 #define _fractionfreeLU_hpp_
 
-#include "mat.hpp"
+#include "basic-mutable-matrices/mat.hpp"
 
 class FF_LUComputation
 {

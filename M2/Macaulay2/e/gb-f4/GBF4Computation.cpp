@@ -1,6 +1,6 @@
 #include "GBF4Interface.hpp"
 #include "GBF4Computation.hpp"
-#include "../matrix-stream.hpp"
+#include "matrix-stream.hpp"
 #include <iostream>
 
 namespace newf4 {

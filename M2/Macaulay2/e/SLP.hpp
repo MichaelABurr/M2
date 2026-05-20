@@ -5,10 +5,10 @@
 #ifndef _slp_hpp_
 #define _slp_hpp_
 
-#include "mutablemat-defs.hpp"
+#include "mutable-matrices/mutablemat-defs.hpp"
 #include "SLP-defs.hpp"
 #include "SLP-imp.hpp"
-#include "mutablemat-imp.hpp"
+#include "mutable-matrices/mutablemat-imp.hpp"
 
 #include "buffer.hpp"
 #include "matrix.hpp"

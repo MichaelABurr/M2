@@ -13,7 +13,7 @@ INTERFACE = \
 	BasicPoly \
 	BasicPolyList \
 	BasicPolyListParser \
-	matrix-ncbasis \
+	matrices/matrix-ncbasis \
 	M2FreeAlgebraQuotient \
 	M2FreeAlgebra \
 	NCAlgebras/Word \
@@ -75,7 +75,7 @@ INTERFACE = \
 	rings/ZZ \
 	rings/ZZp \
 	reader \
-	matrix-stream \
+	matrices/matrix-stream \
 	cra \
 	basic-rings/aring-ZZ-gmp \
 	basic-rings/aring-QQ-gmp \
@@ -108,13 +108,13 @@ INTERFACE = \
 	imonorder \
 	sagbi \
 	monideal-minprimes \
-	lapack \
+	basic-mutable-matrices/lapack \
 	LLL \
 	fractionfreeLU \
 	ntl-interface \
 	fplll-interface \
-	mat \
-	dmat \
+	basic-mutable-matrices/mat \
+	basic-mutable-matrices/dmat \
 	coeffrings \
 	Eschreyer \
 	gbweight \
@@ -158,7 +158,7 @@ INTERFACE = \
 	hilb \
 	int-bag \
 	matrix \
-	matrix-con \
+	matrices/matrix-con \
 	mem \
 	monideal \
 	monoid \
@@ -183,10 +183,10 @@ COMMANDS = \
 	interface/m2-mem \
 	ntl-internal \
 	ntl-debugio \
-	matrix-kbasis \
-	matrix-symm \
-	matrix-sort \
-	rings/ring-vecs \
+	matrices/matrix-kbasis \
+	matrices/matrix-symm \
+	matrices/matrix-sort \
+	ring-vecs \
 	res-a2-gb \
 	engine \
 	interface/aring \

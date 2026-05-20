@@ -164,6 +164,7 @@ target_include_directories(M2-interpreter
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
     $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/Macaulay2/e> # need newdelete.hpp
     $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/Macaulay2/e/CoefficientRings>
+    $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/Macaulay2/e/matrices>
     $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/Macaulay2/e/Rings>
     $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/Macaulay2/c> # need scc-core.h
     $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}/Macaulay2/d>

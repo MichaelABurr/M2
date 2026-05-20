@@ -7,7 +7,7 @@
 #include "basic-rings/aring-translate.hpp"
 #include "rings/ring.hpp"
 
-#include "mutablemat.hpp"
+#include "mutable-matrices/mutablemat.hpp"
 
 static const bool displayArithmeticCalls = false;
 

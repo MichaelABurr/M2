@@ -151,13 +151,6 @@ YES dmat-ffpack.cpp
 
 NOT USED linalg.hpp BUT: is included
 
-
-
-
-
-points.hpp points.cpp  -- 
-
-
   -     means not implemented
   g     generic code for all rings
   i     implemented specially for this ring type

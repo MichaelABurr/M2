@@ -1,7 +1,7 @@
 #ifndef __dmat_test_hpp__
 #define __dmat_test_hpp__
 
-#include "dmat.hpp"
+#include "basic-mutable-matrices/dmat.hpp"
 
 #endif
 

@@ -4,7 +4,7 @@
 #include "GBF4Computation.hpp"
 #include "PolynomialList.hpp"
 #include "../e/comp-gb.hpp"
-#include "../matrix-stream.hpp"
+#include "matrix-stream.hpp"
 
 class Matrix;
 

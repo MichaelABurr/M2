@@ -17,7 +17,7 @@
 #endif
 
 #include "interface/NAG.h"
-#include "lapack.hpp"
+#include "basic-mutable-matrices/lapack.hpp"
 #include "matrix-con.hpp"
 #include "matrix.hpp"
 #include "rings/poly.hpp"

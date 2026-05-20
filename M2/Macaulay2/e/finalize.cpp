@@ -9,7 +9,7 @@
 #include "comp-gb.hpp"
 #include "comp-res.hpp"
 #include "schorder.hpp"
-#include "mat.hpp"
+#include "basic-mutable-matrices/mat.hpp"
 
 #include <M2/gc-include.h>
 

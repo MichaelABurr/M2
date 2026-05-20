@@ -8,7 +8,7 @@ PRE.cc   = $(COMPILE.cc) -E
 
 include Makefile.files
 include Makefile.common
-CPPFLAGS := -I@srcdir@ $(CPPFLAGS) \
+CPPFLAGS := -I@srcdir@ -I@srcdir@/matrices $(CPPFLAGS) \
   -Wno-fatal-errors -Wno-unused-variable
 
 #  -I../d -I@srcdir@/../c -I@srcdir@/../d \
@@ -97,7 +97,7 @@ distclean: clean; rm -f Makefile @srcdir@/TAGS
 # we like using "struct" and "class" interchangeably
 CXXFLAGS += -Wno-mismatched-tags
 
-# a stand-alone program made from test.dd
+# a stand-alone program made from unused/test.dd
 # test : ../c/scc-core.o
 test : complex.o
 test : LDFLAGS += -L../d -lmpfr -lgmp -lfac -lcf -lcfmem
@@ -163,4 +163,3 @@ help:
 # Local Variables:
 # compile-command: "make -C $M2BUILDDIR/Macaulay2/e DEPENDS=no initialize && make -C $M2BUILDDIR/Macaulay2/e "
 # End:
-
