@@ -97,8 +97,8 @@ header "
     #include <hash.hpp>
     #include <monomial.hpp>
     #include <relem.hpp>
-    #include <matrix.hpp>
-    #include <mat.hpp>
+    #include <matrices/matrix.hpp>
+    #include <matrices/mat.hpp>
 ";
 
 export EngineError(d:string):string := (

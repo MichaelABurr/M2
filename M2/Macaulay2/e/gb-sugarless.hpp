@@ -3,13 +3,13 @@
 #define _gbinhom_hh_
 
 #include "relem.hpp"
-#include "matrix.hpp"
+#include "matrices/matrix.hpp"
 #include "polyring.hpp"
 #include "comp-gb.hpp"
 #include "reducedgb.hpp"
 
 #include "spair.hpp"
-#include "matrix-con.hpp"
+#include "matrices/matrix-con.hpp"
 class GBWeight;
 
 /**

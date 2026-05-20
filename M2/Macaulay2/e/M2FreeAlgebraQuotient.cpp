@@ -6,7 +6,7 @@
 #include <vector>
 
 #include "NCAlgebras/FreeAlgebra.hpp"
-#include "matrix.hpp"
+#include "matrices/matrix.hpp"
 #include "ring.hpp"
 
 ConstPolyList copyMatrixToVector(const M2FreeAlgebra& F,

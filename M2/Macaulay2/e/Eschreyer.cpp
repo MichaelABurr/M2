@@ -1,11 +1,11 @@
 // Copyright 1999  Michael E. Stillman
 
 #include "Eschreyer.hpp"
-#include "matrix.hpp"
+#include "matrices/matrix.hpp"
 #include "monoid.hpp"
 #include "text-io.hpp"
 #include "gbring.hpp"
-#include "matrix-con.hpp"
+#include "matrices/matrix-con.hpp"
 
 GBMatrix::GBMatrix(const FreeModule *F0) : F(F0) {}
 

@@ -5,7 +5,7 @@
 #include "basic-rings/aring-CC.hpp"
 #include "basic-rings/aring-RRR.hpp"
 #include "basic-rings/aring-CCC.hpp"
-#include "dmat.hpp"
+#include "matrices/dmat.hpp"
 
 typedef DMat<M2::ARingRRR> DMatRRR;
 typedef DMat<M2::ARingCCC> DMatCCC;

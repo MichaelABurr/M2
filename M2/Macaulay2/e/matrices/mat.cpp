@@ -1,15 +1,15 @@
 // Copyright 2005  Michael E. Stillman
 
 #include "util.hpp"
-#include "dmat.hpp"
-#include "smat.hpp"
-#include "mat.hpp"
-#include "mutablemat.hpp"
+#include "matrices/dmat.hpp"
+#include "matrices/smat.hpp"
+#include "matrices/mat.hpp"
+#include "matrices/mutablemat.hpp"
 
 #include "coeffrings.hpp"
 
-#include "matrix-con.hpp"
-#include "matrix.hpp"
+#include "matrices/matrix-con.hpp"
+#include "matrices/matrix.hpp"
 
 #include "basic-rings/aring-RRR.hpp"
 #include "basic-rings/aring-RR.hpp"
@@ -26,7 +26,7 @@
 
 #include "lapack.hpp"
 
-#include "mutablemat.hpp"
+#include "matrices/mutablemat.hpp"
 #include "ZZp.hpp"
 
 MutableMatrix *RingZZ::makeMutableMatrix(size_t nrows,

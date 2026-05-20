@@ -23,11 +23,11 @@ endif()
 
 # TODO: determine the fate of these files
 set(UNDETERMINED
-  dmat-ffpack.cpp
+  unused/dmat-ffpack.cpp
   franzi-brp-test.cpp
   overflow-test.cpp
   test.dd
-  points # both cpp and hpp
+  unused/points # both cpp and hpp
   )
 
 # c files
@@ -58,35 +58,35 @@ set(HPPONLYFILES
   timing.hpp
   SLP-defs.hpp
   SLP-imp.hpp
-  dmat-gf-flint-big.hpp
-  dmat-gf-flint.hpp
-  dmat-lu-inplace.hpp
-  dmat-lu-qq.hpp
-  dmat-lu-zzp-ffpack.hpp
-  dmat-lu-zzp-flint.hpp
-  dmat-lu.hpp
-  dmat-qq-flint.hpp
-  dmat-qq-interface-flint.hpp
-  dmat-zz-flint.hpp
-  dmat-zzp-flint.hpp
+  matrices/dmat-gf-flint-big.hpp
+  matrices/dmat-gf-flint.hpp
+  matrices/dmat-lu-inplace.hpp
+  matrices/dmat-lu-qq.hpp
+  matrices/dmat-lu-zzp-ffpack.hpp
+  matrices/dmat-lu-zzp-flint.hpp
+  matrices/dmat-lu.hpp
+  matrices/dmat-qq-flint.hpp
+  matrices/dmat-qq-interface-flint.hpp
+  matrices/dmat-zz-flint.hpp
+  matrices/dmat-zzp-flint.hpp
   engine-includes.hpp
   exceptions.hpp
   geobucket.hpp
   geopoly.hpp
   geovec.hpp
   hash.hpp
-  mat-arith.hpp
-  mat-elem-ops.hpp
-  mat-linalg.hpp
-  mat-util.hpp
-  mutablemat-defs.hpp
-  mutablemat-imp.hpp
-  mutablemat.hpp
+  matrices/mat-arith.hpp
+  matrices/mat-elem-ops.hpp
+  matrices/mat-linalg.hpp
+  matrices/mat-util.hpp
+  matrices/mutablemat-defs.hpp
+  matrices/mutablemat-imp.hpp
+  matrices/mutablemat.hpp
   newdelete.hpp
   ExponentVector.hpp
   res-a0-pair.hpp
   Schur/schur-poly-heap.hpp
-  smat.hpp
+  matrices/smat.hpp
   util.hpp
   style.hpp
   f4/f4-types.hpp
@@ -105,9 +105,9 @@ set(CPPONLYFILES
   engine.cpp # TODO: find a new home for the contents
   franzi-gb.cpp
   franzi-interface.cpp
-  matrix-kbasis.cpp
-  matrix-sort.cpp
-  matrix-symm.cpp
+  matrices/matrix-kbasis.cpp
+  matrices/matrix-sort.cpp
+  matrices/matrix-symm.cpp
   ntl-debugio.cpp
   ntl-internal.cpp
   res-a2-gb.cpp
@@ -158,7 +158,7 @@ set(SRCLIST
   BasicPolyList
   BasicPolyListParser
   myalloc
-  matrix-ncbasis
+  matrices/matrix-ncbasis
   M2FreeAlgebraQuotient
   M2FreeAlgebra
   NCAlgebras/Word
@@ -191,7 +191,7 @@ set(SRCLIST
   cra
   debug
   det
-  dmat
+  matrices/dmat
   dpoly
   eigen
   finalize
@@ -214,10 +214,10 @@ set(SRCLIST
   interreduce
   interrupted
   lapack
-  mat
-  matrix-con
-  matrix-stream
-  matrix
+  matrices/mat
+  matrices/matrix-con
+  matrices/matrix-stream
+  matrices/matrix
   mem
   memory-status
   monideal-minprimes
@@ -250,9 +250,6 @@ set(SRCLIST
   Schur/schur
   Schur/schur2
   Schur/schurSn
-  skew
-  skewpoly
-  solvable
   spair
   text-io
   ExponentList
@@ -332,9 +329,6 @@ set(RING_SRCLIST
   qring
   ring
   ringelem
-  schur
-  schur2
-  schurSn
   skew
   skewpoly
   solvable
@@ -346,16 +340,12 @@ set(RING_SRCLIST
 set(RING_CPPONLY
   ring-vecs.cpp
 )
-set(RING_HPPONLY
-  schur-poly-heap.hpp
-  )
 
 # prepend subdirectory names
 list(TRANSFORM BASICRING_SRCLIST PREPEND basic-rings/)
 list(TRANSFORM BASICRING_HPPONLY PREPEND basic-rings/)
-list(TRANSFORM RING_SRCLIST      PREPEND rings/)
-list(TRANSFORM RING_CPPONLY      PREPEND rings/)
-list(TRANSFORM RING_HPPONLY      PREPEND rings/)
+list(TRANSFORM RING_SRCLIST      PREPEND Rings/)
+list(TRANSFORM RING_CPPONLY      PREPEND Rings/)
 
 # merge the bare-name sub-lists into SRCLIST BEFORE the .cpp/.hpp transform
 list(APPEND SRCLIST ${BASICRING_SRCLIST})
@@ -367,7 +357,6 @@ list(TRANSFORM SRCLIST APPEND .hpp OUTPUT_VARIABLE HPPFILES)
 # pre-suffixed extras go in AFTER the transform
 list(APPEND CPPFILES ${RING_CPPONLY})
 list(APPEND HPPFILES ${BASICRING_HPPONLY})
-list(APPEND HPPFILES ${RING_HPPONLY})
 
 set(SOURCES ${CPPONLYFILES} ${CPPFILES} ${CFILES})
 set(HEADERS ${HPPONLYFILES} ${HPPFILES} ${HFILES})
@@ -398,8 +387,10 @@ set_target_properties(M2-engine PROPERTIES PUBLIC_HEADER "${HEADERS}")
 
 target_include_directories(M2-engine PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/CoefficientRings>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/basic-rings>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/matrices>
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Rings>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/Schur>
   $<INSTALL_INTERFACE:include/Macaulay2>)
 
 # TODO: make engine independent of interpreter headers

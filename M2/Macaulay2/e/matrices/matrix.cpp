@@ -1,6 +1,6 @@
 // Copyright 1995-2004 Michael E. Stillman
 
-#include "matrix.hpp"
+#include "matrices/matrix.hpp"
 
 #include <algorithm>
 #include <iostream>
@@ -23,7 +23,7 @@
 
 #include "exptable.h"
 
-#include "matrix-con.hpp"
+#include "matrices/matrix-con.hpp"
 
 #include "monomial-collection.hpp"
 #include "M2FreeAlgebra.hpp"

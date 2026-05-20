@@ -20,7 +20,7 @@
 #include <vector>
 
 #include "interface/NAG.h"
-#include "matrix.hpp"
+#include "matrices/matrix.hpp"
 #include "SLP.hpp"
 #include "basic-rings/aring-CC.hpp"
 #include "basic-rings/aring-glue.hpp"

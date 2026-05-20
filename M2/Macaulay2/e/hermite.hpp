@@ -3,7 +3,7 @@
 #define _hermite_hh_
 
 #include "relem.hpp"
-#include "matrix.hpp"
+#include "matrices/matrix.hpp"
 #include "polyring.hpp"
 #include "comp-gb.hpp"
 #include "ZZ.hpp"

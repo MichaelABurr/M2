@@ -1,5 +1,5 @@
-#include "matrix-con.hpp"
-#include "matrix.hpp"
+#include "matrices/matrix-con.hpp"
+#include "matrices/matrix.hpp"
 #include "debug.hpp"
 
 #include <iostream>

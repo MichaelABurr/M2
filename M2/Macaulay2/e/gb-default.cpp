@@ -3,8 +3,8 @@
 #include "gb-default.hpp"
 #include "text-io.hpp"
 
-#include "matrix.hpp"
-#include "matrix-con.hpp"
+#include "matrices/matrix.hpp"
+#include "matrices/matrix-con.hpp"
 #include "polyring.hpp"
 #include "newdelete.hpp"
 #include "relem.hpp"

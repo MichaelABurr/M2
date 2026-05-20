@@ -5,7 +5,7 @@
 #include "hilb.hpp"
 #include "text-io.hpp"
 #include "comp-gb.hpp"
-#include "matrix-con.hpp"
+#include "matrices/matrix-con.hpp"
 #include "interrupted.hpp"
 
 void gb2_comp::setup(FreeModule *FFsyz,

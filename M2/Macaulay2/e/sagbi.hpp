@@ -3,7 +3,7 @@
 #ifndef _sagbi_hh_
 #define _sagbi_hh_
 
-#include "matrix.hpp"
+#include "matrices/matrix.hpp"
 #include "comp-gb.hpp"
 
 /**
@@ -55,7 +55,7 @@ class sagbi
 };
 
 #if 0
-// #include "matrix.hpp"
+// #include "matrices/matrix.hpp"
 // #include "comp.hpp"
 // #include "gb_comp.hpp"
 //

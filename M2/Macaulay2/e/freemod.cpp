@@ -4,8 +4,8 @@
 #include "freemod.hpp"
 #include "comb.hpp"
 #include "polyring.hpp"
-#include "matrix.hpp"
-#include "matrix-con.hpp"
+#include "matrices/matrix.hpp"
+#include "matrices/matrix-con.hpp"
 #include "Eschreyer.hpp"
 #include "gbring.hpp"
 

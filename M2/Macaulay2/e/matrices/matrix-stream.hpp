@@ -4,8 +4,8 @@
 #define __matrix_stream_hhp__
 
 #include "poly.hpp"
-#include "matrix.hpp"
-#include "matrix-con.hpp"
+#include "matrices/matrix.hpp"
+#include "matrices/matrix-con.hpp"
 #include <gmpxx.h>
 
 #if 0

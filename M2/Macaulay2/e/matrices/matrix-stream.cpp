@@ -1,4 +1,4 @@
-#include "matrix-stream.hpp"
+#include "matrices/matrix-stream.hpp"
 
 MatrixStream::MatrixStream(const FreeModule* F)
     : mFreeModule(F), mMatrixConstructor(F, 0), mValue(nullptr), mCurrentComponent(0)

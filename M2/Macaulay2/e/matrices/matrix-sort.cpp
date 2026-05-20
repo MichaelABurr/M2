@@ -1,4 +1,4 @@
-#include "matrix.hpp"
+#include "matrices/matrix.hpp"
 
 class MatrixSorter
 {

@@ -2,7 +2,7 @@
 
 #include "poly.hpp"
 #include "sagbi.hpp"
-#include "matrix-con.hpp"
+#include "matrices/matrix-con.hpp"
 
 ring_elem sagbi::subduct(int numslots,
                          const PolyRing *R,

@@ -1,6 +1,6 @@
 #include "comp-gb-declared.hpp"
 #include "reducedgb-marked.hpp"
-#include "matrix.hpp"
+#include "matrices/matrix.hpp"
 #include "reducedgb.hpp"
 #include "polyring.hpp"
 

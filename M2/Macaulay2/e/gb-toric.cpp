@@ -5,7 +5,7 @@
 #include "ExponentVector.hpp"
 #include "text-io.hpp"
 
-#include "matrix-con.hpp"
+#include "matrices/matrix-con.hpp"
 #include "interrupted.hpp"
 
 #define monomial monomial0

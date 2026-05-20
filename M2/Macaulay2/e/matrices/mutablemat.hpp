@@ -3,9 +3,9 @@
 #ifndef _mutable_mat_hpp_
 #define _mutable_mat_hpp_
 
-#include "mutablemat-defs.hpp"
+#include "matrices/mutablemat-defs.hpp"
 #include "SLP-defs.hpp"
-#include "mutablemat-imp.hpp"
+#include "matrices/mutablemat-imp.hpp"
 #include "SLP-imp.hpp"
 #endif
 

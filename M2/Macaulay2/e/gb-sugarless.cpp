@@ -3,7 +3,7 @@
 #include "style.hpp"
 #include "gb-sugarless.hpp"
 #include "text-io.hpp"
-#include "matrix-con.hpp"
+#include "matrices/matrix-con.hpp"
 #include "gbweight.hpp"
 #include "interrupted.hpp"
 

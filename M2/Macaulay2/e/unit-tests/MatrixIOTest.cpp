@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 
 #include "util-polyring-creation.hpp"
-#include "matrix.hpp"
+#include "matrices/matrix.hpp"
 #include "BasicPolyList.hpp"
 #include "BasicPolyListParser.hpp"
 #include "gb-f4/PolynomialList.hpp"

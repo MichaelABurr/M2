@@ -5,8 +5,8 @@
 
 #include "error.h"
 #include "freemod.hpp"
-#include "matrix-con.hpp"
-#include "matrix.hpp"
+#include "matrices/matrix-con.hpp"
+#include "matrices/matrix.hpp"
 #include "monoid.hpp"
 #include "poly.hpp"
 #include "ring.hpp"

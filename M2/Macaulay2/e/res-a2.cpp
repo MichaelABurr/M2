@@ -3,7 +3,7 @@
 #include "res-a2.hpp"
 #include "hilb.hpp"
 #include "text-io.hpp"
-#include "matrix-con.hpp"
+#include "matrices/matrix-con.hpp"
 #include "interrupted.hpp"
 extern ring_elem hilb(const Matrix &M, const Ring *RR);
 

@@ -8,8 +8,8 @@
 #include "f4/f4-types.hpp"         // for gb_array, gbelem
 #include "f4/f4.hpp"               // for F4GB
 #include "f4/moninfo.hpp"          // for MonomialInfo
-#include "matrix-con.hpp"          // for MatrixConstructor
-#include "matrix.hpp"              // for Matrix
+#include "matrices/matrix-con.hpp"          // for MatrixConstructor
+#include "matrices/matrix.hpp"              // for Matrix
 #include "mem.hpp"                 // for stash
 #include "monoid.hpp"              // for Monoid
 #include "polyring.hpp"            // for PolynomialRing

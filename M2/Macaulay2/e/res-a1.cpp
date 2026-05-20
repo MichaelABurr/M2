@@ -1130,7 +1130,7 @@ void res_comp::handle_pair(res_pair *p)
 // }
 #endif
 
-#include "matrix-con.hpp"
+#include "matrices/matrix-con.hpp"
 
 int res_comp::n_pairs(int lev, int d) const
 {

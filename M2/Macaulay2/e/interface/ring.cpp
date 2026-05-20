@@ -17,7 +17,7 @@
 #include "weylalg.hpp"
 #include "skewpoly.hpp"
 #include "solvable.hpp"
-#include "matrix.hpp"
+#include "matrices/matrix.hpp"
 #include "exceptions.hpp"
 #include "finalize.hpp"
 #include "tower.hpp"

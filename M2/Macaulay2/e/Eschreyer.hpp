@@ -5,7 +5,7 @@
 #include "polyring.hpp"
 #include "gbring.hpp"
 #include "schorder.hpp"
-#include "matrix.hpp"
+#include "matrices/matrix.hpp"
 #include "monoid.hpp"
 #include "comp.hpp"
 

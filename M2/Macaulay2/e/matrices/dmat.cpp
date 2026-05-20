@@ -3,7 +3,7 @@
 #include "exceptions.hpp"
 #include "error.h"
 
-#include "mat-linalg.hpp"
+#include "matrices/mat-linalg.hpp"
 
 ////////////////////////////////////////////////////////////////////////////
 // dmat code that might have alternate implementations, depending of type //

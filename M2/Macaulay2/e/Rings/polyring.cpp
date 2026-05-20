@@ -4,8 +4,8 @@
 #include "monoid.hpp"
 #include "qring.hpp"
 #include "polyquotient.hpp"
-#include "matrix.hpp"
-#include "matrix-con.hpp"
+#include "matrices/matrix.hpp"
+#include "matrices/matrix-con.hpp"
 #include "geopoly.hpp"
 
 PolynomialRing::~PolynomialRing() {}

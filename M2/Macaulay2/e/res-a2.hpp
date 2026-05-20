@@ -3,7 +3,7 @@
 #define _gb2_hh_
 
 #include "relem.hpp"
-#include "matrix.hpp"
+#include "matrices/matrix.hpp"
 #include "polyring.hpp"
 #include "comp-res.hpp"
 #include "hilb.hpp"

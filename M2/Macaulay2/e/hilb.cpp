@@ -18,7 +18,7 @@
 #include "freemod.hpp"         // for FreeModule
 #include "int-bag.hpp"         // for Bag, int_bag
 #include "interrupted.hpp"     // for system_interrupted
-#include "matrix.hpp"          // for Matrix
+#include "matrices/matrix.hpp"          // for Matrix
 #include "mem.hpp"             // for stash
 #include "monideal.hpp"        // for MonomialIdeal, operator!=, Nmi_node
 #include "monoid.hpp"          // for Monoid

@@ -23,7 +23,7 @@
 #include "buffer.hpp"
 #include "error.h"
 #include "exceptions.hpp"
-#include "matrix.hpp"
+#include "matrices/matrix.hpp"
 #include "monoid.hpp"
 #include "poly.hpp"
 #include "polyring.hpp"

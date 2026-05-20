@@ -14,7 +14,7 @@
 #include "monomDRL.hpp"
 #include "monomLex.hpp"
 #include "settings-manager.hpp"
-#include "matrix.hpp"
+#include "matrices/matrix.hpp"
 
 namespace BIBasis
 {

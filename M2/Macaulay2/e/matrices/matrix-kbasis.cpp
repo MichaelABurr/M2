@@ -8,8 +8,8 @@
 #include "freemod.hpp"          // for FreeModule
 #include "int-bag.hpp"          // for Bag
 #include "interrupted.hpp"      // for system_interrupted
-#include "matrix-con.hpp"       // for MatrixConstructor
-#include "matrix.hpp"           // for Matrix
+#include "matrices/matrix-con.hpp"       // for MatrixConstructor
+#include "matrices/matrix.hpp"           // for Matrix
 #include "monideal.hpp"         // for MonomialIdeal
 #include "monoid.hpp"           // for Monoid, ALLOCATE_EXPONENTS, EXPONENT_...
 #include "newdelete.hpp"        // for newarray_atomic, newarray_atomic_clear

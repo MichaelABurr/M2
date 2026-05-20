@@ -1,6 +1,6 @@
 // Copyright 2018  Michael E. Stillman
 
-#include "matrix-ncbasis.hpp"
+#include "matrices/matrix-ncbasis.hpp"
 
 #include <memory>
 

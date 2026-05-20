@@ -1,8 +1,8 @@
 /* This code written by Franziska Hinkelmann is in the public domain */
 
 #include "franzi-brp.hpp"
-#include "matrix-con.hpp"
-#include "matrix.hpp"
+#include "matrices/matrix-con.hpp"
+#include "matrices/matrix.hpp"
 
 extern void testSPolynomial();
 extern void gb(IntermediateBasis &F, int n);

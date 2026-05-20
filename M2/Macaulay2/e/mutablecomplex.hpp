@@ -7,7 +7,7 @@
 #include "localring.hpp"
 #include "style.hpp"
 #include "hash.hpp"
-#include "mat.hpp"
+#include "matrices/mat.hpp"
 #include "debug.hpp"
 #include <iostream>
 

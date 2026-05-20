@@ -3,18 +3,18 @@
 #ifndef _dmat_lu_hpp_
 #define _dmat_lu_hpp_
 
-#include "dmat.hpp"
-#include "mat-elem-ops.hpp"
-#include "mat-util.hpp"
+#include "matrices/dmat.hpp"
+#include "matrices/mat-elem-ops.hpp"
+#include "matrices/mat-util.hpp"
 
-#include "dmat-lu-inplace.hpp"
+#include "matrices/dmat-lu-inplace.hpp"
 
 template <class RingType>
 class DMatLinAlg;
 
-#include "dmat-lu-zzp-ffpack.hpp"
-#include "dmat-lu-zzp-flint.hpp"
-#include "dmat-lu-qq.hpp"
+#include "matrices/dmat-lu-zzp-ffpack.hpp"
+#include "matrices/dmat-lu-zzp-flint.hpp"
+#include "matrices/dmat-lu-qq.hpp"
 
 typedef DMat<M2::ARingGFFlintBig> DMatGFFlintBig;
 

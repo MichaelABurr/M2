@@ -13,7 +13,7 @@ INTERFACE = \
 	BasicPoly \
 	BasicPolyList \
 	BasicPolyListParser \
-	matrix-ncbasis \
+	matrices/matrix-ncbasis \
 	M2FreeAlgebraQuotient \
 	M2FreeAlgebra \
 	NCAlgebras/Word \
@@ -32,7 +32,7 @@ INTERFACE = \
 	eigen \
 	monomial-sets \
 	mutablecomplex \
-	localring \
+	Rings/localring \
 	bibasis/bibasis \
 	bibasis/allocator \
 	bibasis/launcher \
@@ -71,11 +71,11 @@ INTERFACE = \
 	monsort \
 	f4/moninfo \
 	betti \
-	GF \
-	ZZ \
-	ZZp \
+	Rings/GF \
+	Rings/ZZ \
+	Rings/ZZp \
 	reader \
-	matrix-stream \
+	matrices/matrix-stream \
 	cra \
 	basic-rings/aring-ZZ-gmp \
 	basic-rings/aring-QQ-gmp \
@@ -95,10 +95,10 @@ INTERFACE = \
 	basic-rings/aring-ZZp \
 	basic-rings/aring-ZZp-ffpack \
 	basic-rings/aring \
-	schurSn \
-	schur2 \
+	Schur/schurSn \
+	Schur/schur2 \
 	dpoly \
-	tower \
+	Rings/tower \
 	interreduce \
 	finalize \
 	NAG \
@@ -113,14 +113,14 @@ INTERFACE = \
 	fractionfreeLU \
 	ntl-interface \
 	fplll-interface \
-	mat \
-	dmat \
+	matrices/mat \
+	matrices/dmat \
 	coeffrings \
 	Eschreyer \
 	gbweight \
-	qring \
-	polyquotient \
-	poly \
+	Rings/qring \
+	Rings/polyquotient \
+	Rings/poly \
 	debug \
 	comp \
 	comp-gb \
@@ -144,7 +144,7 @@ INTERFACE = \
 	buffer \
 	comb \
 	det \
-	frac \
+	Rings/frac \
 	franzi-brp \
 	freemod \
 	gb-default \
@@ -157,36 +157,36 @@ INTERFACE = \
 	hermite \
 	hilb \
 	int-bag \
-	matrix \
-	matrix-con \
+	matrices/matrix \
+	matrices/matrix-con \
 	mem \
 	monideal \
 	monoid \
 	monomial \
-	polyring \
+	Rings/polyring \
 	pfaff \
 	relem \
-	ring \
-	ringelem \
+	Rings/ring \
+	Rings/ringelem \
 	ringmap \
-	schur \
-	skew \
-	skewpoly \
-	solvable \
+	Schur/schur \
+	Rings/skew \
+	Rings/skewpoly \
+	Rings/solvable \
 	spair \
 	text-io \
 	ExponentList \
-	weylalg
+	Rings/weylalg
 
 COMMANDS = \
 	interface/m2-types \
 	interface/m2-mem \
 	ntl-internal \
 	ntl-debugio \
-	matrix-kbasis \
-	matrix-symm \
-	matrix-sort \
-	ring-vecs \
+	matrices/matrix-kbasis \
+	matrices/matrix-symm \
+	matrices/matrix-sort \
+	Rings/ring-vecs \
 	res-a2-gb \
 	engine \
 	interface/aring \

@@ -6,8 +6,8 @@
 template <typename MT>
 class MatElementaryOps;
 // template <typename MT> class MatArithmetic;
-#include "dmat.hpp"
-#include "smat.hpp"
+#include "matrices/dmat.hpp"
+#include "matrices/smat.hpp"
 
 // Use below via
 //  MatrixWindow(first_row, first_col, #rows, #columns)

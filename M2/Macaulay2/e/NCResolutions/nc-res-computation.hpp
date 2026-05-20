@@ -5,8 +5,8 @@
 
 #include "comp-res.hpp"
 #include "NCAlgebras/FreeAlgebraQuotient.hpp"
-#include "matrix.hpp"
-#include "matrix-con.hpp"
+#include "matrices/matrix.hpp"
+#include "matrices/matrix-con.hpp"
 
 class NCResComputation : public ResolutionComputation
 {

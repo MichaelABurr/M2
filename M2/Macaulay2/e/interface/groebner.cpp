@@ -17,7 +17,7 @@
 #include "gb-walk.hpp"
 #include "relem.hpp"
 #include "util.hpp"
-#include "matrix-ncbasis.hpp"
+#include "matrices/matrix-ncbasis.hpp"
 
 #include "M2FreeAlgebra.hpp"
 #include "NCAlgebras/FreeAlgebra.hpp"
@@ -694,7 +694,7 @@ Matrix /* or null */ *rawSubduction1(int numparts,
 }
 
 #include "mathicgb.h"
-#include "matrix-stream.hpp"
+#include "matrices/matrix-stream.hpp"
 void rawDisplayMatrixStream(const Matrix *inputMatrix)
 {
   const Ring *R = inputMatrix->get_ring();

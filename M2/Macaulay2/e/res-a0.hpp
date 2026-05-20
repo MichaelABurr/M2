@@ -4,7 +4,7 @@
 #define _res2_hh_
 
 #include "style.hpp"
-#include "matrix.hpp"
+#include "matrices/matrix.hpp"
 #include "monideal.hpp"
 #include "poly.hpp"
 #include "comp-res.hpp"

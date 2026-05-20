@@ -10,8 +10,8 @@
 #include "basic-rings/aring.hpp"                                      // for ring_RR
 #include "coeffrings.hpp"                                 // for Coefficient...
 #include "comp.hpp"                                       // for Computation
-#include "mat-linalg.hpp"                                 // for DMatLinAlg
-#include "dmat.hpp"                                       // for DMat
+#include "matrices/mat-linalg.hpp"                                 // for DMatLinAlg
+#include "matrices/dmat.hpp"                                       // for DMat
 #include "interface/m2-types.h"                           // for M2_arrayint
 #include "error.h"                                        // for ERROR
 #include "exceptions.hpp"                                 // for engine_error
@@ -19,9 +19,9 @@
 #include "gauss.hpp"                                      // for GaussElimCo...
 #include "gbring.hpp"                                     // for gbvector
 #include "interface/groebner.h"                           // for rawMinimalB...
-#include "mat.hpp"                                        // for MutableMatrix
-#include "matrix-con.hpp"                                 // for MatrixConst...
-#include "matrix.hpp"                                     // for Matrix
+#include "matrices/mat.hpp"                                        // for MutableMatrix
+#include "matrices/matrix-con.hpp"                                 // for MatrixConst...
+#include "matrices/matrix.hpp"                                     // for Matrix
 #include "monoid.hpp"                                     // for Monoid
 #include "newdelete.hpp"                                  // for newarray
 #include "polyring.hpp"                                   // for PolynomialRing

@@ -5,7 +5,7 @@
 #define _gbbinom_hh_
 
 #include "comp-gb.hpp"
-#include "matrix.hpp"
+#include "matrices/matrix.hpp"
 
 /////////////////////
 // Data structures //
