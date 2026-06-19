@@ -1,5 +1,12 @@
 // Copyright 2013 Michael E. Stillman
 
+/// \file aring-QQ-gmp.hpp
+/// \brief Defines ARingQQGMP, the GMP-backed rational arithmetic ring.
+///
+/// This header wraps GMP mpq values and implements rational arithmetic,
+/// comparison, initialization, promotion, randomization, and conversion to and
+/// from Macaulay2 ring elements.
+
 #ifndef M2_BASIC_RINGS_ARING_QQ_GMP_HPP_
 #define M2_BASIC_RINGS_ARING_QQ_GMP_HPP_
 

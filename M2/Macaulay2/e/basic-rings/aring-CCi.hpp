@@ -1,5 +1,12 @@
 // Copyright 2012 Michael E. Stillman
 
+/// \file aring-CCi.hpp
+/// \brief Defines ARingCCi, the arbitrary-precision complex interval ring.
+///
+/// This header stores real and imaginary parts as MPFI intervals and provides
+/// precision-aware arithmetic, containment predicates, and conversions for
+/// complex interval elements.
+
 #ifndef M2_BASIC_RINGS_ARING_CCI_HPP_
 #define M2_BASIC_RINGS_ARING_CCI_HPP_
 

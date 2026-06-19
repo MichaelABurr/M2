@@ -1,5 +1,12 @@
 // Copyright 2014 Michael E. Stillman
 
+/// \file aring-GF-flint.hpp
+/// \brief Defines ARingGFFlint, a FLINT fq_zech finite field ring.
+///
+/// This header wraps FLINT's Zech-log finite field representation, including
+/// context-owning element helpers, arithmetic, discrete logarithms, and
+/// conversions for extension field elements.
+
 #ifndef M2_BASIC_RINGS_ARING_GF_FLINT_HPP_
 #define M2_BASIC_RINGS_ARING_GF_FLINT_HPP_
 

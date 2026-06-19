@@ -1,5 +1,12 @@
 // Copyright 2013 Michael E. Stillman
 
+/// \file aring-QQ-flint.hpp
+/// \brief Defines ARingQQFlint, the FLINT-backed rational arithmetic ring.
+///
+/// This header wraps FLINT fmpq elements and implements rational arithmetic,
+/// comparison, initialization, promotion, and conversion to and from Macaulay2
+/// ring elements.
+
 #ifndef M2_BASIC_RINGS_ARING_QQ_FLINT_HPP_
 #define M2_BASIC_RINGS_ARING_QQ_FLINT_HPP_
 

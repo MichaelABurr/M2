@@ -1,4 +1,12 @@
 // Copyright 2010-2012 Michael E. Stillman.
+
+/// \file aring-tower.hpp
+/// \brief Defines ARingTower, a recursive polynomial tower arithmetic ring.
+///
+/// This header represents tower elements as recursive polynomial structures
+/// over a finite base ring and implements the RingInterface operations,
+/// element lifetime helpers, evaluation, and conversion utilities for towers.
+
 #ifndef M2_BASIC_RINGS_ARING_TOWER_HPP_
 #define M2_BASIC_RINGS_ARING_TOWER_HPP_
 

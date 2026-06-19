@@ -1,5 +1,12 @@
 // Copyright 2011 Michael E. Stillman
 
+/// \file aring-ZZp.hpp
+/// \brief Defines ARingZZp, Macaulay2's table-based prime finite field ring.
+///
+/// This header implements arithmetic over ZZ/p using exponent and logarithm
+/// tables for a primitive element, along with element packaging, generator
+/// access, and modular arithmetic helpers.
+
 #ifndef M2_BASIC_RINGS_ARING_ZZP_HPP_
 #define M2_BASIC_RINGS_ARING_ZZP_HPP_
 

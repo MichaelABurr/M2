@@ -1,5 +1,12 @@
 // Copyright 2013 Michael E. Stillman
 
+/// \file aring-ZZ-flint.hpp
+/// \brief Defines ARingZZ, the FLINT-backed integer arithmetic ring.
+///
+/// This header wraps FLINT fmpz values and implements integer arithmetic,
+/// comparison, initialization, randomization, and conversion to and from
+/// Macaulay2 ring elements.
+
 #ifndef M2_BASIC_RINGS_ARING_ZZ_FLINT_HPP_
 #define M2_BASIC_RINGS_ARING_ZZ_FLINT_HPP_
 

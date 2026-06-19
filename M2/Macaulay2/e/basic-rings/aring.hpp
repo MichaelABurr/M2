@@ -1,5 +1,12 @@
 // Copyright 2011 Michael E. Stillman
 
+/// \file aring.hpp
+/// \brief Defines the shared interfaces and helpers for ARing implementations.
+///
+/// This header declares RingID values, the RingInterface marker, ElementImpl,
+/// and the SimpleARing template used by concrete arithmetic ring classes in
+/// this directory.
+
 #ifndef M2_BASIC_RINGS_ARING_HPP_
 #define M2_BASIC_RINGS_ARING_HPP_
 

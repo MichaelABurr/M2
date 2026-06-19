@@ -1,5 +1,12 @@
 // Copyright 2011 Michael E. Stillman
 
+/// \file aring-glue.hpp
+/// \brief Connects ARing implementations to the high-level Ring interface.
+///
+/// This header defines ConcreteRing, mutable matrix construction hooks, and
+/// promotion/coercion helpers that adapt concrete ARing classes to the rest of
+/// the Macaulay2 engine.
+
 #ifndef M2_BASIC_RINGS_RING_GLUE_HH_
 #define M2_BASIC_RINGS_RING_GLUE_HH_
 

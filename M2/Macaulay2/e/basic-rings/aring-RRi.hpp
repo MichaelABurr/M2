@@ -1,5 +1,12 @@
 // Copyright 2012 Michael E. Stillman
 
+/// \file aring-RRi.hpp
+/// \brief Defines ARingRRi, the arbitrary-precision real interval ring.
+///
+/// This header wraps MPFI intervals and provides precision-aware arithmetic,
+/// containment predicates, comparisons, randomization, and conversions for real
+/// interval elements.
+
 #ifndef M2_BASIC_RINGS_ARING_RRI_HPP_
 #define M2_BASIC_RINGS_ARING_RRI_HPP_
 

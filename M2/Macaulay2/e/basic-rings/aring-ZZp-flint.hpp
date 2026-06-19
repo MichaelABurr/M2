@@ -1,5 +1,12 @@
 // Copyright 2013 Michael E. Stillman
 
+/// \file aring-ZZp-flint.hpp
+/// \brief Defines ARingZZpFlint, a FLINT-backed prime finite field ring.
+///
+/// This header uses FLINT nmod arithmetic for word-sized prime moduli and
+/// provides modular arithmetic, generator and discrete-log support, and
+/// conversion to and from Macaulay2 ring elements.
+
 #ifndef M2_BASIC_RINGS_ARING_ZZP_FLINT_HPP_
 #define M2_BASIC_RINGS_ARING_ZZP_FLINT_HPP_
 

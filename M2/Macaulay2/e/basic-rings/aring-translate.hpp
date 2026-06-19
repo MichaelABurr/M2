@@ -1,5 +1,12 @@
 // Copyright 2013 Michael E. Stillman
 
+/// \file aring-translate.hpp
+/// \brief Provides generic conversion helpers between ARing implementations.
+///
+/// This header detects available source and target ring conversion operations
+/// and implements the mylift and mypromote paths used to translate elements
+/// among integers, rationals, finite fields, real rings, and complex rings.
+
 #ifndef M2_BASIC_RINGS_ARING_TRANSLATE_HPP_
 #define M2_BASIC_RINGS_ARING_TRANSLATE_HPP_
 

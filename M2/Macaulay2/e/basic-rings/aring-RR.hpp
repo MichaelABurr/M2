@@ -1,5 +1,12 @@
 // Copyright 2012 Michael E. Stillman
 
+/// \file aring-RR.hpp
+/// \brief Defines ARingRR, the machine-precision real arithmetic ring.
+///
+/// This header implements approximate real numbers as doubles and supplies the
+/// ARing operations, comparisons, randomization, and ring_elem conversions used
+/// by the ConcreteRing wrapper.
+
 #ifndef M2_BASIC_RINGS_ARING_RR_HPP_
 #define M2_BASIC_RINGS_ARING_RR_HPP_
 

@@ -1,5 +1,12 @@
 // Copyright 2012 Michael E. Stillman
 
+/// \file aring-m2-GF.hpp
+/// \brief Defines ARingGFM2, Macaulay2's table-based Galois field ring.
+///
+/// This header builds finite extension fields from a primitive element using
+/// GaloisFieldTable lookup data and implements arithmetic, generator access,
+/// discrete logarithms, and conversions for GF(p^n) elements.
+
 #ifndef M2_BASIC_RINGS_ARING_GF_M2_HPP_
 #define M2_BASIC_RINGS_ARING_GF_M2_HPP_
 

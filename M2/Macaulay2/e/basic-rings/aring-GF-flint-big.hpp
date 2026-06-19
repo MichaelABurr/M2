@@ -1,5 +1,12 @@
 // Copyright 2014 Michael E. Stillman
 
+/// \file aring-GF-flint-big.hpp
+/// \brief Defines ARingGFFlintBig, a FLINT fq_nmod finite field ring.
+///
+/// This header wraps FLINT's fq_nmod representation for finite field
+/// extensions, retaining the FLINT context needed for element lifetime,
+/// arithmetic, generator access, and ring_elem conversion.
+
 #ifndef M2_BASIC_RINGS_ARING_GF_FLINT_BIG_HPP_
 #define M2_BASIC_RINGS_ARING_GF_FLINT_BIG_HPP_
 

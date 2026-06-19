@@ -1,5 +1,12 @@
 // Copyright 2012 Michael E. Stillman
 
+/// \file aring-CCC.hpp
+/// \brief Defines ARingCCC, the arbitrary-precision complex arithmetic ring.
+///
+/// This header represents complex numbers as pairs of MPFR real values at a
+/// selected precision and provides the ARing operations and conversions needed
+/// for high-precision complex rings.
+
 #ifndef M2_BASIC_RINGS_ARING_CCC_HPP_
 #define M2_BASIC_RINGS_ARING_CCC_HPP_
 

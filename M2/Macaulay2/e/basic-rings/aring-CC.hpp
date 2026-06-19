@@ -1,5 +1,12 @@
 // Copyright 2012 Michael E. Stillman
 
+/// \file aring-CC.hpp
+/// \brief Defines ARingCC, the machine-precision complex arithmetic ring.
+///
+/// This header implements complex numbers as pairs of doubles and supplies the
+/// ARing operations, comparisons, randomization, and ring_elem conversions used
+/// by the ConcreteRing wrapper.
+
 #ifndef M2_BASIC_RINGS_ARING_CC_HPP_
 #define M2_BASIC_RINGS_ARING_CC_HPP_
 

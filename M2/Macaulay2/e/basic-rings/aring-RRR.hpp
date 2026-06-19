@@ -1,5 +1,12 @@
 // Copyright 2012 Michael E. Stillman
 
+/// \file aring-RRR.hpp
+/// \brief Defines ARingRRR, the arbitrary-precision real arithmetic ring.
+///
+/// This header wraps MPFR real values at a selected precision and provides the
+/// ARing operations, comparisons, randomization, and conversions needed for
+/// high-precision real rings.
+
 #ifndef M2_BASIC_RINGS_ARING_RRR_HPP_
 #define M2_BASIC_RINGS_ARING_RRR_HPP_
 

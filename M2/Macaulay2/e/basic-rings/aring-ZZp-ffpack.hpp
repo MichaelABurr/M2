@@ -1,5 +1,12 @@
 // Copyright 2011 Michael E. Stillman
 
+/// \file aring-ZZp-ffpack.hpp
+/// \brief Defines ARingZZpFFPACK, an FFPACK/Givaro prime finite field ring.
+///
+/// This header wraps a Givaro modular field for arithmetic over ZZ/p, including
+/// generator access, balanced coefficient conversion, arithmetic operations,
+/// and integration with dense linear algebra code.
+
 #ifndef M2_BASIC_RINGS_ARING_FFPACK_HPP_
 #define M2_BASIC_RINGS_ARING_FFPACK_HPP_
 
