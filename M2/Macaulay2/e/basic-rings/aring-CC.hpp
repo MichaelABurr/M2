@@ -4,9 +4,18 @@
 /// \file aring-CC.hpp
 /// \brief Defines ARingCC, the machine-precision complex arithmetic ring.
 ///
-/// This header implements complex numbers as pairs of doubles and supplies the
-/// ARing operations, comparisons, randomization, and ring_elem conversions used
-/// by the ConcreteRing wrapper.
+/// ARingCC is the coefficient-ring implementation for approximate complex
+/// numbers stored as `cc_doubles_struct`, a pair of machine doubles.  It
+/// inherits from `SimpleARing`, so `ConcreteRing<ARingCC>` obtains element
+/// lifetime management from `init`, `init_set`, `set`, and `clear`.
+///
+/// The methods in this class are the low-level targets for the high-level
+/// `Ring` interface in `aring-glue.hpp`: `to_ring_elem` and
+/// `from_ring_elem_const` move values across the `ring_elem` boundary, while
+/// arithmetic, comparison, printing, and randomization methods are called
+/// directly by `ConcreteRing`.  The companion real ring `ARingRR` supplies the
+/// real component type used by generic real-to-complex promotion paths in
+/// `aring-translate.hpp`.
 
 #ifndef M2_BASIC_RINGS_ARING_CC_HPP_
 #define M2_BASIC_RINGS_ARING_CC_HPP_

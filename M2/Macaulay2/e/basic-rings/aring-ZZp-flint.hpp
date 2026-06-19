@@ -4,9 +4,16 @@
 /// \file aring-ZZp-flint.hpp
 /// \brief Defines ARingZZpFlint, a FLINT-backed prime finite field ring.
 ///
-/// This header uses FLINT nmod arithmetic for word-sized prime moduli and
-/// provides modular arithmetic, generator and discrete-log support, and
-/// conversion to and from Macaulay2 ring elements.
+/// ARingZZpFlint implements prime finite fields with FLINT `nmod` arithmetic
+/// for word-sized moduli.  Its `ElementType` is an `mp_limb_t`, so
+/// `SimpleARing` can manage elements with inexpensive initialization and
+/// no-op cleanup while the ring object stores the modulus and generator data.
+///
+/// `ConcreteRing<ARingZZpFlint>` calls the methods here for modular
+/// construction from ZZ/QQ, `ring_elem` conversion, arithmetic, comparison,
+/// hashing, printing, randomization, and integer lifting.  The ring ID is used
+/// by `aring-glue.hpp` to recognize finite prime fields and by vector/matrix
+/// code that selects FLINT-backed dense arithmetic paths.
 
 #ifndef M2_BASIC_RINGS_ARING_ZZP_FLINT_HPP_
 #define M2_BASIC_RINGS_ARING_ZZP_FLINT_HPP_

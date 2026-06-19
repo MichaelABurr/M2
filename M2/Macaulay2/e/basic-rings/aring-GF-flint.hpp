@@ -4,9 +4,18 @@
 /// \file aring-GF-flint.hpp
 /// \brief Defines ARingGFFlint, a FLINT fq_zech finite field ring.
 ///
-/// This header wraps FLINT's Zech-log finite field representation, including
-/// context-owning element helpers, arithmetic, discrete logarithms, and
-/// conversions for extension field elements.
+/// ARingGFFlint wraps FLINT's `fq_zech` Zech-log representation for finite
+/// field extensions.  Like the `fq_nmod` wrapper, each element depends on a
+/// FLINT context for initialization and destruction, so this class derives from
+/// `RingInterface` and provides its own context-carrying `Element` and
+/// `ElementArray` helpers.
+///
+/// This ARing is the bridge between FLINT field arithmetic and the engine's
+/// `Ring` API: `ConcreteRing<ARingGFFlint>` delegates element conversion,
+/// arithmetic, discrete logarithms, evaluation through `RingMap`, and text
+/// output to the methods here.  Factory and promotion code use the stored
+/// quotient-ring data, primitive generator, and coefficient extraction helpers
+/// to relate Zech elements back to polynomial representatives.
 
 #ifndef M2_BASIC_RINGS_ARING_GF_FLINT_HPP_
 #define M2_BASIC_RINGS_ARING_GF_FLINT_HPP_

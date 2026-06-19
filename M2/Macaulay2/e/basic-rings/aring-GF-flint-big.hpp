@@ -4,9 +4,20 @@
 /// \file aring-GF-flint-big.hpp
 /// \brief Defines ARingGFFlintBig, a FLINT fq_nmod finite field ring.
 ///
-/// This header wraps FLINT's fq_nmod representation for finite field
-/// extensions, retaining the FLINT context needed for element lifetime,
-/// arithmetic, generator access, and ring_elem conversion.
+/// ARingGFFlintBig wraps FLINT's `fq_nmod` representation for finite field
+/// extensions built from a quotient polynomial ring and a chosen primitive
+/// element.  Because each FLINT element must be initialized and cleared with
+/// the field context, this class inherits from `RingInterface` directly and
+/// defines context-aware `Element` and `ElementArray` wrappers instead of using
+/// `SimpleARing`.
+///
+/// The ARing owns the FLINT context, original polynomial ring, characteristic,
+/// extension degree, and generator data needed by factory code and finite-field
+/// algorithms.  `ConcreteRing<ARingGFFlintBig>` calls the conversion,
+/// arithmetic, comparison, evaluation, and printing methods declared here, and
+/// specialized promotion/lift code uses `originalRing`, generator access, and
+/// polynomial coefficient helpers to connect GF(p^n) elements with their
+/// quotient-ring representation.
 
 #ifndef M2_BASIC_RINGS_ARING_GF_FLINT_BIG_HPP_
 #define M2_BASIC_RINGS_ARING_GF_FLINT_BIG_HPP_

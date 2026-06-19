@@ -4,9 +4,17 @@
 /// \file aring-translate.hpp
 /// \brief Provides generic conversion helpers between ARing implementations.
 ///
-/// This header detects available source and target ring conversion operations
-/// and implements the mylift and mypromote paths used to translate elements
-/// among integers, rationals, finite fields, real rings, and complex rings.
+/// This header contains the element-level conversion layer used after
+/// `ConcreteRing::promote` or `ConcreteRing::lift` has selected a source and
+/// target ARing pair.  It uses compile-time detection of optional
+/// `set_from_*` methods to route common conversions without forcing every ARing
+/// to implement every possible source type.
+///
+/// The `mypromote` and `mylift` overloads here describe the actual natural maps
+/// among exact rings, prime fields, real rings, complex rings, and interval
+/// rings.  Source elements are unpacked from `ring_elem` in `aring-glue.hpp`,
+/// translated here using ARing-specific setters and membership tests, and then
+/// packed back into the target ring with `to_ring_elem`.
 
 #ifndef M2_BASIC_RINGS_ARING_TRANSLATE_HPP_
 #define M2_BASIC_RINGS_ARING_TRANSLATE_HPP_

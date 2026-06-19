@@ -4,9 +4,17 @@
 /// \file aring-ZZp.hpp
 /// \brief Defines ARingZZp, Macaulay2's table-based prime finite field ring.
 ///
-/// This header implements arithmetic over ZZ/p using exponent and logarithm
-/// tables for a primitive element, along with element packaging, generator
-/// access, and modular arithmetic helpers.
+/// ARingZZp implements a prime finite field using logarithm and exponent tables
+/// for a primitive element.  Elements are stored as compact integers in the
+/// table representation, and `SimpleARing` supplies the wrapper objects used by
+/// `ConcreteRing<ARingZZp>`.
+///
+/// This class defines the table-based versions of finite-field construction,
+/// `ring_elem` packing, arithmetic, comparison, randomization, generator
+/// access, discrete logarithms, and integer lifting.  `aring-glue.hpp` treats
+/// this ring as one of the finite prime field implementations and provides
+/// explicit promotion/lift dispatch between it and the FFPACK-backed prime
+/// field when their characteristics are compatible.
 
 #ifndef M2_BASIC_RINGS_ARING_ZZP_HPP_
 #define M2_BASIC_RINGS_ARING_ZZP_HPP_

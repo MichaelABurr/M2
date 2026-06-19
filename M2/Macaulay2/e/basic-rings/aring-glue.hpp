@@ -4,9 +4,19 @@
 /// \file aring-glue.hpp
 /// \brief Connects ARing implementations to the high-level Ring interface.
 ///
-/// This header defines ConcreteRing, mutable matrix construction hooks, and
-/// promotion/coercion helpers that adapt concrete ARing classes to the rest of
-/// the Macaulay2 engine.
+/// This header is the adapter layer between concrete ARing classes and the
+/// virtual `Ring` API used throughout the engine.  `ConcreteRing<RingType>`
+/// owns a specific ARing instance, initializes the common `Ring` constants, and
+/// forwards public operations such as construction, arithmetic, comparison,
+/// printing, random elements, and evaluation to methods on `RingType`.
+///
+/// The template also provides the default dense/sparse mutable matrix hooks and
+/// finite-field predicates used by matrix and vector code.  Promotion and lift
+/// dispatch is centralized here by `RingID`; once a source/target pair is
+/// selected, `RingPromoter` calls the element-level `mypromote` and `mylift`
+/// routines from `aring-translate.hpp`.  Adding a new ARing usually requires
+/// wiring its `RingID` into this dispatch table when it has natural maps to or
+/// from existing rings.
 
 #ifndef M2_BASIC_RINGS_RING_GLUE_HH_
 #define M2_BASIC_RINGS_RING_GLUE_HH_

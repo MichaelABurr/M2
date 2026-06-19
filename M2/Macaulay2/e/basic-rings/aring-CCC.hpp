@@ -4,9 +4,17 @@
 /// \file aring-CCC.hpp
 /// \brief Defines ARingCCC, the arbitrary-precision complex arithmetic ring.
 ///
-/// This header represents complex numbers as pairs of MPFR real values at a
-/// selected precision and provides the ARing operations and conversions needed
-/// for high-precision complex rings.
+/// ARingCCC stores complex numbers as two MPFR values in a `cc_struct`, using
+/// an `ARingRRR` member with the same precision for operations on real parts.
+/// It inherits from `SimpleARing`, so the MPFR initialization and cleanup
+/// routines in this class define how `ConcreteRing<ARingCCC>` manages element
+/// lifetime.
+///
+/// This class provides the conversion layer between MPFR-backed elements and
+/// Macaulay2 `ring_elem` values, plus the arithmetic, comparison, text output,
+/// and random element hooks invoked from `aring-glue.hpp`.  Promotion and lift
+/// code in `aring-translate.hpp` uses the high-precision real and complex
+/// setters here to move values among QQ, RR/RRR, CC/CCC, and interval rings.
 
 #ifndef M2_BASIC_RINGS_ARING_CCC_HPP_
 #define M2_BASIC_RINGS_ARING_CCC_HPP_

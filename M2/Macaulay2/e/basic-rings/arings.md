@@ -1,20 +1,49 @@
-# ARing implementation guide
+# ARing quick-start guide
 
-An ARing is the engine-level arithmetic object used by `ConcreteRing` to
-implement a Macaulay2 `Ring`.  The ARing owns the representation of one element
-type and provides the operations needed to create, convert, compare, print, and
-compute with those elements.
+This guide is for contributors adding a new arithmetic ring, or ARing, under
+`M2/Macaulay2/e/basic-rings`.  An ARing is the low-level C++ object that knows
+how to store and compute with one coefficient type.  `ConcreteRing<ARingType>`
+wraps that object and exposes it through the virtual Macaulay2 `Ring`
+interface.
 
-Most ARings live in an `aring-*.hpp` and matching `.cpp` file.  Simple rings
-inherit from `SimpleARing<ARingType>`, which supplies RAII element wrappers when
-the ARing provides `init`, `init_set`, and `clear`.  Rings whose elements need a
-ring-specific context for destruction, such as FLINT finite fields, inherit from
-`RingInterface` and define their own nested `Element` and `ElementArray`
-wrappers.
+The big picture is:
 
-## Required ring data
+```text
+Macaulay2 code
+  -> Ring virtual methods
+  -> ConcreteRing<ARingType>
+  -> ARingType methods
+  -> raw ElementType storage, often backed by GMP, FLINT, MPFR, MPFI, or Givaro
+```
 
-Every concrete ARing should provide these basic declarations and ring metadata.
+`ConcreteRing` is the adapter.  It receives a `ring_elem` from the rest of the
+engine, asks the ARing to unpack it into the ARing's `ElementType`, calls the
+ARing operation, and asks the ARing to pack the result back into a `ring_elem`.
+That means a new ARing must define both the mathematical operations and the
+conversion boundary between `ring_elem` and its own element representation.
+
+## The shortest path
+
+Start from an existing ARing whose storage model is close to yours.
+
+Use `SimpleARing<YourRing>` when elements can be initialized, copied, and
+cleared without carrying extra context.  Examples include many integer,
+rational, prime-field, real, and interval rings.
+
+Use `RingInterface` directly when each element needs ring-owned context for
+destruction or array management.  Examples include FLINT extension fields and
+recursive tower elements; these rings define their own nested `Element` and
+`ElementArray` wrappers.
+
+Create `aring-your-ring.hpp` and usually `aring-your-ring.cpp`.  Add a `RingID`
+in `aring.hpp`, add the source/header to the build lists, add factory support in
+`interface/aring.cpp` if Macaulay2 code should construct the ring directly, and
+add tests before opening the PR.
+
+## Minimal class shape
+
+Most simple ARings start with this shape.  Exact signatures may pass small POD
+types by value instead of by const reference, but the roles are the same.
 
 ```c++
 class ARingExample : public SimpleARing<ARingExample>
@@ -25,78 +54,140 @@ class ARingExample : public SimpleARing<ARingExample>
   typedef ExampleElement ElementType;
   typedef ElementType elem;
 
+  ARingExample(/* modulus, precision, context, etc. */);
+
   size_t characteristic() const;
   unsigned int computeHashValue(const ElementType& a) const;
   void text_out(buffer& o) const;
+
+  void init(ElementType& result) const;
+  void init_set(ElementType& result, const ElementType& a) const;
+  void set(ElementType& result, const ElementType& a) const;
+  static void clear(ElementType& result);
+  void set_zero(ElementType& result) const;
+
+  void to_ring_elem(ring_elem& result, const ElementType& a) const;
+  void from_ring_elem(ElementType& result, const ring_elem& a) const;
+  const ElementType& from_ring_elem_const(const ring_elem& a) const;
+
+  void set_from_long(ElementType& result, long a) const;
+  void set_from_mpz(ElementType& result, mpz_srcptr a) const;
+  bool set_from_mpq(ElementType& result, mpq_srcptr a) const;
+  void set_var(ElementType& result, int v) const;
+
+  bool is_unit(const ElementType& a) const;
+  bool is_zero(const ElementType& a) const;
+  bool is_equal(const ElementType& a, const ElementType& b) const;
+  int compare_elems(const ElementType& a, const ElementType& b) const;
+
+  void negate(ElementType& result, const ElementType& a) const;
+  void add(ElementType& result, const ElementType& a, const ElementType& b) const;
+  void subtract(ElementType& result, const ElementType& a, const ElementType& b) const;
+  void mult(ElementType& result, const ElementType& a, const ElementType& b) const;
+  void divide(ElementType& result, const ElementType& a, const ElementType& b) const;
+  void invert(ElementType& result, const ElementType& a) const;
+  void power(ElementType& result, const ElementType& a, int n) const;
+  void power_mpz(ElementType& result, const ElementType& a, mpz_srcptr n) const;
+  void subtract_multiple(ElementType& result,
+                         const ElementType& a,
+                         const ElementType& b) const;
+
+  void elem_text_out(buffer& o,
+                     const ElementType& a,
+                     bool p_one,
+                     bool p_plus,
+                     bool p_parens) const;
+  void random(ElementType& result) const;
+  void eval(const RingMap* map,
+            const ElementType& f,
+            int first_var,
+            ring_elem& result) const;
 };
 ```
 
-`ringID` identifies the ring implementation to dispatch code in
-`aring-glue.hpp`; add a new value to `RingID` in `aring.hpp` before using one.
-`ElementType` is the raw element representation.  `elem` is the older local
-alias used by many ARing files.
+## Mandatory pieces
 
-Several rings also provide `cardinality()` and
-`typedef std::vector<elem> ElementContainerType`.  Add `cardinality()` when the
-size of the ring is meaningful and cheap to report.  Add `ElementContainerType`
-when matrix or vector code needs a standard container of raw elements.
+These are the pieces a normal `ConcreteRing<YourRing>` needs in order to be a
+usable ring.
 
-Constructors should store all data needed to interpret an element: modulus,
-precision, FLINT/GMP/Givaro context, original polynomial ring, primitive
-element, tower variables, or any lookup tables.  If elements depend on that
-context for memory management, define custom `Element` and `ElementArray`
-wrappers instead of using `SimpleARing`.
+Ring identity and element storage are mandatory.  Provide a unique `ringID`,
+the raw `ElementType`, and any constructor data needed to interpret an element:
+modulus, characteristic, precision, coefficient field, FLINT context, original
+polynomial ring, primitive element, lookup tables, or tower variables.
 
-## Element lifetime
+Element lifetime is mandatory.  `ConcreteRing` creates temporary ARing elements
+before almost every operation.  `init`, `init_set`, `set`, `set_zero`, and
+`clear` must leave elements valid and must not leak memory.  If `clear` needs
+ring context, do not use `SimpleARing`; define custom wrappers as in the FLINT
+field and tower ARings.
 
-For a `SimpleARing`, implement the lifecycle functions for `ElementType`.
+`ring_elem` conversion is mandatory.  The rest of the engine does not know your
+raw `ElementType`.  Implement `to_ring_elem`, `from_ring_elem`, and
+`from_ring_elem_const` carefully, following a nearby ring with similar storage
+ownership.
 
-```c++
-void init(ElementType& result) const;
-void init_set(ElementType& result, const ElementType& a) const;
-void set(ElementType& result, const ElementType& a) const;
-static void clear(ElementType& result);
-void set_zero(ElementType& result) const;
-```
+Construction from common values is mandatory for the usual coefficient-ring
+paths.  Implement `set_from_long`, `set_from_mpz`, `set_from_mpq`, and
+`set_var`.  `set_from_mpq` should return `false` when the rational cannot be
+represented, such as a denominator becoming zero in a finite field.
 
-`init` must create a valid zero-like element.  `init_set` creates a new valid
-element initialized from another element.  `set` assigns into an already
-initialized element.  `clear` releases resources held by an initialized element.
-For POD element types, these functions are often simple assignments and `clear`
-can be a no-op.
+Predicates and comparison are mandatory.  Implement `is_zero`, `is_unit`,
+`is_equal`, and `compare_elems`.  The comparison only needs to be consistent for
+engine use unless the ring has a mathematically meaningful canonical order.
 
-## Conversion to ring_elem
+Core arithmetic is mandatory.  At minimum, implement `negate`, `add`,
+`subtract`, `mult`, `divide`, `invert`, `power`, `power_mpz`, and
+`subtract_multiple`.  `add` and `subtract` are not optional; many algorithms
+assume they are cheap and correct.  Operations that are mathematically invalid
+should fail explicitly, usually by throwing an engine exception such as
+`exc::division_by_zero_error`.
 
-`ConcreteRing` stores public ring values as `ring_elem`, so an ARing must define
-how to pack and unpack its `ElementType`.
+Printing, random elements, and evaluation are mandatory for a fully integrated
+ring.  Implement `text_out` for the ring, `elem_text_out` for elements,
+`random`, and `eval`.  For a constant coefficient ring, `eval` is often a
+conversion into the target ring.
 
-```c++
-void to_ring_elem(ring_elem& result, const ElementType& a) const;
-void from_ring_elem(ElementType& result, const ring_elem& a) const;
-const ElementType& from_ring_elem_const(const ring_elem& a) const;
-```
+Hashing is mandatory.  `computeHashValue` is called through `ConcreteRing` and
+should be stable for equal elements.
 
-`to_ring_elem` creates the engine-facing value.  `from_ring_elem` copies or
-reconstructs into an initialized `ElementType`.  `from_ring_elem_const` should
-return a read-only view when the stored `ring_elem` representation allows it.
-If no stable reference is possible, follow the patterns of existing rings with
-similar storage.
+## Important integration work
 
-## Constructors from common values
+Build-system updates are important.  Add new `.hpp` and `.cpp` files to
+`M2/Macaulay2/e/CMakeLists.txt` and any active source lists used by the build.
 
-The high-level `Ring` interface calls these methods when creating elements from
-integers, rationals, variables, and approximate values.
+Factory support is important when the ring is user-visible.  Add creation code
+in `interface/aring.cpp` or the relevant factory path so Macaulay2 can request
+the new `ConcreteRing<YourRing>`.
 
-```c++
-void set_from_long(ElementType& result, long a) const;
-void set_from_mpz(ElementType& result, mpz_srcptr a) const;
-bool set_from_mpq(ElementType& result, mpq_srcptr a) const;
-void set_var(ElementType& result, int v) const;
-```
+Promotion and lifting are important when there are natural maps to or from
+existing rings.  `aring-glue.hpp` dispatches by `RingID`, then
+`aring-translate.hpp` performs element-level `mypromote` or `mylift` work.  If
+generic `set_from_*` methods already cover your case, keep the wiring small;
+otherwise add explicit overloads and tests for success and failure cases.
 
-`set_from_mpq` returns `false` when the rational cannot be represented, for
-example when a denominator maps to zero in a finite field.  Approximate and
-interval rings should also provide whichever of these conversions are natural:
+Matrix and vector support is important for performance-sensitive coefficient
+rings.  Generic dense and sparse mutable matrices work through `ConcreteRing`,
+but specialized dense arithmetic may require an entry in
+`vector-arithmetic.hpp`.
+
+Tests are important, not optional.  Add focused unit tests for the ARing itself
+and normal Macaulay2 tests when the ring is user-visible.  Cover construction,
+coercion, equality, zero and unit predicates, add/subtract/multiply, division
+or division failure, powers, printing, promotion/lifting, and representative
+error cases.
+
+## Optional or specialized hooks
+
+Only add these when the ring actually supports the behavior or when a caller
+needs the hook.
+
+`cardinality()` is useful for finite rings where the size is meaningful and
+cheap to report.
+
+`ElementContainerType` is useful when vector or matrix code needs a standard
+container of raw elements.
+
+Approximate and interval setters are useful for real and complex rings:
 
 ```c++
 bool set_from_double(ElementType& result, double a) const;
@@ -107,72 +198,7 @@ bool set_from_BigComplex(ElementType& result, gmp_CC a) const;
 bool set_from_ComplexInterval(ElementType& result, gmp_CCi a) const;
 ```
 
-`aring-translate.hpp` detects these methods and uses them for promotion and
-lifting between ARing implementations.
-
-## Predicates and ordering
-
-Implement the basic predicates and comparison used by `Ring`.
-
-```c++
-bool is_unit(const ElementType& a) const;
-bool is_zero(const ElementType& a) const;
-bool is_equal(const ElementType& a, const ElementType& b) const;
-int compare_elems(const ElementType& a, const ElementType& b) const;
-```
-
-`compare_elems` should return `-1`, `0`, or `1`.  The ordering only needs to be
-consistent for engine use; it does not have to be mathematically canonical
-unless callers rely on that for the ring.
-
-## Arithmetic
-
-`ConcreteRing` forwards public arithmetic to methods on the ARing.  The result
-argument is already initialized before each call.
-
-```c++
-void negate(ElementType& result, const ElementType& a) const;
-void add(ElementType& result, const ElementType& a, const ElementType& b) const;
-void subtract(ElementType& result, const ElementType& a, const ElementType& b) const;
-void mult(ElementType& result, const ElementType& a, const ElementType& b) const;
-void divide(ElementType& result, const ElementType& a, const ElementType& b) const;
-void invert(ElementType& result, const ElementType& a) const;
-void power(ElementType& result, const ElementType& a, int n) const;
-void power_mpz(ElementType& result, const ElementType& a, mpz_srcptr n) const;
-void subtract_multiple(ElementType& result, const ElementType& a, const ElementType& b) const;
-void syzygy(const ElementType& a, const ElementType& b, ElementType& x, ElementType& y) const;
-```
-
-`subtract_multiple` updates `result` by subtracting `a * b`.  Division and
-inversion should throw the appropriate engine exception, such as
-`exc::division_by_zero_error`, when the operation is invalid.
-
-## Output, random elements, and evaluation
-
-These methods connect an ARing to printing, random element generation, and ring
-maps.
-
-```c++
-void elem_text_out(buffer& o,
-                   const ElementType& a,
-                   bool p_one,
-                   bool p_plus,
-                   bool p_parens) const;
-void random(ElementType& result) const;
-void eval(const RingMap* map,
-          const ElementType& f,
-          int first_var,
-          ring_elem& result) const;
-```
-
-`text_out` prints the ring itself, while `elem_text_out` prints an element.
-`eval` is used when applying a `RingMap`; for constant rings this is often just
-conversion into the target ring.
-
-## Optional hooks
-
-Some ARings support additional behavior used by finite field, approximate, or
-factory code.  Add these only when they are meaningful for the new ring.
+Finite-field and extension-field hooks are specialized:
 
 ```c++
 long coerceToLongInteger(const ElementType& a) const;
@@ -183,48 +209,33 @@ void lift_to_original_ring(ring_elem& result, const ElementType& a) const;
 M2_arrayint getModPolynomialCoeffs() const;
 M2_arrayint getGeneratorCoeffs() const;
 M2_arrayint fieldElementToM2Array(ElementType a) const;
-unsigned long get_precision() const;
 ```
 
-Prime finite fields commonly provide integer coercion, generators, and
-discrete logarithms.  Extension fields usually keep the original quotient
-polynomial ring and provide access to modulus and generator data.  Real and
-complex rings provide precision and approximate-value conversions.
+`syzygy` is optional algorithmic support, not part of the basic arithmetic
+definition in the same way that `add` and `subtract` are.  Implement it when
+algorithms targeting the ring need coefficient syzygies.  If the ring cannot
+support it, keep the behavior explicit and covered by tests rather than letting
+callers silently get nonsense.
 
-## Promotion and lifting
+Precision hooks such as `get_precision()` are specialized for real, complex,
+and interval rings.
 
-Promotion and lifting happen in two layers.  `ConcreteRing::promote` and
-`ConcreteRing::lift` in `aring-glue.hpp` dispatch by `RingID`; the actual
-element-level conversions are implemented in `aring-translate.hpp`.
+## Quick checklist
 
-When adding a ring, update `aring-glue.hpp` if the new ring participates in a
-new source or target pair.  Update `aring-translate.hpp` with `mypromote` or
-`mylift` overloads when conversion cannot be handled by the generic
-`set_from_*` helpers.
+Choose the closest existing ARing and copy its structure.
 
-## Integration checklist
+Decide between `SimpleARing` and custom `RingInterface` wrappers.
 
-Create the header and implementation files under `basic-rings/`.
+Define `RingID`, `ElementType`, constructor data, and lifetime management.
 
-Add a `RingID` value in `aring.hpp`.
+Implement `ring_elem` conversion, construction from ZZ/QQ, predicates,
+comparison, hashing, core arithmetic, printing, random elements, and evaluation.
 
-Add source files and installed headers to `M2/Macaulay2/e/CMakeLists.txt` and
-the matching autotools source lists if they are still in use.
+Wire the ring into build files and factory code.
 
-Include the new header from `aring-glue.hpp` or `aring-translate.hpp` only when
-dispatch or conversion code needs the complete type.
+Add promotion/lift dispatch only for natural maps that should exist.
 
-Add a factory entry in `interface/aring.cpp` when Macaulay2 code needs to create
-the ring directly.
+Add unit tests and user-visible Macaulay2 tests.
 
-Add promotion and lifting dispatch in `aring-glue.hpp` and element conversion
-helpers in `aring-translate.hpp` when the ring has natural maps to or from
-existing ARings.
-
-Check matrix and vector arithmetic support.  Generic mutable matrices work
-through `ConcreteRing`, but specialized dense vector arithmetic may require an
-entry in `vector-arithmetic.hpp`.
-
-Add focused unit tests under `unit-tests/` and, when the ring is user-visible,
-normal Macaulay2 tests for construction, coercion, arithmetic, printing,
-promotion, and failure cases.
+Run the ARing tests and at least the relevant engine/Macaulay2 smoke tests
+before sending the PR.

@@ -4,8 +4,16 @@
 /// \file aring-QQ.hpp
 /// \brief Selects the default ARing implementation for rational numbers.
 ///
-/// This header includes the available FLINT and GMP rational implementations
-/// and aliases ARingQQ to the implementation currently used by the engine.
+/// This small coordination header includes both rational ARing backends and
+/// defines the `ARingQQ` typedef used throughout the rest of `basic-rings`.
+/// Code that dispatches on the abstract rational ARing name, including
+/// `aring-glue.hpp` and `aring-translate.hpp`, should include this header
+/// rather than committing to a concrete backend directly.
+///
+/// Changing the typedef changes which rational implementation is used by
+/// `RingQQ::create()` and by promotion/lift code that names `ARingQQ`.  Backend
+/// headers still remain available for tests or factory paths that need to
+/// instantiate a specific GMP or FLINT implementation explicitly.
 
 #ifndef M2_BASIC_RINGS_ARING_QQ_HPP_
 #define M2_BASIC_RINGS_ARING_QQ_HPP_
