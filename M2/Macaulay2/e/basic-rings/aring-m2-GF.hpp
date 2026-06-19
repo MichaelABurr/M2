@@ -1,5 +1,6 @@
 // Copyright 2012 Michael E. Stillman
 
+/// AI:
 /// \file aring-m2-GF.hpp
 /// \brief Defines ARingGFM2, Macaulay2's table-based Galois field ring.
 ///

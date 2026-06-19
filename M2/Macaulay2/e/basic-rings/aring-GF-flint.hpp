@@ -1,5 +1,6 @@
 // Copyright 2014 Michael E. Stillman
 
+/// AI:
 /// \file aring-GF-flint.hpp
 /// \brief Defines ARingGFFlint, a FLINT fq_zech finite field ring.
 ///

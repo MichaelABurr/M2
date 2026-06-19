@@ -1,5 +1,6 @@
 // Copyright 2013 Michael E. Stillman
 
+/// AI:
 /// \file aring-QQ-gmp.hpp
 /// \brief Defines ARingQQGMP, the GMP-backed rational arithmetic ring.
 ///

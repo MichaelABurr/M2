@@ -1,5 +1,6 @@
 // Copyright 2011 Michael E. Stillman
 
+/// AI:
 /// \file aring-ZZp-ffpack.hpp
 /// \brief Defines ARingZZpFFPACK, an FFPACK/Givaro prime finite field ring.
 ///

@@ -1,5 +1,6 @@
 // Copyright 2012 Michael E. Stillman
 
+/// AI:
 /// \file aring-CCi.hpp
 /// \brief Defines ARingCCi, the arbitrary-precision complex interval ring.
 ///

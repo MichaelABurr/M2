@@ -1,5 +1,6 @@
 // Copyright 2012 Michael E. Stillman
 
+/// AI:
 /// \file aring-CCC.hpp
 /// \brief Defines ARingCCC, the arbitrary-precision complex arithmetic ring.
 ///

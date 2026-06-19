@@ -1,5 +1,6 @@
 // Copyright 2013 Michael E. Stillman
 
+/// AI:
 /// \file aring-ZZp-flint.hpp
 /// \brief Defines ARingZZpFlint, a FLINT-backed prime finite field ring.
 ///

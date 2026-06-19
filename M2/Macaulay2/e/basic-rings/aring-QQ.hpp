@@ -1,5 +1,6 @@
 // Copyright 2013 Michael E. Stillman.
 
+/// AI:
 /// \file aring-QQ.hpp
 /// \brief Selects the default ARing implementation for rational numbers.
 ///

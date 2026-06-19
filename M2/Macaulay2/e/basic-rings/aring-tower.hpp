@@ -1,5 +1,6 @@
 // Copyright 2010-2012 Michael E. Stillman.
 
+/// AI:
 /// \file aring-tower.hpp
 /// \brief Defines ARingTower, a recursive polynomial tower arithmetic ring.
 ///

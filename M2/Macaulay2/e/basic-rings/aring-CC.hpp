@@ -1,5 +1,6 @@
 // Copyright 2012 Michael E. Stillman
 
+/// AI:
 /// \file aring-CC.hpp
 /// \brief Defines ARingCC, the machine-precision complex arithmetic ring.
 ///

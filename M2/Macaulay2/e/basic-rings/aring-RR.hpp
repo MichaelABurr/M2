@@ -1,5 +1,6 @@
 // Copyright 2012 Michael E. Stillman
 
+/// AI:
 /// \file aring-RR.hpp
 /// \brief Defines ARingRR, the machine-precision real arithmetic ring.
 ///

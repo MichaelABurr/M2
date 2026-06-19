@@ -1,5 +1,6 @@
 // Copyright 2011 Michael E. Stillman
 
+/// AI:
 /// \file aring.hpp
 /// \brief Defines the shared interfaces and helpers for ARing implementations.
 ///

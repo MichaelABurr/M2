@@ -1,5 +1,6 @@
 // Copyright 2013 Michael E. Stillman
 
+/// AI:
 /// \file aring-translate.hpp
 /// \brief Provides generic conversion helpers between ARing implementations.
 ///

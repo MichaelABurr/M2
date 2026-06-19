@@ -1,5 +1,6 @@
 // Copyright 2013 Michael E. Stillman
 
+/// AI:
 /// \file aring-ZZ-flint.hpp
 /// \brief Defines ARingZZ, the FLINT-backed integer arithmetic ring.
 ///

@@ -1,5 +1,6 @@
 // Copyright 2011 Michael E. Stillman
 
+/// AI:
 /// \file aring-ZZp.hpp
 /// \brief Defines ARingZZp, Macaulay2's table-based prime finite field ring.
 ///

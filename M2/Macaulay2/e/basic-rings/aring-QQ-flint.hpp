@@ -1,5 +1,6 @@
 // Copyright 2013 Michael E. Stillman
 
+/// AI:
 /// \file aring-QQ-flint.hpp
 /// \brief Defines ARingQQFlint, the FLINT-backed rational arithmetic ring.
 ///

@@ -1,5 +1,6 @@
 // Copyright 2012 Michael E. Stillman
 
+/// AI:
 /// \file aring-RRi.hpp
 /// \brief Defines ARingRRi, the arbitrary-precision real interval ring.
 ///

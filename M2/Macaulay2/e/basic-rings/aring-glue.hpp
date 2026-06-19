@@ -1,5 +1,6 @@
 // Copyright 2011 Michael E. Stillman
 
+/// AI:
 /// \file aring-glue.hpp
 /// \brief Connects ARing implementations to the high-level Ring interface.
 ///
