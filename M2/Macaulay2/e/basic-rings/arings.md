@@ -129,6 +129,16 @@ raw `ElementType`.  Implement `to_ring_elem`, `from_ring_elem`, and
 `from_ring_elem_const` carefully, following a nearby ring with similar storage
 ownership.
 
+Garbage-collection ownership is mandatory when a `ring_elem` stores pointers.
+Temporary ARing elements are cleaned up through `clear`, but `ring_elem` values
+returned to the rest of the engine may be copied freely and are not normally
+freed by `ConcreteRing::remove`.  If `to_ring_elem` creates heap-backed storage,
+put the storage, and any GMP/MPFR/MPFI limbs reachable from it, in the engine's
+GC-managed memory using the established `getmem*`, `newarray*`, or
+`moveTo_gmp*` helpers.  Do not pack a pointer to a temporary `ElementType` into
+a `ring_elem`, and do not put the same mutable object into two independent
+`ring_elem` values.
+
 Construction from common values is mandatory for the usual coefficient-ring
 paths.  Implement `set_from_long`, `set_from_mpz`, `set_from_mpq`, and
 `set_var`.  `set_from_mpq` should return `false` when the rational cannot be
@@ -240,8 +250,9 @@ Decide between `SimpleARing` and custom `RingInterface` wrappers.
 
 Define `RingID`, `ElementType`, constructor data, and lifetime management.
 
-Implement `ring_elem` conversion, construction from ZZ/QQ, predicates,
-comparison, hashing, core arithmetic, printing, random elements, and evaluation.
+Implement `ring_elem` conversion, garbage-collection ownership for pointer-backed
+results, construction from ZZ/QQ, predicates, comparison, hashing, core
+arithmetic, printing, random elements, and evaluation.
 
 Wire the ring into build files and factory code.
 
