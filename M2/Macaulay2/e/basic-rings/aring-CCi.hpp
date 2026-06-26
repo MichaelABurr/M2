@@ -4,17 +4,18 @@
 /// \file aring-CCi.hpp
 /// \brief Defines ARingCCi, the arbitrary-precision complex interval ring.
 ///
-/// ARingCCi represents a complex interval as real and imaginary MPFI intervals
-/// stored in `cci_struct`.  It follows the `SimpleARing` interface, so its
-/// precision-aware initialization, assignment, and clearing methods are used by
-/// `ConcreteRing<ARingCCi>` whenever ring elements are created or destroyed.
+/// This header declares the ARing implementation for arbitrary-precision
+/// complex intervals stored as real and imaginary MPFI intervals in
+/// `cci_struct`.  The ring carries the precision used by those intervals, and
+/// its `SimpleARing` lifetime methods initialize, copy, assign, and clear the
+/// interval storage.
 ///
-/// The class connects interval arithmetic to the rest of the engine through
-/// `ring_elem` packing/unpacking, containment predicates, arithmetic, text
-/// output, and randomization.  Its setters from real, complex, and interval
-/// source types are part of the promotion/lift graph implemented in
-/// `aring-translate.hpp`, especially for paths involving RRi, RRR, CCC, and
-/// exact rational input.
+/// `aring-glue.hpp` wraps this ARing in `ConcreteRing<ARingCCi>` and forwards
+/// complex-interval operations through the methods declared here: `ring_elem`
+/// conversion, arithmetic, containment and subset predicates, printing, and
+/// randomization.  `aring-translate.hpp` uses the real, complex, and interval
+/// setters here for promotion and lifting among RRi, RRR, CCC, CCi, and exact
+/// input.
 
 #ifndef M2_BASIC_RINGS_ARING_CCI_HPP_
 #define M2_BASIC_RINGS_ARING_CCI_HPP_

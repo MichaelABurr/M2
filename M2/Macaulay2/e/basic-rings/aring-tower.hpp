@@ -4,18 +4,18 @@
 /// \file aring-tower.hpp
 /// \brief Defines ARingTower, a recursive polynomial tower arithmetic ring.
 ///
-/// ARingTower represents iterated algebraic extensions as recursive polynomial
-/// structures over an `ARingZZpFFPACK` base ring.  Tower elements have custom
+/// This header declares the ARing implementation for recursive polynomial
+/// towers over an `ARingZZpFFPACK` base ring.  Tower elements have custom
 /// allocation and recursive destruction requirements, so the class derives from
 /// `RingInterface` and defines ring-aware `Element` and `ElementArray` wrappers
-/// rather than relying on `SimpleARing`.
+/// instead of using `SimpleARing`.
 ///
-/// The methods here provide the `ConcreteRing<ARingTower>` surface for tower
-/// creation, element lifetime, arithmetic, comparison, text output, evaluation
-/// through `RingMap`, and conversion between `ring_elem` and recursive tower
-/// storage.  Factory code in `interface/aring.cpp` builds towers by extending a
-/// base ARing or an existing tower, and the stored variable names and base ring
-/// determine how the recursive coefficients are interpreted.
+/// `aring-glue.hpp` wraps this ARing in `ConcreteRing<ARingTower>` and forwards
+/// tower operations through the methods declared here: `ring_elem` conversion,
+/// element lifetime, arithmetic, comparison, printing, and evaluation through
+/// `RingMap`.  Factory code in `interface/aring.cpp` builds towers by extending
+/// a base ARing or an existing tower, and the stored variable names determine
+/// how recursive coefficients are interpreted.
 
 #ifndef M2_BASIC_RINGS_ARING_TOWER_HPP_
 #define M2_BASIC_RINGS_ARING_TOWER_HPP_

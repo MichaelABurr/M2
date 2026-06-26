@@ -16,11 +16,14 @@ Macaulay2 code
   -> raw ElementType storage, often backed by GMP, FLINT, MPFR, MPFI, or Givaro
 ```
 
-`ConcreteRing` is the adapter.  It receives a `ring_elem` from the rest of the
-engine, asks the ARing to unpack it into the ARing's `ElementType`, calls the
-ARing operation, and asks the ARing to pack the result back into a `ring_elem`.
-That means a new ARing must define both the mathematical operations and the
-conversion boundary between `ring_elem` and its own element representation.
+`ConcreteRing` is the adapter for the usual ARing path.  It receives a
+`ring_elem` from the rest of the engine, asks the ARing to unpack it into the
+ARing's `ElementType`, calls the ARing operation, and asks the ARing to pack the
+result back into a `ring_elem`.  Some hooks are used by factory, translation,
+matrix, vector, or finite-field representation code rather than by the simple
+forwarding methods, so a new ARing is best understood as a bundle of small
+contracts: storage, conversion, arithmetic, presentation, and integration with
+nearby coefficient rings.
 
 ## The shortest path
 
@@ -198,7 +201,16 @@ bool set_from_BigComplex(ElementType& result, gmp_CC a) const;
 bool set_from_ComplexInterval(ElementType& result, gmp_CCi a) const;
 ```
 
-Finite-field and extension-field hooks are specialized:
+Finite-field and extension-field hooks are specialized.  Their common theme is
+that they expose the chosen presentation of the field, not just its arithmetic:
+how to coerce elements to small integer representatives, which generator is
+distinguished, how discrete logarithms are computed, and how elements are lifted
+back to the quotient polynomial ring used to construct the field.  Those hooks
+let `aring-glue.hpp`, factory code, and interface routines answer
+questions such as "what is the generator?", "what quotient ring does this field
+come from?", and "how should this field element be represented in Macaulay2?"
+
+The usual hooks are:
 
 ```c++
 long coerceToLongInteger(const ElementType& a) const;

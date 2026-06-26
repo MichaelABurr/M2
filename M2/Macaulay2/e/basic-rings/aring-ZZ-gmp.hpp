@@ -4,16 +4,18 @@
 /// \file aring-ZZ-gmp.hpp
 /// \brief Defines ARingZZGMP, the GMP-backed integer arithmetic ring.
 ///
-/// ARingZZGMP stores integers as GMP `mpz` values.  It provides the
-/// `SimpleARing` lifecycle operations needed by `ConcreteRing<ARingZZGMP>` and
-/// mirrors the exact integer API used by the FLINT-backed integer ring.
+/// This header declares the ARing implementation for integers stored as GMP
+/// `mpz` values.  The class follows the `SimpleARing` contract: its lifetime
+/// functions initialize, copy, assign, and clear the GMP integer storage used
+/// by wrapper code.
 ///
-/// This header defines integer construction, `ring_elem` conversion,
-/// arithmetic, comparison, hashing, printing, randomization, and GMP-specific
-/// memory normalization.  It is useful both as an alternate integer backend and
-/// as a reference for how exact ARings supply the operations consumed by
-/// `aring-glue.hpp` before higher-level promotion code maps integers into
-/// rationals, finite fields, or approximate rings.
+/// `aring-glue.hpp` can wrap this ARing in `ConcreteRing<ARingZZGMP>` and
+/// forward exact integer operations through the methods declared here:
+/// `ring_elem` conversion, construction from C longs and GMP integers,
+/// arithmetic, comparison, hashing, printing, randomization, and memory
+/// normalization.  It also serves as an alternate backend and reference for the
+/// operations integer ARings provide before promotion code maps ZZ into other
+/// coefficient rings.
 
 #ifndef M2_BASIC_RINGS_ARING_ZZ_GMP_HPP_
 #define M2_BASIC_RINGS_ARING_ZZ_GMP_HPP_

@@ -4,16 +4,18 @@
 /// \file aring.hpp
 /// \brief Defines the shared interfaces and helpers for ARing implementations.
 ///
-/// This header defines the minimal vocabulary shared by all concrete ARing
-/// classes.  `RingID` is the dispatch key used by `aring-glue.hpp` for
-/// promotion, lifting, finite-field detection, and specialized wrapper logic.
-/// `RingInterface` marks classes that can be wrapped by `ConcreteRing`.
+/// This header defines the shared vocabulary used by ARing implementations.
+/// `RingID` is the dispatch key used by `aring-glue.hpp` for promotion,
+/// lifting, finite-field detection, and specialized wrapper logic.
+/// `RingInterface` marks classes that provide the method surface expected by
+/// `ConcreteRing`.
 ///
 /// `ElementImpl` and `SimpleARing` provide the standard RAII element wrappers
 /// for ARings whose raw `ElementType` can be initialized, copied, and cleared
-/// without additional context.  More complex rings, such as FLINT extension
-/// fields and towers, still use `RingInterface` but define their own nested
-/// element wrappers when destruction requires access to ring-owned data.
+/// without ring-owned context.  More complex rings, such as FLINT extension
+/// fields and towers, still implement `RingInterface` but define their own
+/// nested element wrappers when destruction needs access to data stored on the
+/// ring object.
 
 #ifndef M2_BASIC_RINGS_ARING_HPP_
 #define M2_BASIC_RINGS_ARING_HPP_

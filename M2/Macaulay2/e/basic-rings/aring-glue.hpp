@@ -4,19 +4,17 @@
 /// \file aring-glue.hpp
 /// \brief Connects ARing implementations to the high-level Ring interface.
 ///
-/// This header is the adapter layer between concrete ARing classes and the
-/// virtual `Ring` API used throughout the engine.  `ConcreteRing<RingType>`
-/// owns a specific ARing instance, initializes the common `Ring` constants, and
-/// forwards public operations such as construction, arithmetic, comparison,
-/// printing, random elements, and evaluation to methods on `RingType`.
+/// This header contains the adapter that makes an ARing usable through the
+/// engine's virtual `Ring` API.  `ConcreteRing<RingType>` owns one ARing
+/// object, creates ARing element wrappers around incoming `ring_elem` values,
+/// calls the corresponding `RingType` method, and converts results back to
+/// `ring_elem`.
 ///
-/// The template also provides the default dense/sparse mutable matrix hooks and
-/// finite-field predicates used by matrix and vector code.  Promotion and lift
-/// dispatch is centralized here by `RingID`; once a source/target pair is
-/// selected, `RingPromoter` calls the element-level `mypromote` and `mylift`
-/// routines from `aring-translate.hpp`.  Adding a new ARing usually requires
-/// wiring its `RingID` into this dispatch table when it has natural maps to or
-/// from existing rings.
+/// The adapter also supplies common hooks for mutable matrices, finite-field
+/// predicates, generators, representations, precision, and integer coercion.
+/// Promotion and lift dispatch starts here by inspecting `RingID`; after a
+/// source/target pair is selected, `RingPromoter` delegates the element-level
+/// conversion to `mypromote` or `mylift` in `aring-translate.hpp`.
 
 #ifndef M2_BASIC_RINGS_RING_GLUE_HH_
 #define M2_BASIC_RINGS_RING_GLUE_HH_

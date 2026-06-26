@@ -4,18 +4,17 @@
 /// \file aring-QQ-flint.hpp
 /// \brief Defines ARingQQFlint, the FLINT-backed rational arithmetic ring.
 ///
-/// ARingQQFlint stores rational numbers as FLINT `fmpq` values.  It implements
-/// the `SimpleARing` contract for initialization, assignment, clearing,
-/// arithmetic, comparison, hashing, and random value construction so that
-/// `ConcreteRing<ARingQQFlint>` can expose the implementation as a Macaulay2
-/// `Ring`.
+/// This header declares the ARing implementation for rational numbers stored
+/// as FLINT `fmpq` values.  The class follows the `SimpleARing` contract: its
+/// lifetime functions initialize, copy, assign, and clear the FLINT rational
+/// storage used by wrapper code.
 ///
-/// The conversion methods in this class translate between `fmpq` and
-/// `ring_elem`, preserving the ownership expectations of both FLINT and the
-/// engine.  Setters from GMP integers and rationals feed the generic
-/// construction paths in `aring-glue.hpp`, while `aring-translate.hpp` uses the
-/// rational representation as a source for approximate real, interval, and
-/// complex promotion.
+/// `aring-glue.hpp` wraps this ARing in `ConcreteRing<ARingQQFlint>` when this
+/// backend is selected and forwards exact rational operations through the
+/// methods declared here: `ring_elem` conversion, construction from integers
+/// and rationals, arithmetic, comparison, hashing, printing, and randomization.
+/// `aring-translate.hpp` uses the rational representation as a source for
+/// approximate real, interval, and complex promotion.
 
 #ifndef M2_BASIC_RINGS_ARING_QQ_FLINT_HPP_
 #define M2_BASIC_RINGS_ARING_QQ_FLINT_HPP_

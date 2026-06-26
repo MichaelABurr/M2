@@ -4,19 +4,17 @@
 /// \file aring-m2-GF.hpp
 /// \brief Defines ARingGFM2, Macaulay2's table-based Galois field ring.
 ///
-/// ARingGFM2 implements finite extension fields GF(p^n) using
-/// `GaloisFieldTable`, which records powers of a primitive element, integer
-/// representatives, the original quotient polynomial ring, and generator data.
-/// Elements are stored as table indices, allowing `SimpleARing` to manage them
-/// with simple initialization and cleanup.
+/// This header declares the ARing implementation for table-based Galois fields
+/// GF(p^n).  `GaloisFieldTable` records powers of a primitive element, integer
+/// representatives, the original quotient polynomial ring, and generator data;
+/// elements are table indices managed through the `SimpleARing` contract.
 ///
-/// The class supplies the extension-field operations consumed by
-/// `ConcreteRing<ARingGFM2>`: construction from the original polynomial ring,
-/// arithmetic, comparison, `ring_elem` conversion, text output, generator
-/// access, discrete logarithms, and lifting back to the quotient-ring
-/// representation.  Specialized promotion code in `aring-glue.hpp` uses these
-/// hooks to map from compatible polynomial quotient rings into the table-based
-/// finite field.
+/// `aring-glue.hpp` wraps this ARing in `ConcreteRing<ARingGFM2>` and forwards
+/// extension-field operations through the methods declared here: construction
+/// from the original polynomial ring, `ring_elem` conversion, arithmetic,
+/// comparison, printing, generator access, discrete logarithms, and lifting
+/// back to the quotient-ring representation.  Specialized promotion code uses
+/// these hooks to map compatible quotient-ring elements into this field.
 
 #ifndef M2_BASIC_RINGS_ARING_GF_M2_HPP_
 #define M2_BASIC_RINGS_ARING_GF_M2_HPP_

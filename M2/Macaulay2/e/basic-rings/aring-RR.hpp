@@ -4,17 +4,17 @@
 /// \file aring-RR.hpp
 /// \brief Defines ARingRR, the machine-precision real arithmetic ring.
 ///
-/// ARingRR is the double-precision real-number ARing.  Its `ElementType` is a
-/// machine `double`, so the `SimpleARing` lifecycle functions are lightweight
-/// assignments while `ConcreteRing<ARingRR>` supplies the high-level Macaulay2
-/// `Ring` interface.
+/// This header declares the ARing implementation for machine-precision real
+/// numbers stored as `double` values.  The class follows the `SimpleARing`
+/// contract, and its lifetime functions are lightweight initialization, copy,
+/// assignment, and clear operations for plain double storage.
 ///
-/// This class defines the conversion boundary between doubles and `ring_elem`,
-/// along with arithmetic, comparison, hashing, text output, and random element
-/// generation.  It is also the real component ring for `ARingCC` and participates
-/// heavily in `aring-translate.hpp`, where exact rational, high-precision real,
-/// interval, and complex values promote or lift through machine-precision real
-/// approximations.
+/// `aring-glue.hpp` wraps this ARing in `ConcreteRing<ARingRR>` and forwards
+/// real-ring operations through the methods declared here: `ring_elem`
+/// conversion, arithmetic, comparison, hashing, printing, randomization, and
+/// precision helpers.  `aring-translate.hpp` uses RR as both a target and a
+/// source for promotion and lifting among exact, high-precision real, interval,
+/// and complex rings.
 
 #ifndef M2_BASIC_RINGS_ARING_RR_HPP_
 #define M2_BASIC_RINGS_ARING_RR_HPP_

@@ -4,17 +4,17 @@
 /// \file aring-ZZp-ffpack.hpp
 /// \brief Defines ARingZZpFFPACK, an FFPACK/Givaro prime finite field ring.
 ///
-/// ARingZZpFFPACK wraps a Givaro modular field used by FFPACK/FFLAS dense
-/// linear algebra routines.  Its raw element type is the Givaro field element,
-/// and it follows `SimpleARing` so `ConcreteRing<ARingZZpFFPACK>` can delegate
-/// element lifetime and arithmetic directly to the wrapped modular field.
+/// This header declares the ARing implementation for prime finite fields backed
+/// by a Givaro modular field for FFPACK/FFLAS dense linear algebra.  The raw
+/// element type is the Givaro field element, and the class follows the
+/// `SimpleARing` contract for lifetime and arithmetic over that storage.
 ///
-/// The class provides prime-field construction from integers and rationals,
-/// balanced integer coercion, generator and discrete-log support, arithmetic,
-/// comparison, text output, and `ring_elem` conversion.  It is one of the
-/// finite-field cases explicitly recognized in `aring-glue.hpp` for promotion,
-/// lifting, finite-prime-field detection, mutable matrix creation, and
-/// specialized vector arithmetic.
+/// `aring-glue.hpp` wraps this ARing in `ConcreteRing<ARingZZpFFPACK>` and
+/// forwards prime-field operations through the methods declared here:
+/// construction from integers and rationals, `ring_elem` conversion,
+/// arithmetic, comparison, balanced integer coercion, generator access,
+/// discrete logarithms, and printing.  Matrix and vector code use this backend
+/// when selecting FFPACK/FFLAS dense arithmetic paths.
 
 #ifndef M2_BASIC_RINGS_ARING_FFPACK_HPP_
 #define M2_BASIC_RINGS_ARING_FFPACK_HPP_

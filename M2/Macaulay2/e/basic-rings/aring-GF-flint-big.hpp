@@ -4,20 +4,18 @@
 /// \file aring-GF-flint-big.hpp
 /// \brief Defines ARingGFFlintBig, a FLINT fq_nmod finite field ring.
 ///
-/// ARingGFFlintBig wraps FLINT's `fq_nmod` representation for finite field
-/// extensions built from a quotient polynomial ring and a chosen primitive
-/// element.  Because each FLINT element must be initialized and cleared with
-/// the field context, this class inherits from `RingInterface` directly and
-/// defines context-aware `Element` and `ElementArray` wrappers instead of using
-/// `SimpleARing`.
+/// This header declares the ARing implementation for finite-field extensions
+/// stored with FLINT's `fq_nmod` representation.  The ring owns the FLINT
+/// context, original polynomial ring, characteristic, extension degree, and
+/// generator data, so it derives from `RingInterface` and defines context-aware
+/// `Element` and `ElementArray` wrappers instead of using `SimpleARing`.
 ///
-/// The ARing owns the FLINT context, original polynomial ring, characteristic,
-/// extension degree, and generator data needed by factory code and finite-field
-/// algorithms.  `ConcreteRing<ARingGFFlintBig>` calls the conversion,
-/// arithmetic, comparison, evaluation, and printing methods declared here, and
-/// specialized promotion/lift code uses `originalRing`, generator access, and
-/// polynomial coefficient helpers to connect GF(p^n) elements with their
-/// quotient-ring representation.
+/// `aring-glue.hpp` wraps this ARing in `ConcreteRing<ARingGFFlintBig>` and
+/// forwards extension-field operations through the methods declared here:
+/// `ring_elem` conversion, arithmetic, comparison, evaluation, printing, and
+/// finite-field metadata.  Factory, promotion, lift, and representation code
+/// use `originalRing`, generator access, and polynomial coefficient helpers to
+/// connect GF(p^n) elements with quotient-ring representatives.
 
 #ifndef M2_BASIC_RINGS_ARING_GF_FLINT_BIG_HPP_
 #define M2_BASIC_RINGS_ARING_GF_FLINT_BIG_HPP_

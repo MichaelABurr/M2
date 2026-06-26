@@ -4,17 +4,17 @@
 /// \file aring-RRi.hpp
 /// \brief Defines ARingRRi, the arbitrary-precision real interval ring.
 ///
-/// ARingRRi represents real intervals with MPFI and stores the precision on the
-/// ring object.  As a `SimpleARing`, it provides the initialization,
-/// assignment, and cleanup routines that `ConcreteRing<ARingRRi>` uses for
-/// interval element lifetime.
+/// This header declares the ARing implementation for arbitrary-precision real
+/// intervals stored with MPFI.  The ring object carries the precision, and its
+/// `SimpleARing` lifetime methods initialize, copy, assign, and clear the
+/// interval storage.
 ///
-/// This header connects interval-specific operations to the generic `Ring`
-/// interface: `ring_elem` conversion, arithmetic, comparisons, containment and
-/// subset predicates, text output, and randomization.  The interval setters are
-/// used by `aring-translate.hpp` to promote exact rationals and real numbers
-/// into interval rings and to move compatible interval data into complex
-/// interval rings such as `ARingCCi`.
+/// `aring-glue.hpp` wraps this ARing in `ConcreteRing<ARingRRi>` and forwards
+/// real-interval operations through the methods declared here: `ring_elem`
+/// conversion, arithmetic, containment and subset predicates, printing, and
+/// randomization.  `aring-translate.hpp` uses the interval setters here for
+/// promotion and lifting among exact rational, real, complex, and complex
+/// interval rings.
 
 #ifndef M2_BASIC_RINGS_ARING_RRI_HPP_
 #define M2_BASIC_RINGS_ARING_RRI_HPP_
