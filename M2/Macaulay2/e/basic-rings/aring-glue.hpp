@@ -1,5 +1,21 @@
 // Copyright 2011 Michael E. Stillman
 
+/// AI:
+/// \file aring-glue.hpp
+/// \brief Connects ARing implementations to the high-level Ring interface.
+///
+/// This header contains the adapter that makes an ARing usable through the
+/// engine's virtual `Ring` API.  `ConcreteRing<RingType>` owns one ARing
+/// object, creates ARing element wrappers around incoming `ring_elem` values,
+/// calls the corresponding `RingType` method, and converts results back to
+/// `ring_elem`.
+///
+/// The adapter also supplies common hooks for mutable matrices, finite-field
+/// predicates, generators, representations, precision, and integer coercion.
+/// Promotion and lift dispatch starts here by inspecting `RingID`; after a
+/// source/target pair is selected, `RingPromoter` delegates the element-level
+/// conversion to `mypromote` or `mylift` in `aring-translate.hpp`.
+
 #ifndef M2_BASIC_RINGS_RING_GLUE_HH_
 #define M2_BASIC_RINGS_RING_GLUE_HH_
 

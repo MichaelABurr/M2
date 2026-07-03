@@ -1,5 +1,21 @@
 // Copyright 2013 Michael E. Stillman
 
+/// AI:
+/// \file aring-QQ-gmp.hpp
+/// \brief Defines ARingQQGMP, the GMP-backed rational arithmetic ring.
+///
+/// This header declares the ARing implementation for rational numbers stored
+/// as GMP `mpq` values.  It is the current `ARingQQ` backend selected by
+/// `aring-QQ.hpp`, and its `SimpleARing` lifetime methods initialize, copy,
+/// assign, and clear the GMP rational storage used by wrapper code.
+///
+/// `aring-glue.hpp` wraps this ARing in `ConcreteRing<ARingQQGMP>` and forwards
+/// exact rational operations through the methods declared here: `ring_elem`
+/// conversion, construction from integers and rationals, arithmetic,
+/// comparison, hashing, printing, and randomization.  `aring-translate.hpp`
+/// uses QQ as a central exact source for promotion into real, complex, and
+/// interval ARings through the relevant `set_from_*` methods.
+
 #ifndef M2_BASIC_RINGS_ARING_QQ_GMP_HPP_
 #define M2_BASIC_RINGS_ARING_QQ_GMP_HPP_
 

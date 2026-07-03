@@ -1,5 +1,21 @@
 // Copyright 2012 Michael E. Stillman
 
+/// AI:
+/// \file aring-CC.hpp
+/// \brief Defines ARingCC, the machine-precision complex arithmetic ring.
+///
+/// This header declares the ARing implementation for approximate complex
+/// numbers stored as `cc_doubles_struct`, a pair of machine doubles.  The class
+/// follows the `SimpleARing` contract: its lifetime functions initialize, copy,
+/// assign, and clear the raw element storage used by wrapper code.
+///
+/// `aring-glue.hpp` wraps this ARing in `ConcreteRing<ARingCC>` and forwards
+/// complex-ring operations through the methods declared here: `ring_elem`
+/// conversion, arithmetic, comparison, printing, randomization, and precision
+/// helpers.  `aring-translate.hpp` uses the real and complex setters here for
+/// promotion and lifting among RR, CC, higher-precision complex rings, interval
+/// rings, and exact input.
+
 #ifndef M2_BASIC_RINGS_ARING_CC_HPP_
 #define M2_BASIC_RINGS_ARING_CC_HPP_
 
