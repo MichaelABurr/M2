@@ -131,6 +131,7 @@ GCOVR = gcovr
 COVERAGE_DIR = coverage
 COVERAGE_ROOT = @srcdir@/Macaulay2/e
 COVERAGE_OBJDIR = Macaulay2/e
+COVERAGE_INDEX = $(CURDIR)/$(COVERAGE_DIR)/index.html
 .PHONY: coverage-reset coverage-report
 coverage-reset:; find . -name \*.gcda -delete
 coverage-report:
@@ -138,7 +139,7 @@ coverage-report:
 	$(GCOVR) --root $(COVERAGE_ROOT) --object-directory $(COVERAGE_OBJDIR) \
 		--exclude '.*/unit-tests/.*' \
 		--html-details $(COVERAGE_DIR)/index.html --print-summary
-	@ echo "-- coverage report written to $(CURDIR)/$(COVERAGE_DIR)/index.html"
+	@ printf '%s\033]8;;file://%s%s\033\\%s\033]8;;\033\\\n' '-- coverage report written to ' "$$(hostname)" "$(COVERAGE_INDEX)" "$(COVERAGE_INDEX)"
 find-conflicts:; grep -r -nH --exclude-dir BUILD -e '^<<<<<<< ' @srcdir@ || true
 log-archive:; find . -name config.log |xargs tar xzf config-logs.tgz
 shell:; PKG_CONFIG_PATH=$(M2_PKG_CONFIG_PATH) bash

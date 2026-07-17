@@ -15,6 +15,7 @@ if(GCOV)
   find_program(GCOVR NAMES gcovr)
   set(_engine_objdir ${CMAKE_BINARY_DIR}/Macaulay2/e/CMakeFiles/M2-engine.dir)
   set(_coverage_dir  ${CMAKE_BINARY_DIR}/coverage)
+  set(_coverage_index ${_coverage_dir}/index.html)
 
   # coverage-reset clears all accumulated data; the M2 binary may have written
   # .gcda anywhere in the tree, so this is deliberately not engine-scoped.
@@ -33,9 +34,12 @@ if(GCOV)
         --root ${CMAKE_SOURCE_DIR}/Macaulay2/e
         --object-directory ${_engine_objdir}
         --exclude ".*/unit-tests/.*"
-        --html-details ${_coverage_dir}/index.html
+        --html-details ${_coverage_index}
         --print-summary
-      COMMAND ${CMAKE_COMMAND} -E echo "Coverage report: ${_coverage_dir}/index.html"
+      # Print the report path as an OSC 8 terminal hyperlink so it is clickable.
+      # The printf format is a bracket argument (no CMake escaping); the report
+      # path is passed as $1 to sh.
+      COMMAND sh -c [==[printf '%s\033]8;;file://%s%s\033\\%s\033]8;;\033\\\n' 'Coverage report: ' "$(hostname)" "$1" "$1"]==] sh "${_coverage_index}"
       USES_TERMINAL)
   endif()
 endif()
