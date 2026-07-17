@@ -33,6 +33,9 @@ if(GCOV)
       COMMAND ${GCOVR}
         --root ${CMAKE_SOURCE_DIR}/Macaulay2/e
         --object-directory ${_engine_objdir}
+        # gcov can report a function on multiple lines (inlines at -O0); merge
+        # those instead of erroring, attributing the function to its first line.
+        --merge-mode-functions=merge-use-line-min
         --exclude ".*/unit-tests/.*"
         --html-details ${_coverage_index}
         --print-summary

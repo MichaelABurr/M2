@@ -132,11 +132,15 @@ COVERAGE_DIR = coverage
 COVERAGE_ROOT = @srcdir@/Macaulay2/e
 COVERAGE_OBJDIR = Macaulay2/e
 COVERAGE_INDEX = $(CURDIR)/$(COVERAGE_DIR)/index.html
+# gcov can report a function on more than one line (e.g. inlines built at -O0);
+# merge those instead of erroring, attributing the function to its first line.
+COVERAGE_MERGE_MODE = merge-use-line-min
 .PHONY: coverage-reset coverage-report
 coverage-reset:; find . -name \*.gcda -delete
 coverage-report:
 	@ $(MKDIR_P) $(COVERAGE_DIR)
 	$(GCOVR) --root $(COVERAGE_ROOT) --object-directory $(COVERAGE_OBJDIR) \
+		--merge-mode-functions=$(COVERAGE_MERGE_MODE) \
 		--exclude '.*/unit-tests/.*' \
 		--html-details $(COVERAGE_DIR)/index.html --print-summary
 	@ printf '%s\033]8;;file://%s%s\033\\%s\033]8;;\033\\\n' '-- coverage report written to ' "$$(hostname)" "$(COVERAGE_INDEX)" "$(COVERAGE_INDEX)"
