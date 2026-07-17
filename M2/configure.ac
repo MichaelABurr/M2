@@ -437,20 +437,6 @@ AC_SUBST(PROFILING,no)
 AC_ARG_ENABLE(profile, AS_HELP_STRING(--enable-profile,enable profiling (and disable stripping)), PROFILING=$enableval)
 test "$PROFILING" = no;  val=$?; AC_DEFINE_UNQUOTED(PROFILING, $val,whether profiling has been enabled)
 
-AC_SUBST([GCOV],[no])
-AC_ARG_ENABLE([gcov],
-  [AS_HELP_STRING([--enable-gcov],
-     [enable gcc/gcov code coverage (implies -O0 and disables stripping)])],
-  [GCOV=$enableval])
-AS_IF([test "$GCOV" = yes],
-  [# --coverage implies -fprofile-arcs -ftest-coverage (compile) and
-   # -lgcov (link); -O0 keeps line/branch attribution meaningful.
-   CFLAGS="$CFLAGS --coverage -O0"
-   CXXFLAGS="$CXXFLAGS --coverage -O0"
-   LDFLAGS="$LDFLAGS --coverage"
-   ENABLE_STRIP=no
-   OPTIMIZE=no])
-
 AC_SUBST(COMPRESS,gz)  AC_ARG_ENABLE(compress, AS_HELP_STRING([--enable-compress=[gz|bz2]],compression method for tarball), COMPRESS=$enableval)
 
 AC_SUBST(EXPERIMENT,no)
@@ -830,6 +816,24 @@ AS_IF([test $BUILD_lapack = yes],
      BLAS_LIBS=-lrefblas
      LAPACK_LIBS=-llapack])
 AC_SUBST([LINALGLIBS], ["$LAPACK_LIBS $BLAS_LIBS"])
+
+dnl Apply gcov coverage flags here, *after* the Fortran/BLAS/LAPACK library
+dnl detection: gfortran expands --coverage to -lgcov, which would otherwise be
+dnl captured into FCLIBS/BLAS_LIBS and clash with the compiler's own coverage
+dnl runtime (e.g. clang's libclang_rt.profile) at link time.
+AC_SUBST([GCOV],[no])
+AC_ARG_ENABLE([gcov],
+  [AS_HELP_STRING([--enable-gcov],
+     [enable gcc/gcov code coverage (implies -O0 and disables stripping)])],
+  [GCOV=$enableval])
+AS_IF([test "$GCOV" = yes],
+  [# --coverage implies -fprofile-arcs -ftest-coverage (compile) and
+   # -lgcov (link); -O0 keeps line/branch attribution meaningful.
+   CFLAGS="$CFLAGS --coverage -O0"
+   CXXFLAGS="$CXXFLAGS --coverage -O0"
+   LDFLAGS="$LDFLAGS --coverage"
+   ENABLE_STRIP=no
+   OPTIMIZE=no])
 
 AS_IF([test $BUILD_givaro = no],
     [AC_LANG([C++])
