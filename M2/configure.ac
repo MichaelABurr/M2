@@ -437,6 +437,9 @@ AC_SUBST(PROFILING,no)
 AC_ARG_ENABLE(profile, AS_HELP_STRING(--enable-profile,enable profiling (and disable stripping)), PROFILING=$enableval)
 test "$PROFILING" = no;  val=$?; AC_DEFINE_UNQUOTED(PROFILING, $val,whether profiling has been enabled)
 
+AC_SUBST(GCOV,no)
+AC_ARG_ENABLE(gcov, AS_HELP_STRING(--enable-gcov,enable gcc/gcov code coverage (implies -O0 and disables stripping)), GCOV=$enableval)
+
 AC_SUBST(COMPRESS,gz)  AC_ARG_ENABLE(compress, AS_HELP_STRING([--enable-compress=[gz|bz2]],compression method for tarball), COMPRESS=$enableval)
 
 AC_SUBST(EXPERIMENT,no)
@@ -449,6 +452,19 @@ AC_SUBST(SHARED,yes)    AC_ARG_ENABLE(shared, AS_HELP_STRING(--disable-shared,di
 
 test "$MEMDEBUG" = "yes" && DEBUG=yes
 test "$PROFILING" = "yes" && CFLAGS="$CFLAGS -pg" CXXFLAGS="$CXXFLAGS -pg" LDFLAGS="$LDFLAGS -pg" ENABLE_STRIP=no
+
+if test "$GCOV" = "yes"
+then # --coverage implies -fprofile-arcs -ftest-coverage (compile) and -lgcov (link);
+     # -O0 keeps line/branch attribution meaningful, -fprofile-abs-path (gcc >= 8) lets
+     # gcov/gcovr resolve sources from the out-of-tree build directory.
+     GCOV_FLAGS="--coverage -O0"
+     test "$GCC" = yes && GCOV_FLAGS="$GCOV_FLAGS -fprofile-abs-path"
+     CFLAGS="$CFLAGS $GCOV_FLAGS"
+     CXXFLAGS="$CXXFLAGS $GCOV_FLAGS"
+     LDFLAGS="$LDFLAGS --coverage"
+     ENABLE_STRIP=no
+     OPTIMIZE=no
+fi
 
 if <$srcdir/Macaulay2/packages/=distributed-packages sort|uniq -c|grep -v -q ' 1 '
 then echo "error: some packages are listed more than once in Macaulay2/packages/=distributed-packages:"
@@ -1892,6 +1908,7 @@ AC_MSG_NOTICE([with  OS REL            = $OS $REL])
 AC_MSG_NOTICE([with  ARCH              = $ARCH])
 AC_MSG_NOTICE([with  OPTIMIZE          = $OPTIMIZE])
 AC_MSG_NOTICE([with  DEBUG             = $DEBUG])
+AC_MSG_NOTICE([with  GCOV              = $GCOV])
 AC_MSG_NOTICE([with  GIT_DESCRIPTION   = $GIT_DESCRIPTION])
 AC_MSG_NOTICE([with  GIT_BRANCH        = $GIT_BRANCH])
 AC_MSG_NOTICE([with  DOCUMENTATION     = $DOCUMENTATION])

@@ -120,6 +120,25 @@ unmark-packages:; $(MAKE) -C Macaulay2/packages $@
 reconfigure: reconfigure-top-only unconfigure-libs 
 unconfigure-libs:; $(MAKE) -C libraries unconfigure
 remove-deps:; find . -name \*.dep -delete
+
+## gcc/gcov code coverage (configure with --enable-gcov).
+## Coverage data (.gcda) is generated automatically whenever a binary built in
+## coverage mode exits -- run the unit tests, "make check", or the M2 binary on
+## your own code.  These targets only clear and report on the accumulated data.
+## By default the report is scoped to the engine; override COVERAGE_ROOT and
+## COVERAGE_OBJDIR (e.g. =@srcdir@ and =. ) to report on the whole tree.
+GCOVR = gcovr
+COVERAGE_DIR = coverage
+COVERAGE_ROOT = @srcdir@/Macaulay2/e
+COVERAGE_OBJDIR = Macaulay2/e
+.PHONY: coverage-reset coverage-report
+coverage-reset:; find . -name \*.gcda -delete
+coverage-report:
+	@ $(MKDIR_P) $(COVERAGE_DIR)
+	$(GCOVR) --root $(COVERAGE_ROOT) --object-directory $(COVERAGE_OBJDIR) \
+		--exclude '.*/unit-tests/.*' \
+		--html-details $(COVERAGE_DIR)/index.html --print-summary
+	@ echo "-- coverage report written to $(CURDIR)/$(COVERAGE_DIR)/index.html"
 find-conflicts:; grep -r -nH --exclude-dir BUILD -e '^<<<<<<< ' @srcdir@ || true
 log-archive:; find . -name config.log |xargs tar xzf config-logs.tgz
 shell:; PKG_CONFIG_PATH=$(M2_PKG_CONFIG_PATH) bash
@@ -208,6 +227,8 @@ help:
 	@ echo "  relink-nostrip    remove M2@EXE@ and rebuild it, unstripped"
 	@ echo "  install           make and install files"
 	@ echo "  check             run the tests"
+	@ echo "  coverage-reset    clear accumulated gcov coverage data (requires --enable-gcov)"
+	@ echo "  coverage-report   generate an HTML coverage report with gcovr"
 	@ echo "  clean             remove all generated files except configured files"
 	@ echo "  distclean         remove all generated files"
 	@ echo "  dist              generate a source tarball for distribution"
