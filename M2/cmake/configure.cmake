@@ -206,9 +206,6 @@ if(GCOV)
   # gcc/gcov coverage: --coverage instruments; -O0 keeps line attribution meaningful.
   add_compile_options(--coverage -O0)
   add_link_options(--coverage)
-  if(CMAKE_CXX_COMPILER_ID STREQUAL GNU)
-    add_compile_options(-fprofile-abs-path)
-  endif()
 endif()
 
 # Flags based on build type

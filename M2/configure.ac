@@ -455,10 +455,8 @@ test "$PROFILING" = "yes" && CFLAGS="$CFLAGS -pg" CXXFLAGS="$CXXFLAGS -pg" LDFLA
 
 if test "$GCOV" = "yes"
 then # --coverage implies -fprofile-arcs -ftest-coverage (compile) and -lgcov (link);
-     # -O0 keeps line/branch attribution meaningful, -fprofile-abs-path (gcc >= 8) lets
-     # gcov/gcovr resolve sources from the out-of-tree build directory.
+     # -O0 keeps line/branch attribution meaningful.
      GCOV_FLAGS="--coverage -O0"
-     test "$GCC" = yes && GCOV_FLAGS="$GCOV_FLAGS -fprofile-abs-path"
      CFLAGS="$CFLAGS $GCOV_FLAGS"
      CXXFLAGS="$CXXFLAGS $GCOV_FLAGS"
      LDFLAGS="$LDFLAGS --coverage"
