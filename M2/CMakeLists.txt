@@ -68,6 +68,7 @@ include(prechecks) ## CMake macros for preprocessor checks and linting
 include(CTest)     ## CMake module for generating a 'test' target for all unit-tests
 include(profiling) ## CMake macros for profiling Macaulay2 code
 include(configure) ## CMake script for configuring various variables
+include(gcov)      ## CMake macros for gcc/gcov code coverage (needs GCOV from configure)
 include(check-libraries) ## CMake script for checking which libraries exist and which need to be built
 include(build-libraries) ## CMake script for downloading, building, and installing external libraries
 include(startup) ## CMake script for messy substitutions in Macaulay2/bin/startup.c
