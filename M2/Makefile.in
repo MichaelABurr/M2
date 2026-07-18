@@ -125,23 +125,31 @@ remove-deps:; find . -name \*.dep -delete
 ## Coverage data (.gcda) is generated automatically whenever a binary built in
 ## coverage mode exits -- run the unit tests, "make check", or the M2 binary on
 ## your own code.  These targets only clear and report on the accumulated data.
-## By default the report is scoped to the engine; override COVERAGE_ROOT and
-## COVERAGE_OBJDIR (e.g. =@srcdir@ and =. ) to report on the whole tree.
+## By default the report covers the whole source tree; narrow it by overriding
+## COVERAGE_ROOT and COVERAGE_OBJDIR (e.g. =@srcdir@/Macaulay2/e and
+## =Macaulay2/e for just the engine).
 GCOVR = gcovr
 COVERAGE_DIR = coverage
-COVERAGE_ROOT = @srcdir@/Macaulay2/e
-COVERAGE_OBJDIR = Macaulay2/e
+COVERAGE_ROOT = @srcdir@
+# COVERAGE_OBJDIR is passed to gcovr as a positional search path, NOT via
+# --object-directory: the latter forces gcov to run in a single directory, which
+# can't resolve sources for objects built in deeper VPATH subdirectories (e.g.
+# Macaulay2/e/unit-tests).  As a search path, gcovr runs gcov in each data file's
+# own directory, so every relative source path resolves.
+COVERAGE_OBJDIR = @builddir@
 COVERAGE_INDEX = $(CURDIR)/$(COVERAGE_DIR)/index.html
 # gcov can report a function on more than one line (e.g. inlines built at -O0);
 # merge those instead of erroring, attributing the function to its first line.
 COVERAGE_MERGE_MODE = merge-use-line-min
+# Extra options for gcovr, e.g. GCOVR_OPTIONS='--filter Macaulay2/e/' to scope
+# the report to the engine, or '--exclude .*/unit-tests/.*' to drop test sources.
+GCOVR_OPTIONS =
 .PHONY: coverage-reset coverage-report
 coverage-reset:; find . -name \*.gcda -delete
 coverage-report:
 	@ $(MKDIR_P) $(COVERAGE_DIR)
-	$(GCOVR) --root $(COVERAGE_ROOT) --object-directory $(COVERAGE_OBJDIR) \
-		--merge-mode-functions=$(COVERAGE_MERGE_MODE) \
-		--exclude '.*/unit-tests/.*' \
+	$(GCOVR) --root $(COVERAGE_ROOT) $(COVERAGE_OBJDIR) \
+		--merge-mode-functions=$(COVERAGE_MERGE_MODE) $(GCOVR_OPTIONS) \
 		--html-details $(COVERAGE_DIR)/index.html --print-summary
 	@ printf '%s\033]8;;file://%s%s\033\\%s\033]8;;\033\\\n' '-- coverage report written to ' "$$(hostname)" "$(COVERAGE_INDEX)" "$(COVERAGE_INDEX)"
 find-conflicts:; grep -r -nH --exclude-dir BUILD -e '^<<<<<<< ' @srcdir@ || true
