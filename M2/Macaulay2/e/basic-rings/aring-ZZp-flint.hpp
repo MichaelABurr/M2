@@ -1,5 +1,22 @@
 // Copyright 2013 Michael E. Stillman
 
+/// AI:
+/// \file aring-ZZp-flint.hpp
+/// \brief Defines ARingZZpFlint, a FLINT-backed prime finite field ring.
+///
+/// This header declares the ARing implementation for prime finite fields backed
+/// by FLINT `nmod` arithmetic for word-sized moduli.  Its `ElementType` is an
+/// `mp_limb_t`, so `SimpleARing` can manage elements with inexpensive
+/// initialization and no-op cleanup while the ring object stores the modulus
+/// and generator data.
+///
+/// `aring-glue.hpp` wraps this ARing in `ConcreteRing<ARingZZpFlint>` and
+/// forwards prime-field operations through the methods declared here:
+/// construction from ZZ/QQ, `ring_elem` conversion, arithmetic, comparison,
+/// hashing, printing, randomization, integer lifting, generator access, and
+/// discrete logarithms.  Vector and matrix code use this backend when selecting
+/// FLINT-backed dense arithmetic paths.
+
 #ifndef M2_BASIC_RINGS_ARING_ZZP_FLINT_HPP_
 #define M2_BASIC_RINGS_ARING_ZZP_FLINT_HPP_
 

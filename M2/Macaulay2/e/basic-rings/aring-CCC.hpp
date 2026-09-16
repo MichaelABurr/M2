@@ -1,5 +1,21 @@
 // Copyright 2012 Michael E. Stillman
 
+/// AI:
+/// \file aring-CCC.hpp
+/// \brief Defines ARingCCC, the arbitrary-precision complex arithmetic ring.
+///
+/// This header declares the ARing implementation for arbitrary-precision
+/// complex numbers stored as two MPFR values in a `cc_struct`.  The ring
+/// carries an `ARingRRR` with the same precision for real-part operations.  Its
+/// `SimpleARing` lifetime methods handle MPFR initialization and cleanup.
+///
+/// `aring-glue.hpp` wraps this ARing in `ConcreteRing<ARingCCC>` and forwards
+/// complex-ring operations through the methods declared here: `ring_elem`
+/// conversion, arithmetic, comparison, printing, randomization, and precision
+/// helpers.  `aring-translate.hpp` uses the high-precision real and complex
+/// setters here for promotion and lifting among QQ, RR/RRR, CC/CCC, and
+/// interval rings.
+
 #ifndef M2_BASIC_RINGS_ARING_CCC_HPP_
 #define M2_BASIC_RINGS_ARING_CCC_HPP_
 
