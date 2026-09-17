@@ -55,17 +55,9 @@ set(HPPONLYFILES
   timing.hpp
   SLP/SLP-defs.hpp
   SLP/SLP-imp.hpp
-  basic-mutable-matrices/dmat-gf-flint-big.hpp
-  basic-mutable-matrices/dmat-gf-flint.hpp
-  basic-mutable-matrices/dmat-lu-inplace.hpp
-  basic-mutable-matrices/dmat-lu-qq.hpp
-  basic-mutable-matrices/dmat-lu-zzp-ffpack.hpp
-  basic-mutable-matrices/dmat-lu-zzp-flint.hpp
+  basic-mutable-matrices/dmat-linalg.hpp
   basic-mutable-matrices/dmat-lu.hpp
-  basic-mutable-matrices/dmat-qq-flint.hpp
   basic-mutable-matrices/dmat-qq-interface-flint.hpp
-  basic-mutable-matrices/dmat-zz-flint.hpp
-  basic-mutable-matrices/dmat-zzp-flint.hpp
   engine-includes.hpp
   exceptions.hpp
   rings/geobucket.hpp
@@ -111,6 +103,8 @@ set(CPPONLYFILES
   computations/ntl-debugio.cpp
   computations/ntl-internal.cpp
   resolutions/res-a2-gb.cpp
+  basic-mutable-matrices/dmat-lu-gf-flint.cpp
+  basic-mutable-matrices/dmat-lu-gf-flint-big.cpp
   interface/aring.cpp
   interface/aring.h
   interface/computation.h # no .cpp yet
@@ -155,6 +149,32 @@ set(CPPONLYFILES
 # these files all have .hpp and .cpp files
 # MES TODO: put these NCAlgebra files (and friends) into alpha order in list
 set(SRCLIST
+  basic-mutable-matrices/dmat-gf-flint
+  basic-mutable-matrices/dmat-gf-flint-big
+  basic-mutable-matrices/dmat-linalg-cc
+  basic-mutable-matrices/dmat-linalg-ccc
+  basic-mutable-matrices/dmat-linalg-gf-flint-big
+  basic-mutable-matrices/dmat-linalg-gf-flint
+  basic-mutable-matrices/dmat-linalg-qq-flint
+  basic-mutable-matrices/dmat-linalg-qq-gmp
+  basic-mutable-matrices/dmat-linalg-rr
+  basic-mutable-matrices/dmat-linalg-rrr
+  basic-mutable-matrices/dmat-linalg-zz-flint
+  basic-mutable-matrices/dmat-linalg-zz-gmp
+  basic-mutable-matrices/dmat-linalg-zzp-ffpack
+  basic-mutable-matrices/dmat-linalg-zzp-flint
+  basic-mutable-matrices/dmat-lu-inplace-cc
+  basic-mutable-matrices/dmat-lu-inplace-ccc
+  basic-mutable-matrices/dmat-lu-inplace-gf-flint
+  basic-mutable-matrices/dmat-lu-inplace-gf-flint-big
+  basic-mutable-matrices/dmat-lu-inplace-rr
+  basic-mutable-matrices/dmat-lu-inplace-rrr
+  basic-mutable-matrices/dmat-lu-qq
+  basic-mutable-matrices/dmat-lu-zzp-ffpack
+  basic-mutable-matrices/dmat-lu-zzp-flint
+  basic-mutable-matrices/dmat-qq-flint
+  basic-mutable-matrices/dmat-zz-flint
+  basic-mutable-matrices/dmat-zzp-flint
   cytools/computeGV
   cytools/lattice_points
   cytools/lattice-points-normaliz
@@ -219,7 +239,6 @@ set(SRCLIST
   interrupted
   basic-mutable-matrices/lapack
   basic-mutable-matrices/mat
-  basic-mutable-matrices/dmat
   matrices/matrix-con
   matrices/matrix-stream
   matrices/matrix

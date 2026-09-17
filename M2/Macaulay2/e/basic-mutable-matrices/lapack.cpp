@@ -1,3 +1,7 @@
+#include "basic-rings/aring-RR.hpp"
+#include "basic-rings/aring-CC.hpp"
+#include "basic-rings/aring-RRR.hpp"
+#include "basic-rings/aring-CCC.hpp"
 #include "coeffrings.hpp"
 #include "basic-mutable-matrices/lapack.hpp"
 #include <M2/config.h>
@@ -135,7 +139,7 @@ void fill_lower_and_upper(const std::vector<double>& lapack_numbers,  // column-
   int ncols = static_cast<int>(upper.numColumns());
   int min = static_cast<int>(lower.numColumns());
   assert(min == static_cast<int>(upper.numRows()));
-         
+
   // At this point, lower and upper should be zero matrices.
   assert(MatrixOps::isZero(lower));
   assert(MatrixOps::isZero(upper));
@@ -164,7 +168,7 @@ void fill_lower_and_upper(const std::vector<double>& lapack_numbers,  // column-
   int ncols = static_cast<int>(upper.numColumns());
   int min = static_cast<int>(lower.numColumns());
   assert(min == static_cast<int>(upper.numRows()));
-         
+
   // At this point, lower and upper should be zero matrices.
   assert(MatrixOps::isZero(lower));
   assert(MatrixOps::isZero(upper));
@@ -269,7 +273,7 @@ bool Lapack::solve(const DMatRR *A, /* read only */
   int* perm = new int[size];
   std::vector<double> copyA = make_lapack_array(*A);
   std::vector<double> copyb = make_lapack_array(*b);
-  
+
   dgesv_(&size,
          &bsize,
          copyA.data(),
@@ -385,7 +389,7 @@ bool Lapack::eigenvectors(const DMatRR *A,
   char doit = 'V';
   int wsize = 4 * size;
 
-  double *workspace = new double[2*wsize]; 
+  double *workspace = new double[2*wsize];
   int info;
 
   std::vector<double> copyA = make_lapack_array(*A);
@@ -592,7 +596,7 @@ bool Lapack::SVD(const DMatRR *A,
   std::vector<double> u(rows * rows);
   std::vector<double> vt(cols * cols);
   std::vector<double> sigma(min);
-  
+
   dgesvd_(&doit,
           &doit,
           &rows,
@@ -656,12 +660,12 @@ bool Lapack::SVD_divide_conquer(const DMatRR *A,
 
   double *workspace = new double[wsize];
   int* iworkspace = new int[8 * min];
-  
+
   std::vector<double> copyA = make_lapack_array(*A);
   std::vector<double> u(rows * rows);
   std::vector<double> vt(cols * cols);
   std::vector<double> sigma(min);
-  
+
   dgesdd_(&doit,
           &rows,
           &cols,
@@ -916,7 +920,7 @@ bool Lapack::QR(const DMatRR *A, DMatRR *Q, DMatRR *R, bool return_QR)
       return false;
     }
 
-  std::vector<double> copyA = make_lapack_array(*A); 
+  std::vector<double> copyA = make_lapack_array(*A);
   std::vector<double> tau (min); // TODO: set to 0??
   double workspace_size[1];
   int work_size = -1;
@@ -1250,7 +1254,7 @@ bool Lapack::eigenvalues(const DMatCC *A, DMatCC *eigvals)
   int info;
   int wsize = 2 * size;
   int rsize = 2 * size;
-  double *workspace = new double[2*wsize]; 
+  double *workspace = new double[2*wsize];
   double *rwork = new double[rsize];
 
   std::vector<double> copyA = make_lapack_array(*A);
@@ -1316,7 +1320,7 @@ bool Lapack::eigenvectors(const DMatCC *A,
   char doit = 'V';
   int wsize = 2 * size;
   int rsize = 2 * size;
-  double *workspace = new double[2*wsize]; 
+  double *workspace = new double[2*wsize];
   double *rwork = new double[rsize];
   int info;
 
@@ -1383,7 +1387,7 @@ bool Lapack::eigenvalues_hermitian(const DMatCC *A, DMatRR *eigvals)
   char triangle = 'U'; /* Upper triangular part makes symmetric matrix. */
 
   int wsize = 2 * size - 1;
-  double *workspace = new double[2*wsize]; 
+  double *workspace = new double[2*wsize];
   double *rwork = new double[3 * size - 2];
   int info;
 
@@ -1626,7 +1630,7 @@ bool Lapack::SVD_divide_conquer(const DMatCC *A,
 
   delete[] workspace;
   delete[] iworkspace;
-  delete[] rwork;  
+  delete[] rwork;
 
   return ret;
 }
@@ -1776,7 +1780,7 @@ bool Lapack::least_squares_deficient(const DMatCC *A,
         }
       std::swap(copyb, copyb2);
     }
-  
+
   zgelss_(&rows,
           &cols,
           &bcols,

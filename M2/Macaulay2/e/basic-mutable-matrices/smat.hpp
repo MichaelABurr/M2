@@ -3,8 +3,15 @@
 #ifndef M2_BASIC_MUTMAT_SMAT_HPP_
 #define M2_BASIC_MUTMAT_SMAT_HPP_
 
+#include "error.h"
+#include "interface/m2-types.h"
+#include "newdelete.hpp"
+
+#include <cassert>
+#include <cstddef>
+
+class Ring;
 union ring_elem;
-#include "rings/ZZp.hpp"
 
 class MutableMatrix;
 
