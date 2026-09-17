@@ -3,20 +3,29 @@
 #ifndef M2_BASIC_MUTMAT_DMAT_LU_HPP_
 #define M2_BASIC_MUTMAT_DMAT_LU_HPP_
 
+#include "error.h"
+#include "exceptions.hpp"
 #include "basic-mutable-matrices/dmat.hpp"
 #include "basic-mutable-matrices/mat-elem-ops.hpp"
 #include "basic-mutable-matrices/mat-util.hpp"
 
 #include "basic-mutable-matrices/dmat-lu-inplace.hpp"
 
+namespace M2 {
+class ARingQQGMP;
+class ARingZZpFFPACK;
+class ARingZZpFlint;
+}
+
 template <class RingType>
 class DMatLinAlg;
 
-#include "basic-mutable-matrices/dmat-lu-zzp-ffpack.hpp"
-#include "basic-mutable-matrices/dmat-lu-zzp-flint.hpp"
-#include "basic-mutable-matrices/dmat-lu-qq.hpp"
-
-typedef DMat<M2::ARingGFFlintBig> DMatGFFlintBig;
+template <>
+class DMatLinAlg<M2::ARingQQGMP>;
+template <>
+class DMatLinAlg<M2::ARingZZpFFPACK>;
+template <>
+class DMatLinAlg<M2::ARingZZpFlint>;
 
 template <class RingType>
 class DMatLinAlg
@@ -444,57 +453,31 @@ void solveLowerTriangular(const Mat& LU, const Mat& B, Mat& X)
 {
 }
 
-template <>
-inline void solveLowerTriangular<DMatGFFlintBig>(const DMatGFFlintBig& LU,
-                                                 const DMatGFFlintBig& B,
-                                                 DMatGFFlintBig& X)
-{
-  fq_nmod_mat_solve_tril(X.fq_nmod_mat(),
-                         LU.fq_nmod_mat(),
-                         B.fq_nmod_mat(),
-                         1,
-                         LU.ring().flintContext());
-}
-
-template <>
-inline void solveLowerTriangular<DMatGFFlint>(const DMatGFFlint& LU,
-                                              const DMatGFFlint& B,
-                                              DMatGFFlint& X)
-{
-  fq_zech_mat_solve_tril(X.fq_zech_mat(),
-                         LU.fq_zech_mat(),
-                         B.fq_zech_mat(),
-                         1,
-                         LU.ring().flintContext());
-}
-
 template <class Mat>
 void solveUpperTriangular(const Mat& LU, const Mat& B, Mat& X)
 {
 }
 
 template <>
-inline void solveUpperTriangular<DMatGFFlint>(const DMatGFFlint& LU,
-                                              const DMatGFFlint& B,
-                                              DMatGFFlint& X)
-{
-  fq_zech_mat_solve_triu(X.fq_zech_mat(),
-                         LU.fq_zech_mat(),
-                         B.fq_zech_mat(),
-                         0,
-                         LU.ring().flintContext());
-}
+void solveLowerTriangular<DMat<M2::ARingGFFlint>>(
+    const DMat<M2::ARingGFFlint>& LU,
+    const DMat<M2::ARingGFFlint>& B,
+    DMat<M2::ARingGFFlint>& X);
 template <>
-inline void solveUpperTriangular<DMatGFFlintBig>(const DMatGFFlintBig& LU,
-                                                 const DMatGFFlintBig& B,
-                                                 DMatGFFlintBig& X)
-{
-  fq_nmod_mat_solve_triu(X.fq_nmod_mat(),
-                         LU.fq_nmod_mat(),
-                         B.fq_nmod_mat(),
-                         0,
-                         LU.ring().flintContext());
-}
+void solveUpperTriangular<DMat<M2::ARingGFFlint>>(
+    const DMat<M2::ARingGFFlint>& LU,
+    const DMat<M2::ARingGFFlint>& B,
+    DMat<M2::ARingGFFlint>& X);
+template <>
+void solveLowerTriangular<DMat<M2::ARingGFFlintBig>>(
+    const DMat<M2::ARingGFFlintBig>& LU,
+    const DMat<M2::ARingGFFlintBig>& B,
+    DMat<M2::ARingGFFlintBig>& X);
+template <>
+void solveUpperTriangular<DMat<M2::ARingGFFlintBig>>(
+    const DMat<M2::ARingGFFlintBig>& LU,
+    const DMat<M2::ARingGFFlintBig>& B,
+    DMat<M2::ARingGFFlintBig>& X);
 
 template <class RingType>
 bool DMatLinAlg<RingType>::solveInvertible(const Mat& B, Mat& X)

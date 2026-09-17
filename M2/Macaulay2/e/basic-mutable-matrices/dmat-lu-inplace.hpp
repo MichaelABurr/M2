@@ -4,22 +4,13 @@
 #define M2_BASIC_MUTMAT_DMAT_LU_INPLACE_HPP_
 
 #include "basic-mutable-matrices/dmat.hpp"
+#include "basic-mutable-matrices/mat-arith.hpp"
 #include "basic-mutable-matrices/mat-elem-ops.hpp"
 #include "basic-mutable-matrices/mat-util.hpp"
 
-// The following needs to be included before any flint files are included.
-#include <M2/gc-include.h>
-
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wconversion"
-#include <flint/fq_nmod_mat.h>  // for fq_nmod_mat_lu, fq_zech_mat_lu
-#include <flint/perm.h>         // for _perm_parity
-#pragma GCC diagnostic pop
-
-std::vector<double> make_lapack_array(const DMatRR& mat);
-std::vector<double> make_lapack_array(const DMatCC& mat);
-void fill_from_lapack_array(const std::vector <double> & doubles, DMatRR& mat);
-void fill_from_lapack_array(const std::vector <double> & doubles, DMatCC& mat);
+#include <iostream>
+#include <memory>
+#include <vector>
 
 template <typename RT>
 class LUUtil
@@ -56,13 +47,13 @@ class DMatLUinPlace
  public:
   DMatLUinPlace(const Mat& A);
 
-  const RingType& ring() const { return mLU.ring(); }
-  long numRows() const { return mLU.numRows(); }
-  long numColumns() const { return mLU.numColumns(); }
+  const RingType& ring() const { return mLU->ring(); }
+  long numRows() const { return mLU->numRows(); }
+  long numColumns() const { return mLU->numColumns(); }
   const Mat& LUinPlace()
   {
     computeLU();
-    return mLU;
+    return *mLU;
   }  // raises an exception if there is an error
   // Can be called repeatedly: the result is remembered once done.
   // Returns a constant ref to the internal "in place" LU.
@@ -71,61 +62,20 @@ class DMatLUinPlace
   const std::vector<size_t>& permutation() { return mPerm; }
   const std::vector<size_t>& pivotColumns() { return mPivotColumns; }
  private:
-  typedef typename RingType::ElementType ElementType;
-
   void computeLU();
   size_t findPivot(size_t row, size_t col);
 
  private:
-  Mat mLU;
+  std::unique_ptr<Mat> mLU;
   std::vector<size_t> mPerm;
   bool mSign;
   bool mIsDone;
   std::vector<size_t> mPivotColumns;
 };
 
-template <>
-inline void DMatLUinPlace<M2::ARingGFFlintBig>::computeLU()
-{
-  if (mIsDone) return;
-  //std::cout << "computing LU decomposition GFFlintBig" << std::endl;
-  
-  mp_limb_signed_t* perm = newarray_atomic(mp_limb_signed_t, mLU.numRows());
-  fq_nmod_mat_lu(perm, mLU.fq_nmod_mat(), false, ring().flintContext());
-  // Now we set mPerm:
-  mPerm.clear();
-  for (long i = 0; i < mLU.numRows(); i++) mPerm.push_back(perm[i]);
-  mSign = (_perm_parity(perm, mLU.numRows()) == 0);
-  freemem(perm);
-
-  // Now we set mPivotColumns
-  LUUtil<RingType>::computePivotColumns(mLU, mPivotColumns);
-
-  mIsDone = true;
-}
-
-template <>
-inline void DMatLUinPlace<M2::ARingGFFlint>::computeLU()
-{
-  if (mIsDone) return;
-  //  std::cout << "computing LU decomposition GFFlint" << std::endl;
-  mp_limb_signed_t* perm = newarray_atomic(mp_limb_signed_t, mLU.numRows());
-  fq_zech_mat_lu(perm, mLU.fq_zech_mat(), false, ring().flintContext());
-  // Now we set mPerm:
-  mPerm.clear();
-  for (long i = 0; i < mLU.numRows(); i++) mPerm.push_back(perm[i]);
-  mSign = (_perm_parity(perm, mLU.numRows()) == 0);
-  freemem(perm);
-
-  // Now we set mPivotColumns
-  LUUtil<RingType>::computePivotColumns(mLU, mPivotColumns);
-
-  mIsDone = true;
-}
-
 template <class RingType>
 DMatLUinPlace<RingType>::DMatLUinPlace(const Mat& A)
-    : mLU(A),       // copies A
+    : mLU(std::make_unique<Mat>(A)),  // copies A
       mSign(true),  // sign = 1
       mIsDone(false)
 {
@@ -138,57 +88,11 @@ size_t DMatLUinPlace<RingType>::findPivot(size_t row, size_t col)
   // Look at elements A[row,col], A[row+1,col], ..., A[nrows-1, col]
   // Return the index r s.y. abs(A[r,col]) is maximum over all of these
 
-  for (size_t i = row; i < mLU.numRows(); i++)
+  for (size_t i = row; i < mLU->numRows(); i++)
     {
-      if (!ring().is_zero(mLU.entry(i, col))) return i;
+      if (!ring().is_zero(mLU->entry(i, col))) return i;
     }
   return static_cast<size_t>(-1);
-}
-
-template <>
-inline size_t DMatLUinPlace<M2::ARingRRR>::findPivot(size_t row, size_t col)
-{
-  // Look at elements A[row,col], A[row+1,col], ..., A[nrows-1, col]
-  // Return the index r s.y. abs(A[r,col]) is maximum over all of these
-
-  M2::ARingRRR::Element largest(ring()), abs(ring());
-  size_t best_row_so_far = static_cast<size_t>(-1);
-
-  ring().set_zero(largest);
-  for (size_t i = row; i < mLU.numRows(); i++)
-    {
-      ring().abs(abs, mLU.entry(i, col));
-      if (ring().compare_elems(abs, largest) > 0)
-        {
-          best_row_so_far = i;
-          ring().copy(largest, abs);
-        }
-    }
-  return best_row_so_far;
-}
-
-template <>
-inline size_t DMatLUinPlace<M2::ARingCCC>::findPivot(size_t row, size_t col)
-{
-  // Look at elements A[row,col], A[row+1,col], ..., A[nrows-1, col]
-  // Return the index r s.y. abs(A[r,col]) is maximum over all of these
-
-  const M2::ARingRRR& RR = ring().real_ring();
-  M2::ARingRRR::Element largest(RR), abs(RR);
-  size_t best_row_so_far = static_cast<size_t>(-1);
-
-  RR.set_zero(largest);
-
-  for (size_t i = row; i < mLU.numRows(); i++)
-    {
-      ring().abs(abs, mLU.entry(i, col));
-      if (RR.compare_elems(abs, largest) > 0)
-        {
-          best_row_so_far = i;
-          RR.set(largest, abs);
-        }
-    }
-  return best_row_so_far;
 }
 
 template <class RingType>
@@ -197,12 +101,12 @@ void DMatLUinPlace<RingType>::computeLU()
   if (mIsDone) return;
 
   //  std::cout << "computing LU decomposition generic version" << std::endl;
-  typename RingType::Element tmp(mLU.ring());
+  typename RingType::Element tmp(mLU->ring());
 
   size_t col = 0;  // current column we are working on
   size_t row = 0;  // current row we are working on
-  size_t nrows = mLU.numRows();
-  size_t ncols = mLU.numColumns();
+  size_t nrows = mLU->numRows();
+  size_t ncols = mLU->numColumns();
 
   while (col < ncols && row < nrows)
     {
@@ -214,8 +118,9 @@ void DMatLUinPlace<RingType>::computeLU()
         {
           for (size_t i = 0; i < row; i++)
             {
-              mLU.ring().mult(tmp, mLU.entry(r, i), mLU.entry(i, col));
-              mLU.ring().subtract(mLU.entry(r, col), mLU.entry(r, col), tmp);
+              mLU->ring().mult(tmp, mLU->entry(r, i), mLU->entry(i, col));
+              mLU->ring().subtract(
+                  mLU->entry(r, col), mLU->entry(r, col), tmp);
             }
         }
 
@@ -235,11 +140,11 @@ void DMatLUinPlace<RingType>::computeLU()
       std::swap(mPerm[row], mPerm[k]);
       if (k != row)
         {
-          MatElementaryOps<Mat>::interchange_rows(mLU, k, row);
+          MatElementaryOps<Mat>::interchange_rows(*mLU, k, row);
           mSign = !mSign;
         }
       mPivotColumns.push_back(col);
-      const ElementType& pivot = mLU.entry(row, col);
+      const typename RingType::ElementType& pivot = mLU->entry(row, col);
 
       // printf("after step 2:\n");
       // debug_out();
@@ -249,8 +154,9 @@ void DMatLUinPlace<RingType>::computeLU()
         {
           for (size_t i = 0; i < row; i++)
             {
-              mLU.ring().mult(tmp, mLU.entry(row, i), mLU.entry(i, c));
-              mLU.ring().subtract(mLU.entry(row, c), mLU.entry(row, c), tmp);
+              mLU->ring().mult(tmp, mLU->entry(row, i), mLU->entry(i, c));
+              mLU->ring().subtract(
+                  mLU->entry(row, c), mLU->entry(row, c), tmp);
             }
         }
       // printf("after step 3A:\n");
@@ -266,8 +172,8 @@ void DMatLUinPlace<RingType>::computeLU()
       //  (row+1,col), ..., (nrows-1,col)
       for (size_t r = row + 1; r < nrows; r++)
         {
-          mLU.ring().divide(mLU.entry(r, row), mLU.entry(r, col), pivot);
-          if (row < col) ring().set_zero(mLU.entry(r, col));
+          mLU->ring().divide(mLU->entry(r, row), mLU->entry(r, col), pivot);
+          if (row < col) ring().set_zero(mLU->entry(r, col));
         }
 
       // printf("after step 3B:\n");
@@ -278,101 +184,6 @@ void DMatLUinPlace<RingType>::computeLU()
     }
 
   mIsDone = true;
-}
-
-template <>
-inline void DMatLUinPlace<M2::ARingRR>::computeLU()
-{
-  if (mIsDone) return;
-
-  //  std::cout << "computing LU decomposition ARingRR" << std::endl;  
-  int rows = static_cast<int>(mLU.numRows());
-  int cols = static_cast<int>(mLU.numColumns());
-  int info;
-  int min = (rows <= cols) ? rows : cols;
-
-  if (min == 0)
-    return;
-
-  int* perm = new int[min];
-  std::vector<double> copyA = make_lapack_array(mLU);
-
-  dgetrf_(&rows, &cols, copyA.data(), &rows, perm, &info);
-
-  if (info < 0)
-    {
-      // First, clean up, then throw an exception
-      delete [] perm;
-      throw exc::engine_error("argument passed to dgetrf had an illegal value");
-    }
-
-  // Now copy back to row major order
-  fill_from_lapack_array(copyA, mLU);
-
-  // Now place the correct permutation into mPerm
-  for (int i = 0; i < min; i++)
-    {
-      int thisloc = perm[i] - 1;
-      if (i != thisloc)
-        {
-          mSign = not mSign;
-          size_t tmp = mPerm[thisloc];
-          mPerm[thisloc] = mPerm[i];
-          mPerm[i] = tmp;
-        }
-    }
-
-  LUUtil<RingType>::computePivotColumns(mLU, mPivotColumns);
-  mIsDone = true;
-
-  delete [] perm;
-}
-
-template <>
-inline void DMatLUinPlace<M2::ARingCC>::computeLU()
-{
-  if (mIsDone) return;
-
-  //  std::cout << "computing LU decomposition ARingCC" << std::endl;
-  int rows = static_cast<int>(mLU.numRows());
-  int cols = static_cast<int>(mLU.numColumns());
-  int info;
-  int min = (rows <= cols) ? rows : cols;
-
-  if (min == 0)
-    return;
-
-  int* perm = new int[min];
-  auto copyA = make_lapack_array(mLU);
-
-  zgetrf_(&rows, &cols, copyA.data(), &rows, perm, &info);
-
-  if (info < 0)
-    {
-      delete[] perm;
-      throw exc::engine_error("argument passed to zgetrf had an illegal value");
-    }
-
-  // Now copy back to row major order
-  fill_from_lapack_array(copyA, mLU);
-
-  // Now place the correct permutation into mPerm
-  for (int i = 0; i < min; i++)
-    {
-      int thisloc = perm[i] - 1;
-      if (i != thisloc)
-        {
-          mSign = not mSign;
-          size_t tmp = mPerm[thisloc];
-          mPerm[thisloc] = mPerm[i];
-          mPerm[i] = tmp;
-        }
-    }
-
-  LUUtil<RingType>::computePivotColumns(mLU, mPivotColumns);
-  mIsDone = true;
-
-  delete[] perm;
 }
 
 template <class RingType>

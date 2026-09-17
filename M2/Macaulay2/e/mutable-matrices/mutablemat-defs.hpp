@@ -85,7 +85,7 @@ struct EigenTypes<M2::ARingCCC>
 #include "basic-mutable-matrices/smat.hpp"
 #include "basic-mutable-matrices/mat-elem-ops.hpp"
 #include "basic-mutable-matrices/mat-arith.hpp"
-#include "basic-mutable-matrices/mat-linalg.hpp"
+#include "basic-mutable-matrices/dmat-linalg-all.hpp"
 
 template <typename CoeffRing>
 Matrix* toMatrix(const Ring* R, const DMat<CoeffRing>& A)
@@ -106,7 +106,7 @@ Matrix* toMatrix(const Ring* R, const DMat<CoeffRing>& A)
               A.ring().to_ring_elem(ra, a);
               result.set_entry(r, c, ra);
             }
-      }        
+      }
 
   result.compute_column_degrees();
   return result.to_matrix();

@@ -3,17 +3,38 @@
 #include "exceptions.hpp"
 #include "error.h"
 
-#include "basic-mutable-matrices/mat-linalg.hpp"
+#include "basic-mutable-matrices/dmat-linalg-zzp-ffpack.hpp"
+
+#include "basic-rings/aring-ZZp-ffpack.hpp"
+#include "basic-mutable-matrices/dmat-linalg.hpp"
+#include "basic-mutable-matrices/dmat-lu-zzp-ffpack.hpp"
+
+using ZZpFFPACK = M2::ARingZZpFFPACK;
+using DMatZZpFFPACK = DMat<ZZpFFPACK>;
+
+namespace ffpackInterface {
+size_t rank(const DMatZZpFFPACK& A);
+void determinant(const DMatZZpFFPACK& A,
+                 ZZpFFPACK::ElementType& result_det);
+M2_arrayintOrNull rankProfile(const DMatZZpFFPACK& A, bool row_profile);
+bool solveLinear(const DMatZZpFFPACK& A,
+                 const DMatZZpFFPACK& B,
+                 DMatZZpFFPACK& X);
+bool inverse(const DMatZZpFFPACK& A, DMatZZpFFPACK& result_inv);
+size_t nullSpace(const DMatZZpFFPACK& A,
+                 DMatZZpFFPACK& result_nullspace);
+}  // namespace ffpackInterface
 
 ////////////////////////////////////////////////////////////////////////////
 // dmat code that might have alternate implementations, depending of type //
 ////////////////////////////////////////////////////////////////////////////
 
 namespace MatrixOps {
-void addMultipleTo(DMatZZpFFPACK& C,
-                   const DMatZZpFFPACK::ElementType& a,
-                   const DMatZZpFFPACK& A,
-                   const DMatZZpFFPACK& B)
+namespace {
+void addMultipleToScaled(DMatZZpFFPACK& C,
+                         const DMatZZpFFPACK::ElementType& a,
+                         const DMatZZpFFPACK& A,
+                         const DMatZZpFFPACK& B)
 {
   // Compute C := C + a*A*B
   // Both DMat, and FFPACK store dense matrices in row major order.
@@ -49,7 +70,9 @@ void addMultipleTo(DMatZZpFFPACK& C,
                C.rowMajorArray(),
                C.numColumns());
 }
+}  // namespace
 
+template <>
 void addMultipleTo(DMatZZpFFPACK& C,
                    const DMatZZpFFPACK& A,
                    const DMatZZpFFPACK& B)
@@ -57,18 +80,20 @@ void addMultipleTo(DMatZZpFFPACK& C,
   DMatZZpFFPACK::ElementType one;
   A.ring().set(one, 1);
 
-  addMultipleTo(C, one, A, B);
+  addMultipleToScaled(C, one, A, B);
 }
 
+template <>
 void subtractMultipleTo(DMatZZpFFPACK& C,
                         const DMatZZpFFPACK& A,
                         const DMatZZpFFPACK& B)
 {
   DMatZZpFFPACK::ElementType minus_one;
   A.ring().set(minus_one, -1);
-  addMultipleTo(C, minus_one, A, B);
+  addMultipleToScaled(C, minus_one, A, B);
 }
 
+template <>
 void mult(const DMatZZpFFPACK& A, const DMatZZpFFPACK& B, DMatZZpFFPACK& C)
 {
   // We assume that C is set to the correct size, and is the zero matrix here.

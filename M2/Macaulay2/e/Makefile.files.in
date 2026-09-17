@@ -33,7 +33,32 @@ INTERFACE = \
 	NCResolutions/nc-res-computation \
 	Polynomial \
 	SLP/SLP \
-	basic-mutable-matrices/dmat \
+	basic-mutable-matrices/dmat-linalg-cc \
+	basic-mutable-matrices/dmat-linalg-ccc \
+	basic-mutable-matrices/dmat-linalg-gf-flint-big \
+	basic-mutable-matrices/dmat-linalg-gf-flint \
+	basic-mutable-matrices/dmat-linalg-qq-flint \
+	basic-mutable-matrices/dmat-linalg-qq-gmp \
+	basic-mutable-matrices/dmat-linalg-rr \
+	basic-mutable-matrices/dmat-linalg-rrr \
+	basic-mutable-matrices/dmat-linalg-zz-flint \
+	basic-mutable-matrices/dmat-linalg-zz-gmp \
+	basic-mutable-matrices/dmat-linalg-zzp-ffpack \
+	basic-mutable-matrices/dmat-linalg-zzp-flint \
+	basic-mutable-matrices/dmat-gf-flint \
+	basic-mutable-matrices/dmat-gf-flint-big \
+	basic-mutable-matrices/dmat-lu-inplace-cc \
+	basic-mutable-matrices/dmat-lu-inplace-ccc \
+	basic-mutable-matrices/dmat-lu-inplace-gf-flint \
+	basic-mutable-matrices/dmat-lu-inplace-gf-flint-big \
+	basic-mutable-matrices/dmat-lu-inplace-rr \
+	basic-mutable-matrices/dmat-lu-inplace-rrr \
+	basic-mutable-matrices/dmat-lu-qq \
+	basic-mutable-matrices/dmat-lu-zzp-ffpack \
+	basic-mutable-matrices/dmat-lu-zzp-flint \
+	basic-mutable-matrices/dmat-qq-flint \
+	basic-mutable-matrices/dmat-zz-flint \
+	basic-mutable-matrices/dmat-zzp-flint \
 	basic-mutable-matrices/lapack \
 	basic-mutable-matrices/mat \
 	basic-rings/aring \

@@ -3,6 +3,20 @@
 #ifndef M2_BASIC_MUTMAT_FLINTQQ_MAT_HPP_
 #define M2_BASIC_MUTMAT_FLINTQQ_MAT_HPP_
 
+#include "basic-mutable-matrices/dmat.hpp"
+#include "basic-rings/aring-QQ.hpp"
+#include "basic-rings/aring-ZZ-gmp.hpp"
+
+#include <M2/gc-include.h>
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+#include <flint/fmpq_mat.h>
+#include <flint/fmpz_mat.h>
+#pragma GCC diagnostic pop
+
+using DMatZZGMP = DMat<M2::ARingZZGMP>;
+
 // This class is designed to use DMat<M2::ARingQQ>, which stores elements as gmp
 // ints
 // This sets up flint fmpq_mat matrices, and provides translation.  This is

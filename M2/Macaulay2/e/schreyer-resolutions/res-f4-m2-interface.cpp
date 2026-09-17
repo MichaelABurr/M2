@@ -10,7 +10,8 @@
 #include "basic-rings/aring.hpp"                                      // for ring_RR
 #include "coeffrings.hpp"                                 // for Coefficient...
 #include "computations/comp.hpp"                          // for Computation
-#include "basic-mutable-matrices/mat-linalg.hpp"                                 // for DMatLinAlg
+#include "basic-mutable-matrices/dmat-lu-zzp-flint.hpp"   // for DMatLinAlg
+#include "basic-mutable-matrices/dmat-lu-zzp-ffpack.hpp"  // for DMatLinAlg
 #include "basic-mutable-matrices/dmat.hpp"                                       // for DMat
 #include "interface/m2-types.h"                           // for M2_arrayint
 #include "error.h"                                        // for ERROR
@@ -464,7 +465,7 @@ public:
       // Do we need to check that these refer to the same object?
       return mColumn != sentinel.mColumn;
     }
-    
+
     iterator& operator++()
     {
       increment();
@@ -472,12 +473,12 @@ public:
     }
 
     int column() const { return mColumn; }
-    
+
     const std::vector<int>& components() const { return mComponents; }
 
     const std::vector<long>& coefficients() const { return mCoefficients; }
 
-  private:    
+  private:
     void increment()
     {
       ++mColumn;
@@ -518,10 +519,10 @@ public:
   };
 
   friend class DegreeZeroMapGenerator::iterator;
-  
+
   iterator begin() { return iterator(*this); }
   iterator end() { return iterator(*this, 1); }
-  
+
 private:
   SchreyerFrame& mSchreyerFrame;
   std::vector<SchreyerFrameTypes::FrameElement>& mThisLevel;
@@ -591,7 +592,7 @@ int SchreyerFrame::rankUsingSparseMatrix(Gen& D)
   //  std::cout << "--- gb of matrix ----" << std::endl;
   //  dmatrix(gbM);
   //  std::cout << "----------------------" << std::endl;
-  
+
   int rk = comp.get_initial(-1)->n_cols();
   auto timeB = timer();
   double nsecs = seconds(timeB - timeA);

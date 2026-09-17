@@ -5,6 +5,8 @@
 #ifndef M2_MUTMAT_MUTABLE_MAT_IMP_HPP_
 #define M2_MUTMAT_MUTABLE_MAT_IMP_HPP_
 
+#include "interface/gmp-util.h"
+
 template <typename Mat>
 M2SLEvaluator* MutableMat<Mat>::createSLEvaluator(M2SLProgram* P,
                                                 M2_arrayint constsPos,

@@ -1,16 +1,26 @@
 #ifndef M2_BASIC_MUTMAT__LAPACK_H_
 #define M2_BASIC_MUTMAT__LAPACK_H_
 
-#include "basic-rings/aring-RR.hpp"
-#include "basic-rings/aring-CC.hpp"
-#include "basic-rings/aring-RRR.hpp"
-#include "basic-rings/aring-CCC.hpp"
 #include "basic-mutable-matrices/dmat.hpp"
+
+#include <vector>
+
+namespace M2 {
+class ARingRRR;
+class ARingCCC;
+class ARingRR;
+class ARingCC;
+}
 
 typedef DMat<M2::ARingRRR> DMatRRR;
 typedef DMat<M2::ARingCCC> DMatCCC;
 typedef DMat<M2::ARingRR> DMatRR;
 typedef DMat<M2::ARingCC> DMatCC;
+
+std::vector<double> make_lapack_array(const DMatRR& mat);
+std::vector<double> make_lapack_array(const DMatCC& mat);
+void fill_from_lapack_array(const std::vector<double>& doubles, DMatRR& mat);
+void fill_from_lapack_array(const std::vector<double>& doubles, DMatCC& mat);
 
 /* Lapack routines */
 /* Compute solutions x to Ax = b for square matrix A and a matrix b */
@@ -205,7 +215,7 @@ int zungqr_(int *m,      // #rows m >= 0
             int *lwork,    // dimension of 'work'
             int *info);
 
-#if 0  
+#if 0
   int dormqr_(char *__side,
               char *__trans,
               __CLPK_integer *__m,

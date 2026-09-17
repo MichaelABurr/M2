@@ -13,12 +13,26 @@
 template <typename ACoeffRing>
 class DMat;
 
-// Special instantiations of DMat class
-#include "basic-mutable-matrices/dmat-zz-flint.hpp"
-#include "basic-mutable-matrices/dmat-qq-flint.hpp"
-#include "basic-mutable-matrices/dmat-zzp-flint.hpp"
-#include "basic-mutable-matrices/dmat-gf-flint-big.hpp"
-#include "basic-mutable-matrices/dmat-gf-flint.hpp"
+namespace M2 {
+class ARingGFFlint;
+class ARingGFFlintBig;
+class ARingQQFlint;
+class ARingZZ;
+class ARingZZpFlint;
+}
+
+// Forward declarations of the specializations defined in the corresponding
+// dmat-*.hpp headers.
+template <>
+class DMat<M2::ARingGFFlint>;
+template <>
+class DMat<M2::ARingGFFlintBig>;
+template <>
+class DMat<M2::ARingQQFlint>;
+template <>
+class DMat<M2::ARingZZ>;
+template <>
+class DMat<M2::ARingZZpFlint>;
 
 template <typename ACoeffRing>
 class DMat
@@ -132,7 +146,7 @@ class DMat
   // certain flint functions created this.
   const ElementType* unsafeArray() const { return mArray; }
   ElementType*& unsafeArray() { return mArray; }
-  
+
  private:
   const ACoeffRing* mRing;
   size_t mNumRows;
