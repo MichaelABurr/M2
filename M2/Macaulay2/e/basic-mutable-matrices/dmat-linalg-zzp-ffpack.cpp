@@ -99,65 +99,6 @@ void mult(const DMatZZpFFPACK& A, const DMatZZpFFPACK& B, DMatZZpFFPACK& C)
   // We assume that C is set to the correct size, and is the zero matrix here.
   addMultipleTo(C, A, B);
 }
-
-template <>
-size_t rank(const DMatZZpFFPACK& A)
-{
-  return ffpackInterface::rank(A);
-}
-
-template <>
-void determinant<M2::ARingZZpFFPACK, M2::ARingZZpFFPACK::ElementType>(
-    const DMatZZpFFPACK& A,
-    M2::ARingZZpFFPACK::ElementType& result_det)
-{
-  ffpackInterface::determinant(A, result_det);
-}
-
-template <>
-bool inverse(const DMatZZpFFPACK& A, DMatZZpFFPACK& result_inv)
-{
-  return ffpackInterface::inverse(A, result_inv);
-}
-
-template <>
-size_t nullSpace(const DMatZZpFFPACK& A, DMatZZpFFPACK& result_nullspace)
-{
-  return ffpackInterface::nullSpace(A, result_nullspace);
-}
-
-template <>
-bool solveLinear(const DMatZZpFFPACK& A,
-                 const DMatZZpFFPACK& B,
-                 DMatZZpFFPACK& X)
-{
-  return ffpackInterface::solveLinear(A, B, X);
-}
-
-template <>
-bool solveInvertible(const DMatZZpFFPACK& A,
-                     const DMatZZpFFPACK& B,
-                     DMatZZpFFPACK& X)
-{
-  return ffpackInterface::solveLinear(A, B, X);
-}
-
-template <>
-M2_arrayintOrNull rankProfile(const DMatZZpFFPACK& A, bool row_profile)
-{
-  return ffpackInterface::rankProfile(A, row_profile);
-}
-
-template <>
-M2_arrayintOrNull LU(const DMatZZpFFPACK& A,
-                     DMatZZpFFPACK& L,
-                     DMatZZpFFPACK& U)
-{
-  std::vector<size_t> permutation;
-  DMatLinAlg<M2::ARingZZpFFPACK> lu(A);
-  lu.matrixPLU(permutation, L, U);
-  return stdvector_to_M2_arrayint(permutation);
-}
 };  // namespace MatrixOps
 
 namespace ffpackInterface {
