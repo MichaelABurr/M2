@@ -1,5 +1,21 @@
 // Copyright 2012 Michael E. Stillman
 
+/// AI:
+/// \file aring-RR.hpp
+/// \brief Defines ARingRR, the machine-precision real arithmetic ring.
+///
+/// This header declares the ARing implementation for machine-precision real
+/// numbers stored as `double` values.  The class follows the `SimpleARing`
+/// contract, and its lifetime functions are lightweight initialization, copy,
+/// assignment, and clear operations for plain double storage.
+///
+/// `aring-glue.hpp` wraps this ARing in `ConcreteRing<ARingRR>` and forwards
+/// real-ring operations through the methods declared here: `ring_elem`
+/// conversion, arithmetic, comparison, hashing, printing, randomization, and
+/// precision helpers.  `aring-translate.hpp` uses RR as both a target and a
+/// source for promotion and lifting among exact, high-precision real, interval,
+/// and complex rings.
+
 #ifndef M2_BASIC_RINGS_ARING_RR_HPP_
 #define M2_BASIC_RINGS_ARING_RR_HPP_
 

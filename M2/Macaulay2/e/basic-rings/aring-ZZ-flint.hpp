@@ -1,5 +1,21 @@
 // Copyright 2013 Michael E. Stillman
 
+/// AI:
+/// \file aring-ZZ-flint.hpp
+/// \brief Defines ARingZZ, the FLINT-backed integer arithmetic ring.
+///
+/// This header declares the ARing implementation for integers stored as FLINT
+/// `fmpz` values.  The class follows the `SimpleARing` contract: its lifetime
+/// functions initialize, copy, assign, and clear the FLINT integer storage used
+/// by wrapper code.
+///
+/// `aring-glue.hpp` wraps this ARing in `ConcreteRing<ARingZZ>` and forwards
+/// exact integer operations through the methods declared here: `ring_elem`
+/// conversion, construction from C longs and GMP integers, arithmetic,
+/// comparison, hashing, printing, randomization, and integer lifting.  ZZ is a
+/// root source for many promotion paths before more specialized conversions
+/// continue in `aring-translate.hpp`.
+
 #ifndef M2_BASIC_RINGS_ARING_ZZ_FLINT_HPP_
 #define M2_BASIC_RINGS_ARING_ZZ_FLINT_HPP_
 
