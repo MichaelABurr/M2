@@ -21,10 +21,10 @@ and its cause. Keep test additions within this directory.
 
 The two build systems keep separate lists, and both must be updated:
 
-1. put `<Component>Test.cpp` in `Macaulay2/e/unit-tests/`
-2. add `unit-tests/<Component>Test.cpp` to the `M2-unit-tests` source list in
+1. put `<Component>Test.cpp` in `Macaulay2/e/unit-tests/<group>/`
+2. add `unit-tests/<group>/<Component>Test.cpp` to the `M2-unit-tests` source list in
    `../CMakeLists.txt`
-3. add `<Component>Test` (no extension) to `UNITTEST_CCFILES` in `Makefile.files`
+3. add `<group>/<Component>Test` (no extension) to `UNITTEST_CCFILES` in `Makefile.files`
    in this directory, preserving the continuation backslashes
 4. build and run under both
 

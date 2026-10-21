@@ -9,3 +9,13 @@ function (to do nothing), which normally is supplied by the Macaulay2 executable
 Autotools build:    
   Run tests (and compiles them) using: make -k check
   Currently, the source files are compiled during 'make'
+
+Tests are grouped by engine area: basic-rings, rings, matrices, monomials,
+groebner, resolutions, and utilities. Shared fixtures and support code live in
+helpers; testMain.cpp and M2-cpp-replacement.cpp remain at the root.
+
+All groups link into one test executable. Add sources to both ../CMakeLists.txt
+and Makefile.files, preserving the group directory in each path. Include shared
+headers as "unit-tests/helpers/Header.hpp". Keep test filenames unique so tools
+that select tests by basename remain unambiguous. Google Test suite names and
+filters are independent of the directory layout.

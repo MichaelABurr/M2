@@ -35,7 +35,15 @@ MORE_OPTIONS = -Wno-cast-qual
 COMPILE.cc += $(MORE_OPTIONS)
 
 Makefile: Makefile.in; cd ../../..; ./config.status Macaulay2/e/unit-tests/Makefile
-clean::; rm -f *.o *.rpo *.dep dep-*.tmp LOGFILE testMain
+# The source stems include subdirectories; create them even with DEPENDS=no.
+.PHONY: unit-test-directories
+$(UNITTEST_OBJECT_FILES): | unit-test-directories
+unit-test-directories:
+	$(MKDIR_P) $(sort $(dir $(UNITTEST_OBJECT_FILES)))
+
+clean::
+	rm -f $(UNITTEST_OBJECT_FILES) $(UNITTEST_CCFILES:=.dep) \
+	  $(UNITTEST_CCFILES:=.rpo) *.o *.rpo *.dep dep-*.tmp LOGFILE $(UNITTEST_TARGET)
 distclean: clean; rm -f Makefile
 
 ifeq "$(DEPENDS)" "yes"
