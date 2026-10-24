@@ -1,5 +1,21 @@
 // Copyright 2013 Michael E. Stillman
 
+/// AI:
+/// \file aring-translate.hpp
+/// \brief Provides generic conversion helpers between ARing implementations.
+///
+/// This header contains the element-level conversion layer used by
+/// `aring-glue.hpp` after `ConcreteRing::promote` or `ConcreteRing::lift`
+/// selects a source and target ARing pair.  It detects optional `set_from_*`
+/// methods at compile time so common conversions can be routed without forcing
+/// every ARing to implement every possible source type.
+///
+/// The `mypromote` and `mylift` overloads describe natural maps among exact
+/// rings, prime fields, real rings, complex rings, and interval rings.  The
+/// caller unpacks source `ring_elem` values into ARing elements, these helpers
+/// translate them with ARing-specific setters and membership tests, and the
+/// target ARing packs successful results back into `ring_elem` storage.
+
 #ifndef M2_BASIC_RINGS_ARING_TRANSLATE_HPP_
 #define M2_BASIC_RINGS_ARING_TRANSLATE_HPP_
 
