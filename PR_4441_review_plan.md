@@ -386,25 +386,25 @@ Load: 5,712 weighted lines.
 
 Load: 5,105 weighted lines.
 
-- [ ] **ARing conversion API core** — with Andrew — 1,107 weighted (369 lines × 3)
-  - [ ] `e/basic-rings/aring-glue.hpp` +11/−11
-  - [ ] `e/basic-rings/aring-translate.hpp` +147/−322
-  - [ ] `e/basic-rings/aring.hpp` +7/−9
-  - [ ] `e/coeffrings.hpp` +6/−4
-- [ ] **Monomial-ordering move** — with Andrew — 2,240 weighted (1,493 lines × 1.5)
+- [x] **ARing conversion API core** — with Andrew — 1,107 weighted (369 lines × 3)
+  - [x] `e/basic-rings/aring-glue.hpp` +11/−11
+  - [x] `e/basic-rings/aring-translate.hpp` +147/−322
+  - [x] `e/basic-rings/aring.hpp` +7/−9
+  - [x] `e/coeffrings.hpp` +6/−4
+- [x] **Monomial-ordering move** — with Andrew — 2,240 weighted (1,493 lines × 1.5)
   Also check the small changes by Doug (9 lines).
-  - [ ] `e/interface/monomial-ordering.cpp` +51/−963
-  - [ ] `e/interface/monomial-ordering.h` +1/−1
-  - [ ] `e/monomials/monordering.cpp` +466/−0
-  - [ ] `e/monomials/monordering.hpp` +11/−0
-- [ ] **Test harness** — with Dave — 1,758 weighted (1,172 lines × 1.5)
-  - [ ] `e/unit-tests/ARingTest.hpp` +511/−192
-  - [ ] `e/unit-tests/RingElem.cpp` +11/−4
-  - [ ] `e/unit-tests/RingElem.hpp` +24/−14
-  - [ ] `e/unit-tests/RingTest.hpp` +146/−92
-  - [ ] `e/unit-tests/fromStream.cpp` +25/−52
-  - [ ] `e/unit-tests/util-polyring-creation.cpp` +43/−72
-  - [ ] `e/unit-tests/util-polyring-creation.hpp` +10/−8
+  - [x] `e/interface/monomial-ordering.cpp` +51/−963
+  - [x] `e/interface/monomial-ordering.h` +1/−1
+  - [x] `e/monomials/monordering.cpp` +466/−0
+  - [x] `e/monomials/monordering.hpp` +11/−0
+- [x] **Test harness** — with Dave — 1,758 weighted (1,172 lines × 1.5)
+  - [x] `e/unit-tests/ARingTest.hpp` +511/−192
+  - [x] `e/unit-tests/RingElem.cpp` +11/−4
+  - [x] `e/unit-tests/RingElem.hpp` +24/−14
+  - [x] `e/unit-tests/RingTest.hpp` +146/−92
+  - [x] `e/unit-tests/fromStream.cpp` +25/−52
+  - [x] `e/unit-tests/util-polyring-creation.cpp` +43/−72
+  - [x] `e/unit-tests/util-polyring-creation.hpp` +10/−8
 
 ### Dima
 
