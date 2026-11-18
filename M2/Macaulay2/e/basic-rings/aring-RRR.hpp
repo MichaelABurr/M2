@@ -1,5 +1,21 @@
 // Copyright 2012 Michael E. Stillman
 
+/// AI:
+/// \file aring-RRR.hpp
+/// \brief Defines ARingRRR, the arbitrary-precision real arithmetic ring.
+///
+/// This header declares the ARing implementation for arbitrary-precision real
+/// numbers stored as MPFR values.  The ring object carries the precision, and
+/// its `SimpleARing` lifetime methods initialize, copy, assign, and clear each
+/// MPFR element with that precision.
+///
+/// `aring-glue.hpp` wraps this ARing in `ConcreteRing<ARingRRR>` and forwards
+/// real-ring operations through the methods declared here: `ring_elem`
+/// conversion, arithmetic, comparison, hashing, printing, randomization, and
+/// precision helpers.  `aring-translate.hpp` uses the high-precision real
+/// setters here for promotion and lifting among QQ, RR, RRR, interval rings,
+/// and complex rings that use `ARingRRR` as their real component.
+
 #ifndef M2_BASIC_RINGS_ARING_RRR_HPP_
 #define M2_BASIC_RINGS_ARING_RRR_HPP_
 
